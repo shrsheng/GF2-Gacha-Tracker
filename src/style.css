@@ -1,0 +1,472 @@
+body {
+  font-family: "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  padding: 24px;
+  color: #222;
+
+  background-image:
+    linear-gradient(
+      rgba(245, 246, 250, 0.78),
+      rgba(245, 246, 250, 0.78)
+    ),
+    url("../assets/gf2_1.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+h1 {
+  margin-bottom: 24px;
+  color: #1f2937;
+  text-shadow: 0 1px 3px rgba(255,255,255,.6);
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+}
+
+/* 卡片 */
+.card {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  padding: 20px;
+  margin-bottom: 20px;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.10);
+}
+
+.card:hover {
+  transition: all .2s ease;
+}
+
+/* 工具列 */
+.top-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.primary-btn {
+  background: #409eff;
+  color: white;
+  padding: 10px 18px;
+}
+
+.primary-btn:hover {
+  background: #337ecc;
+}
+
+.setting-btn {
+  background: #606266;
+  color: white;
+  padding: 10px 18px;
+}
+
+.setting-btn:hover {
+  background: #4c4d50;
+}
+
+.danger-btn {
+  background: #d9534f;
+  color: white;
+  margin-left: 8px;
+}
+
+.danger-btn:hover {
+  background: #c9302c;
+}
+
+/* 同步設定 */
+.sync-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  padding: 14px;
+  margin-bottom: 8px;
+
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.sync-panel input {
+  padding: 9px 10px;
+  box-sizing: border-box;
+}
+
+#gachaUrlInput {
+  flex: 1;
+  min-width: 360px;
+}
+
+#accessTokenInput {
+  width: 280px;
+}
+
+.hidden {
+  display: none;
+}
+
+.mini-status {
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0 8px;
+}
+
+.sync-result-hidden {
+  display: none;
+}
+
+/* 匯入匯出下拉 */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background: #67c23a;
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+.dropdown-btn:hover {
+  background: #5daf34;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  min-width: 160px;
+  background: white;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  z-index: 1000;
+}
+
+.dropdown-content button {
+  width: 100%;
+  background: white;
+  color: #333;
+
+  padding: 12px 16px;
+  margin: 0;
+
+  text-align: left;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.dropdown-content button:hover {
+  background: #f5f7fa;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 區塊標題 */
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.section-title-row h2 {
+  margin: 0;
+}
+
+.stats-date {
+  color: rgba(0,0,0,.45);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 總覽卡片 */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.overview-card {
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 14px;
+  padding: 18px;
+
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  transition: all .2s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+.overview-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  padding-bottom: 10px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.stat-label {
+  color: #666;
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-value {
+  font-weight: 600;
+  font-size: 16px;
+  text-align: right;
+  min-width: 96px;
+  color: #222;
+}
+
+/* 墊池顏色 */
+.pity-low {
+  color: #333;
+}
+
+.pity-mid {
+  color: #b58900;
+}
+
+.pity-high {
+  color: #e67e22;
+}
+
+.pity-max {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/* 招募歷史 */
+.orange-timeline {
+  margin-top: 12px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.orange-timeline::-webkit-scrollbar {
+  width: 6px;
+}
+
+.orange-timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.orange-timeline::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+  border-radius: 999px;
+}
+
+.orange-timeline::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.timeline-item {
+  position: relative;
+  padding: 10px 0 10px 18px;
+  border-left: 3px solid #ddd;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 16px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #f0ad4e;
+}
+
+.timeline-current {
+  background: #f3f8ff;
+  border-radius: 8px;
+  padding: 8px 8px 8px 18px;
+  margin-bottom: 12px;
+  border-left-color: #999;
+}
+
+.timeline-current::before {
+  background: #999;
+}
+
+.timeline-latest {
+  background: #fff8e8;
+  border-radius: 8px;
+  padding: 8px 8px 8px 18px;
+}
+
+.timeline-pulls {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.timeline-name {
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.timeline-time {
+  display: block;
+  color: #888;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.off-rate-label {
+  float: right;
+  color: #d9534f;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* 特殊紀錄 */
+.elite-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.elite-names {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* 抽卡紀錄標題與篩選 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+#recordPoolFilter {
+  padding: 8px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  background: white;
+}
+
+/* 抽卡紀錄表格 */
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 14px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+thead th {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+tbody {
+  font-size: 16px;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 200px;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 130px;
+  padding-left: 22px;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 90px;
+  padding-left: 22px;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: auto;
+  padding-left: 22px;
+}
+
+/* 稀有度文字色 */
+.rarity-elite {
+  color: #e58a00;
+  font-weight: 700;
+}
+
+.rarity-standard {
+  color: #8b5cf6;
+  font-weight: 700;
+}
+
+/* 分頁 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

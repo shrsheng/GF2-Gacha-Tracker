@@ -1,0 +1,44 @@
+{
+  "name": "gf2-gacha-tool",
+  "version": "1.0.0",
+  "description": "少女前線2：追放 抽卡統計工具",
+  "main": "main.js",
+  "author": "LiaoSAM",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "protobufjs": "^8.6.3"
+  },
+  "devDependencies": {
+    "electron": "^41.7.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.gf2.gacha.tool",
+    "productName": "GF2 Gacha Tracker",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "itemMap.json",
+      "package.json",
+      "src/**/*",
+      "assets/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

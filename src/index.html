@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>少女前線2:追放 抽卡統計工具</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>少女前線2:追放 抽卡統計工具</h1>
+
+  <section class="top-toolbar">
+    <div class="toolbar-left">
+      <button id="realSyncBtn" class="primary-btn">🔄 更新資料</button>
+
+      <button id="syncSettingBtn" class="setting-btn">⚙ 同步設定</button>
+
+      <div class="dropdown">
+        <button class="dropdown-btn">📂 匯入/匯出 ▼</button>
+
+        <div class="dropdown-content">
+          <button id="importBtn">匯入 JSON</button>
+          <button id="exportBtn">匯出 JSON</button>
+        </div>
+      </div>
+
+      <button id="clearBtn" class="danger-btn">清除全部紀錄</button>
+    </div>
+  </section>
+
+  <section id="syncSettingPanel" class="sync-panel hidden">
+    <input id="gachaUrlInput" type="text" placeholder="gachaUrl">
+    <input id="accessTokenInput" type="password" placeholder="Authorization / AccessToken">
+    <button id="saveSyncConfigBtn">儲存設定</button>
+  </section>
+
+  <p id="configStatus" class="mini-status">尚未設定同步資訊</p>
+  <p id="syncStatus" class="mini-status">尚未同步</p>
+  <pre id="syncResult" class="sync-result-hidden"></pre>
+
+  <section class="card">
+    <div class="section-title-row">
+      <h2>總覽</h2>
+      <span id="statsDate" class="stats-date">尚無資料</span>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3>定向採購</h3>
+        <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value" id="targetTotal">0</span></div>
+        <div class="stat-row"><span class="stat-label">菁英人形數</span><span class="stat-value" id="targetOrange">0</span></div>
+        <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value" id="targetAverage">-</span></div>
+        <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value" id="targetUpSummary">-</span></div>
+        <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="targetBest">-</span></div>
+        <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="targetWorst">-</span></div>
+        <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value" id="targetWorstWithOffRate">-</span></div>
+      </div>
+
+      <div class="overview-card">
+        <h3>軍備提升</h3>
+        <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value" id="weaponTotal">0</span></div>
+        <div class="stat-row"><span class="stat-label">菁英武器數</span><span class="stat-value" id="weaponOrange">0</span></div>
+        <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value" id="weaponAverage">-</span></div>
+        <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value" id="weaponUpSummary">-</span></div>
+        <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="weaponBest">-</span></div>
+        <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="weaponWorst">-</span></div>
+        <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value" id="weaponWorstWithOffRate">-</span></div>
+      </div>
+    
+
+      <div class="overview-card">
+        <h3>常規採購</h3>
+
+        <div class="stat-row">
+          <span class="stat-label">總抽數</span>
+          <span class="stat-value" id="standardTotal">0</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">菁英數</span>
+          <span class="stat-value" id="standardOrange">0</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">菁英人形數</span>
+          <span class="stat-value" id="standardEliteCharacter">0</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">菁英武器數</span>
+          <span class="stat-value" id="standardEliteWeapon">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">平均抽數</span>
+          <span class="stat-value" id="standardAverage">-</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">最歐</span>
+          <span class="stat-value" id="standardBest">-</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">最非</span>
+          <span class="stat-value" id="standardWorst">-</span>
+        </div>
+      </div> 
+    </div> 
+
+  </section>
+
+  <section class="card">
+    <h2>特殊紀錄</h2>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3>定向採購</h3>
+        <div class="stat-row">
+          <span class="stat-label">最大連續不歪</span>
+          <span class="stat-value" id="targetMaxUpStreak">-</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">最歐10連</span>
+          <span class="stat-value" id="targetMaxEliteBatch">-</span>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3>軍備提升</h3>
+        <div class="stat-row">
+          <span class="stat-label">最大連續不歪</span>
+          <span class="stat-value" id="weaponMaxUpStreak">-</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">最歐10連</span>
+          <span class="stat-value" id="weaponMaxEliteBatch">-</span>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3>常規採購</h3>
+        <div class="stat-row">
+          <span class="stat-label">最歐10連</span>
+          <span class="stat-value" id="standardMaxEliteBatch">-</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>招募歷史分析</h2>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <h3>定向採購</h3>
+        <div id="targetOrangeHistory"></div>
+      </div>
+
+      <div class="overview-card">
+        <h3>軍備提升</h3>
+        <div id="weaponOrangeHistory"></div>
+      </div>
+
+      <div class="overview-card">
+        <h3>常規採購</h3>
+        <div id="standardOrangeHistory"></div>
+      </div>
+    </div>
+  </section>
+
+<section class="card">
+  <div class="section-header">
+    <h2>抽卡紀錄</h2>
+
+    <select id="recordPoolFilter">
+      <option value="全部">全部卡池</option>
+      <option value="定向採購">定向採購</option>
+      <option value="軍備提升">軍備提升</option>
+      <option value="常規採購">常規採購</option>
+      <option value="新手採購">新手採購</option>
+      <option value="自選人形">自選人形</option>
+      <option value="自選武器">自選武器</option>
+    </select>
+  </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>時間</th>
+          <th>採購來源</th>
+          <th>類型</th>
+          <th>名稱</th>
+        </tr>
+      </thead>
+      <tbody id="recordTable"></tbody>
+    </table>
+
+    <div class="pagination">
+      <button id="recordPrevBtn">上一頁</button>
+      <span id="recordPageInfo">第 1 / 1 頁</span>
+      <button id="recordNextBtn">下一頁</button>
+    </div>
+  </section>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
