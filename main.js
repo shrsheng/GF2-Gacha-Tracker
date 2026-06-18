@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, Menu } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 
@@ -14,7 +14,7 @@ function initDataPaths() {
   configFile = path.join(dataDir, "config.json");
   userItemMapFile = path.join(dataDir, "itemMap.json");
 
-  
+
 }
 
 function ensureDataFile() {
@@ -73,7 +73,7 @@ function loadConfig() {
   if (!fs.existsSync(configFile)) {
     fs.writeFileSync(
       configFile,
-      JSON.stringify({ gachaUrl: "",  accessToken: "" }, null, 2),
+      JSON.stringify({ gachaUrl: "", accessToken: "" }, null, 2),
       "utf-8"
     );
   }
@@ -251,7 +251,7 @@ ipcMain.handle("sync-pool", async (event, params) => {
       [];
 
 
-  
+
 
 
 
@@ -303,6 +303,57 @@ ipcMain.handle("sync-pool", async (event, params) => {
     records: normalized
   };
 });
+
+ipcMain.handle("check-app-update", async () => {
+  const currentVersion = app.getVersion();
+
+  const response = await fetch(
+    "https://api.github.com/repos/shrsheng/GF2-Gacha-Tracker/releases/latest",
+    {
+      headers: {
+        "User-Agent": "GF2-Gacha-Tracker"
+      }
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to check latest release");
+  }
+
+  const release = await response.json();
+
+  const latestVersion = String(release.tag_name || "")
+    .replace(/^v/i, "")
+    .trim();
+
+  return {
+    currentVersion,
+    latestVersion,
+    releaseName: release.name || release.tag_name,
+    releaseUrl: release.html_url,
+    hasUpdate: isNewerVersion(latestVersion, currentVersion)
+  };
+});
+
+ipcMain.handle("open-external-url", async (event, url) => {
+  await shell.openExternal(url);
+  return true;
+});
+
+function isNewerVersion(latest, current) {
+  const latestParts = latest.split(".").map(Number);
+  const currentParts = current.split(".").map(Number);
+
+  for (let i = 0; i < 3; i++) {
+    const latestNum = latestParts[i] || 0;
+    const currentNum = currentParts[i] || 0;
+
+    if (latestNum > currentNum) return true;
+    if (latestNum < currentNum) return false;
+  }
+
+  return false;
+}
 
 ipcMain.handle("import-records", async () => {
   const result = await dialog.showOpenDialog({

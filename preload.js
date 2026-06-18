@@ -8,5 +8,7 @@ contextBridge.exposeInMainWorld("gf2API", {
   syncPool: (params) => ipcRenderer.invoke("sync-pool", params),
   loadConfig: () => ipcRenderer.invoke("load-config"),
   saveConfig: (config) => ipcRenderer.invoke("save-config", config),
-  updateItemMap: () => ipcRenderer.invoke("update-item-map")
+  updateItemMap: () => ipcRenderer.invoke("update-item-map"),
+  checkAppUpdate: () => ipcRenderer.invoke("check-app-update"),
+  openExternalUrl: (url) => ipcRenderer.invoke("open-external-url", url)
 });

@@ -795,6 +795,34 @@ document.getElementById("updateItemMapBtn").addEventListener("click", async () =
   }
 });
 
+document.getElementById("checkUpdateBtn").addEventListener("click", async () => {
+  try {
+    const result = await window.gf2API.checkAppUpdate();
+
+    if (!result.latestVersion) {
+      alert("無法取得最新版本資訊。");
+      return;
+    }
+
+    if (result.hasUpdate) {
+      const goDownload = confirm(
+        `發現新版本 v${result.latestVersion}\n` +
+        `目前版本 v${result.currentVersion}\n\n` +
+        "是否前往 GitHub 下載？"
+      );
+
+      if (goDownload) {
+        await window.gf2API.openExternalUrl(result.releaseUrl);
+      }
+    } else {
+      alert(`目前已是最新版本 v${result.currentVersion}`);
+    }
+  } catch (error) {
+    console.error(error);
+    alert("檢查更新失敗，請確認網路連線或稍後再試。");
+  }
+});
+
 document.getElementById("syncSettingBtn").addEventListener("click", () => {
   const panel = document.getElementById("syncSettingPanel");
   panel.classList.toggle("hidden");
