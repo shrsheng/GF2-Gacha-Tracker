@@ -7,5 +7,6 @@ contextBridge.exposeInMainWorld("gf2API", {
   importRecords: () => ipcRenderer.invoke("import-records"),
   syncPool: (params) => ipcRenderer.invoke("sync-pool", params),
   loadConfig: () => ipcRenderer.invoke("load-config"),
-  saveConfig: (config) => ipcRenderer.invoke("save-config", config)
+  saveConfig: (config) => ipcRenderer.invoke("save-config", config),
+  updateItemMap: () => ipcRenderer.invoke("update-item-map")
 });

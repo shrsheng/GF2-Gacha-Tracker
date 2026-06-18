@@ -5,12 +5,14 @@ const fs = require("fs");
 let dataDir;
 let dataFile;
 let configFile;
-const itemMapFile = path.join(__dirname, "itemMap.json");
+const bundledItemMapFile = path.join(__dirname, "itemMap.json");
+let userItemMapFile;
 
 function initDataPaths() {
   dataDir = path.join(app.getPath("userData"), "data");
   dataFile = path.join(dataDir, "gacha.json");
   configFile = path.join(dataDir, "config.json");
+  userItemMapFile = path.join(dataDir, "itemMap.json");
 
   
 }
@@ -54,11 +56,15 @@ function createWindow() {
 }
 
 function loadItemMap() {
-  if (!fs.existsSync(itemMapFile)) {
+  const filePath = fs.existsSync(userItemMapFile)
+    ? userItemMapFile
+    : bundledItemMapFile;
+
+  if (!fs.existsSync(filePath)) {
     return {};
   }
 
-  return JSON.parse(fs.readFileSync(itemMapFile, "utf-8"));
+  return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
 function loadConfig() {
@@ -140,6 +146,29 @@ ipcMain.handle("load-config", () => {
 ipcMain.handle("save-config", (event, config) => {
   saveConfig(config);
   return true;
+});
+
+ipcMain.handle("update-item-map", async () => {
+  const url =
+    "https://raw.githubusercontent.com/shrsheng/GF2-Gacha-Tracker/refs/heads/main/itemMap.json";
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("下載 itemMap.json 失敗");
+  }
+
+  const itemMap = await response.json();
+
+  fs.writeFileSync(
+    userItemMapFile,
+    JSON.stringify(itemMap, null, 2),
+    "utf-8"
+  );
+
+  return {
+    count: Object.keys(itemMap).length
+  };
 });
 
 ipcMain.handle("load-records", () => {

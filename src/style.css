@@ -49,8 +49,8 @@ button {
 /* 工具列 */
 .top-toolbar {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 10px;
 }
 
@@ -58,6 +58,38 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.mini-btn {
+  height: 30px;
+  padding: 0 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(6px);
+
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.mini-btn:hover {
+  background: rgba(255, 255, 255, 0.75);
+  transform: translateY(-1px);
 }
 
 .primary-btn {

@@ -776,6 +776,25 @@ document.getElementById("exportBtn").addEventListener("click", async () => {
   }
 });
 
+document.getElementById("updateItemMapBtn").addEventListener("click", async () => {
+  const confirmed = confirm(
+    "即將從 GitHub 下載最新版資料表。\n\n更新後，新角色或新武器的名稱可能會正常顯示。\n是否繼續？"
+  );
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    const result = await window.gf2API.updateItemMap();
+
+    alert(`資料表更新完成，共 ${result.count} 筆資料。`);
+  } catch (error) {
+    console.error(error);
+    alert("資料表更新失敗，請確認網路連線或稍後再試。");
+  }
+});
+
 document.getElementById("syncSettingBtn").addEventListener("click", () => {
   const panel = document.getElementById("syncSettingPanel");
   panel.classList.toggle("hidden");
