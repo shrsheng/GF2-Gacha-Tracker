@@ -91,6 +91,146 @@ function createRecordId(record) {
   ].join("_");
 }
 
+function getDateOnly(timeText) {
+  return String(timeText)
+    .split(" ")[0]
+    .replaceAll("/", "-");
+}
+
+function getEarliestApiRecordDate() {
+  const apiRecords = records.filter(record => record.manual !== true);
+
+  if (apiRecords.length === 0) {
+    return null;
+  }
+
+  const sorted = [...apiRecords].sort((a, b) => {
+    return new Date(a.time) - new Date(b.time);
+  });
+
+  return getDateOnly(sorted[0].time);
+}
+
+function checkManualRecord(record, index, earliestApiDate) {
+  const requiredFields = ["time", "source", "type", "name", "rarity"];
+
+  for (const field of requiredFields) {
+    if (!record[field]) {
+      return {
+        valid: false,
+        reason: "INVALID",
+        message: `第 ${index + 1} 筆缺少欄位：${field}`
+      };
+    }
+  }
+
+  const manualTime = new Date(record.time).getTime();
+
+  if (Number.isNaN(manualTime)) {
+    return {
+      valid: false,
+      reason: "INVALID",
+      message: `第 ${index + 1} 筆 time 格式錯誤：${record.time}`
+    };
+  }
+
+  const validSources = ["定向採購", "軍備提升", "常規採購"];
+  const validTypes = ["人形", "角色", "武器"];
+  const validRarities = ["橙色", "紫色", "藍色"];
+
+  if (!validSources.includes(record.source)) {
+    return {
+      valid: false,
+      reason: "INVALID",
+      message: `第 ${index + 1} 筆 source 錯誤：${record.source}`
+    };
+  }
+
+  if (!validTypes.includes(record.type)) {
+    return {
+      valid: false,
+      reason: "INVALID",
+      message: `第 ${index + 1} 筆 type 錯誤：${record.type}`
+    };
+  }
+
+  if (!validRarities.includes(record.rarity)) {
+    return {
+      valid: false,
+      reason: "INVALID",
+      message: `第 ${index + 1} 筆 rarity 錯誤：${record.rarity}`
+    };
+  }
+
+  const manualDate = getDateOnly(record.time);
+
+  if (earliestApiDate && manualDate >= earliestApiDate) {
+    return {
+      valid: false,
+      reason: "API_RANGE",
+      message: `第 ${index + 1} 筆落在 API 同步資料範圍內：${record.time}`
+    };
+  }
+
+  return {
+    valid: true,
+    manualTime
+  };
+}
+
+function normalizeManualRecords(manualRecords) {
+  const earliestApiDate = getEarliestApiRecordDate();
+
+  const validRecords = [];
+  const skippedApiRange = [];
+  const skippedInvalid = [];
+
+  manualRecords.forEach((record, index) => {
+    const checkResult = checkManualRecord(record, index, earliestApiDate);
+
+    if (!checkResult.valid) {
+      if (checkResult.reason === "API_RANGE") {
+        skippedApiRange.push({
+          index: index + 1,
+          record,
+          message: checkResult.message
+        });
+      } else {
+        skippedInvalid.push({
+          index: index + 1,
+          record,
+          message: checkResult.message
+        });
+      }
+
+      return;
+    }
+
+    validRecords.push({
+      time: record.time,
+      source: record.source,
+      type: record.type,
+      name: record.name,
+      rarity: record.rarity,
+      manual: true,
+      id: [
+        "manual",
+        record.source,
+        record.time,
+        record.name,
+        record.rarity,
+        index
+      ].join("_")
+    });
+  });
+
+  return {
+    validRecords,
+    skippedApiRange,
+    skippedInvalid
+  };
+}
+
 async function addRecords(newRecords) {
   const existingIds = new Set(
     records.map(record => record.id || createRecordId(record))
@@ -744,6 +884,65 @@ document.getElementById("importBtn").addEventListener("click", async () => {
   } catch (error) {
     console.error(error);
     alert("匯入失敗：請確認 JSON 格式正確");
+  }
+});
+
+function getDateOnly(timeText) {
+  return String(timeText)
+    .split(" ")[0]
+    .replaceAll("/", "-");
+}
+
+document.getElementById("exportManualTemplateBtn").addEventListener("click", async () => {
+  const success = await window.gf2API.exportManualTemplate();
+
+  if (success) {
+    alert("手動紀錄模板已下載");
+  }
+});
+
+document.getElementById("importManualBtn").addEventListener("click", async () => {
+  try {
+    const parsedData = await window.gf2API.importManualRecords();
+
+    if (!parsedData) {
+      return;
+    }
+
+    if (!Array.isArray(parsedData)) {
+      alert("格式錯誤：手動紀錄必須是 JSON 陣列");
+      return;
+    }
+
+    const {
+      validRecords,
+      skippedApiRange,
+      skippedInvalid
+    } = normalizeManualRecords(parsedData);
+
+    const result = await addRecords(validRecords);
+
+    let message =
+      `手動紀錄匯入完成\n\n` +
+      `新增：${result.addedCount} 筆\n` +
+      `重複：${result.skippedCount} 筆\n` +
+      `API 範圍內跳過：${skippedApiRange.length} 筆\n` +
+      `格式錯誤跳過：${skippedInvalid.length} 筆`;
+
+    if (skippedApiRange.length > 0) {
+      message +=
+        `\n\nAPI 範圍內資料不會匯入，避免覆蓋或干擾官方同步資料。`;
+    }
+
+    if (skippedInvalid.length > 0) {
+      message +=
+        `\n\n格式錯誤資料請檢查 time/source/type/name/rarity 欄位。`;
+    }
+
+    alert(message);
+  } catch (error) {
+    console.error(error);
+    alert(`匯入手動紀錄失敗：${error.message}`);
   }
 });
 

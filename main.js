@@ -374,6 +374,60 @@ ipcMain.handle("import-records", async () => {
   return JSON.parse(raw);
 });
 
+ipcMain.handle("export-manual-template", async () => {
+  const result = await dialog.showSaveDialog({
+    title: "下載手動紀錄模板",
+    defaultPath: "gf2-manual-import-template.json",
+    filters: [{ name: "JSON 檔案", extensions: ["json"] }]
+  });
+
+  if (result.canceled) {
+    return false;
+  }
+
+  const template = [
+    {
+      time: "2025-01-01 12:00:00",
+      source: "定向採購",
+      type: "人形",
+      name: "角色名稱",
+      rarity: "橙色"
+    },
+    {
+      time: "2025-01-01 12:00:00",
+      source: "定向採購",
+      type: "武器",
+      name: "武器名稱",
+      rarity: "藍色"
+    }
+  ];
+
+  fs.writeFileSync(
+    result.filePath,
+    JSON.stringify(template, null, 2),
+    "utf-8"
+  );
+
+  return true;
+});
+
+ipcMain.handle("import-manual-records", async () => {
+  const result = await dialog.showOpenDialog({
+    title: "匯入手動抽卡紀錄 JSON",
+    filters: [{ name: "JSON 檔案", extensions: ["json"] }],
+    properties: ["openFile"]
+  });
+
+  if (result.canceled) {
+    return null;
+  }
+
+  const filePath = result.filePaths[0];
+  const raw = fs.readFileSync(filePath, "utf-8");
+
+  return JSON.parse(raw);
+});
+
 app.whenReady().then(() => {
   Menu.setApplicationMenu(null);
 

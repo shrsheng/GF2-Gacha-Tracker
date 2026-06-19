@@ -10,5 +10,7 @@ contextBridge.exposeInMainWorld("gf2API", {
   saveConfig: (config) => ipcRenderer.invoke("save-config", config),
   updateItemMap: () => ipcRenderer.invoke("update-item-map"),
   checkAppUpdate: () => ipcRenderer.invoke("check-app-update"),
-  openExternalUrl: (url) => ipcRenderer.invoke("open-external-url", url)
+  openExternalUrl: (url) => ipcRenderer.invoke("open-external-url", url),
+  exportManualTemplate: () => ipcRenderer.invoke("export-manual-template"),
+  importManualRecords: () => ipcRenderer.invoke("import-manual-records")
 });
