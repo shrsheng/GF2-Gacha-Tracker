@@ -10,7 +10,8 @@ const permanentTargetCharacters = [
   "瓊玖",
   "塞布麗娜",
   "莫辛納甘",
-  "緋"
+  "緋",
+  "哈卜茜"
 ];
 
 const permanentWeaponNames = [
@@ -20,7 +21,8 @@ const permanentWeaponNames = [
   "游星",
   "金石奏",
   "梅扎露娜",
-  "赫斯提亞"
+  "赫斯提亞",
+  "二律背反"
 ];
 
 function sortByGameOrder(recordsToSort, direction = "oldToNew") {
@@ -206,6 +208,33 @@ function normalizeManualRecords(manualRecords) {
       return;
     }
 
+    const pullCount =
+      record.pullCount === undefined || record.pullCount === null || record.pullCount === ""
+        ? null
+        : Number(record.pullCount);
+
+    const isSummaryOnly = pullCount !== null;
+
+    if (isSummaryOnly) {
+      if (!Number.isInteger(pullCount) || pullCount <= 0) {
+        skippedInvalid.push({
+          index: index + 1,
+          record,
+          message: `第 ${index + 1} 筆 pullCount 必須是正整數`
+        });
+        return;
+      }
+
+      if (record.rarity !== "橙色") {
+        skippedInvalid.push({
+          index: index + 1,
+          record,
+          message: `第 ${index + 1} 筆使用 pullCount 時 rarity 必須為橙色`
+        });
+        return;
+      }
+    }
+
     validRecords.push({
       time: record.time,
       source: record.source,
@@ -213,8 +242,10 @@ function normalizeManualRecords(manualRecords) {
       name: record.name,
       rarity: record.rarity,
       manual: true,
+      summaryOnly: isSummaryOnly,
+      pullCount: isSummaryOnly ? pullCount : undefined,
       id: [
-        "manual",
+        isSummaryOnly ? "manual_summary" : "manual",
         record.source,
         record.time,
         record.name,
@@ -320,10 +351,10 @@ function renderRecords() {
   const table = document.getElementById("recordTable");
   table.innerHTML = "";
 
-  let filteredRecords = records;
+  let filteredRecords = records.filter(record => !record.summaryOnly);
 
   if (currentPoolFilter !== "全部") {
-    filteredRecords = records.filter(record => {
+    filteredRecords = filteredRecords.filter(record => {
       return record.source === currentPoolFilter;
     });
   }
@@ -371,12 +402,21 @@ function renderRecords() {
 
 function getPoolStats(poolName) {
   const poolRecords = getGameRecords(poolName, "oldToNew");
-  const eliteRecords = poolRecords.filter(record => record.rarity === "橙色");
 
+
+  let total = 0;
+  let elite = 0;
   let pity = 0;
 
   poolRecords.forEach(record => {
+    if (record.summaryOnly && record.pullCount) {
+      total += record.pullCount;
+    } else {
+      total += 1;
+    }
+
     if (record.rarity === "橙色") {
+      elite++;
       pity = 0;
     } else {
       pity++;
@@ -384,8 +424,8 @@ function getPoolStats(poolName) {
   });
 
   return {
-    total: poolRecords.length,
-    elite: eliteRecords.length,
+    total,
+    elite,
     pity
   };
 }
@@ -406,6 +446,22 @@ function getOrangeHistory(poolName) {
   let countSinceLastElite = 0;
 
   poolRecords.forEach(record => {
+    if (record.summaryOnly && record.pullCount) {
+      if (record.rarity === "橙色") {
+        history.push({
+          name: record.name,
+          count: record.pullCount,
+          time: record.time,
+          isOffRate: isOffRateRecord(record),
+          summaryOnly: true
+        });
+
+        countSinceLastElite = 0;
+      }
+
+      return;
+    }
+
     if (record.rarity === "橙色") {
       history.push({
         name: record.name,
@@ -512,7 +568,11 @@ function getWorstWithOffRate(poolName) {
   let worstName = "";
 
   poolRecords.forEach(record => {
-    countSinceLastUp++;
+    if (record.summaryOnly && record.pullCount) {
+      countSinceLastUp += record.pullCount;
+    } else {
+      countSinceLastUp++;
+    }
 
     if (record.rarity === "橙色" && !isOffRateRecord(record)) {
       if (worst === "-" || countSinceLastUp > worst) {
@@ -713,7 +773,8 @@ function getEggText(count) {
 }
 
 function getMaxEliteInBatch(poolName) {
-  const poolRecords = getGameRecords(poolName, "oldToNew");
+  const poolRecords = getGameRecords(poolName, "oldToNew")
+    .filter(record => !record.summaryOnly);
 
   const groupMap = new Map();
 
@@ -876,6 +937,30 @@ document.getElementById("importBtn").addEventListener("click", async () => {
       return;
     }
 
+    const looksLikeManualImport = importedRecords.some(record => {
+      return (
+        record.manual === undefined &&
+        record.poolId === undefined &&
+        record.itemId === undefined &&
+        record.pageOrder === undefined &&
+        record.pageIndex === undefined &&
+        record.time &&
+        record.source &&
+        record.type &&
+        record.name &&
+        record.rarity
+      );
+    });
+
+    if (looksLikeManualImport) {
+      alert(
+        "偵測到這可能是手動紀錄模板。\n\n" +
+        "請使用「匯入/匯出」→「匯入手動紀錄」匯入，" +
+        "不要使用一般「匯入 JSON」。"
+      );
+      return;
+    }
+
     const result = await addRecords(importedRecords);
 
     alert(
@@ -887,11 +972,7 @@ document.getElementById("importBtn").addEventListener("click", async () => {
   }
 });
 
-function getDateOnly(timeText) {
-  return String(timeText)
-    .split(" ")[0]
-    .replaceAll("/", "-");
-}
+
 
 document.getElementById("exportManualTemplateBtn").addEventListener("click", async () => {
   const success = await window.gf2API.exportManualTemplate();
@@ -1035,10 +1116,10 @@ document.getElementById("recordPrevBtn").addEventListener("click", () => {
 });
 
 document.getElementById("recordNextBtn").addEventListener("click", () => {
-  let filteredRecords = records;
+  let filteredRecords = records.filter(record => !record.summaryOnly);
 
   if (currentPoolFilter !== "全部") {
-    filteredRecords = records.filter(record => {
+    filteredRecords = filteredRecords.filter(record => {
       return record.source === currentPoolFilter;
     });
   }
@@ -1084,7 +1165,7 @@ document.getElementById("realSyncBtn").addEventListener("click", async () => {
 
     const result = await syncAllPoolsReal(gachaUrl, accessToken);
 
-    
+
 
     const importResult = await addRecords(result.records);
 
@@ -1104,33 +1185,33 @@ document.getElementById("realSyncBtn").addEventListener("click", async () => {
 
 function updateStatsDate() {
 
-    const statsDate =
-        document.getElementById("statsDate");
+  const statsDate =
+    document.getElementById("statsDate");
 
-    if (records.length === 0) {
-        statsDate.textContent = "尚無資料";
-        return;
-    }
+  if (records.length === 0) {
+    statsDate.textContent = "尚無資料";
+    return;
+  }
 
-    const sorted = [...records].sort(
-        (a, b) => new Date(a.time) - new Date(b.time)
-    );
+  const sorted = [...records].sort(
+    (a, b) => new Date(a.time) - new Date(b.time)
+  );
 
-    const firstDate =
-        sorted[0].time.split(" ")[0];
+  const firstDate =
+    sorted[0].time.split(" ")[0];
 
-    const lastDate =
-        sorted[sorted.length - 1].time.split(" ")[0];
+  const lastDate =
+    sorted[sorted.length - 1].time.split(" ")[0];
 
-    const totalDays = Math.floor(
-        (
-            new Date(sorted[sorted.length - 1].time)
-            - new Date(sorted[0].time)
-        ) / 86400000
-    );
+  const totalDays = Math.floor(
+    (
+      new Date(sorted[sorted.length - 1].time)
+      - new Date(sorted[0].time)
+    ) / 86400000
+  );
 
-    statsDate.textContent =
-        `統計期間：${firstDate} ~ ${lastDate}（${totalDays}天）`;
+  statsDate.textContent =
+    `統計期間：${firstDate} ~ ${lastDate}（${totalDays}天）`;
 }
 
 function getPoolTypeFromSource(source) {
@@ -1169,6 +1250,10 @@ function normalizeRecordIds() {
   const duplicateCounter = new Map();
 
   sortedRecords.forEach(record => {
+    if (record.manual === true) {
+      return;
+    }
+
     const poolType = getPoolTypeFromSource(record.source);
     const poolId = record.poolId || "";
     const itemId = record.itemId || "";

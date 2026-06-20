@@ -396,9 +396,10 @@ ipcMain.handle("export-manual-template", async () => {
     {
       time: "2025-01-01 12:00:00",
       source: "定向採購",
-      type: "武器",
-      name: "武器名稱",
-      rarity: "藍色"
+      type: "人形",
+      name: "角色名稱",
+      rarity: "橙色",
+      pullCount: 80
     }
   ];
 
