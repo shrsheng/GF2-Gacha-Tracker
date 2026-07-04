@@ -136,7 +136,14 @@ function checkManualRecord(record, index, earliestApiDate) {
     };
   }
 
-  const validSources = ["定向採購", "軍備提升", "常規採購"];
+
+  const validSources = [
+    "定向採購",
+    "軍備提升",
+    "常規採購",
+    "自選人形",
+    "自選武器"
+  ];
   const validTypes = ["人形", "角色", "武器"];
   const validRarities = ["橙色", "紫色", "藍色"];
 
@@ -347,6 +354,43 @@ function getRarityClass(rarity) {
   return "";
 }
 
+function renderPagination(totalPages) {
+
+  const container = document.getElementById("recordPageNumbers");
+
+  container.innerHTML = "";
+
+  const start = Math.floor((currentRecordPage - 1) / 10) * 10 + 1;
+
+  const end = Math.min(start + 9, totalPages);
+
+  for (let i = start; i <= end; i++) {
+
+    const btn = document.createElement("button");
+
+    btn.className = "page-number";
+
+    if (i === currentRecordPage) {
+
+      btn.classList.add("active");
+    }
+
+    btn.textContent = i;
+
+    btn.onclick = () => {
+
+      currentRecordPage = i;
+
+      renderRecords();
+
+    };
+
+    container.appendChild(btn);
+
+  }
+
+}
+
 function renderRecords() {
   const table = document.getElementById("recordTable");
   table.innerHTML = "";
@@ -390,14 +434,19 @@ function renderRecords() {
     table.appendChild(tr);
   });
 
-  document.getElementById("recordPageInfo").textContent =
-    `第 ${currentRecordPage} / ${totalPages} 頁`;
+  renderPagination(totalPages);
+
+  document.getElementById("recordFirstBtn").disabled =
+    currentRecordPage === 1;
 
   document.getElementById("recordPrevBtn").disabled =
-    currentRecordPage <= 1;
+    currentRecordPage === 1;
 
   document.getElementById("recordNextBtn").disabled =
-    currentRecordPage >= totalPages;
+    currentRecordPage === totalPages;
+
+  document.getElementById("recordLastBtn").disabled =
+    currentRecordPage === totalPages;
 }
 
 function getPoolStats(poolName) {
@@ -615,16 +664,25 @@ function renderStats() {
   const target = getPoolStats("定向採購");
   const weapon = getPoolStats("軍備提升");
   const standard = getPoolStats("常規採購");
+  const selectChar = getPoolStats("自選人形");
+  const selectWeapon = getPoolStats("自選武器");
 
   const targetUpStats = getUpRateStats("定向採購");
   const weaponUpStats = getUpRateStats("軍備提升");
+  const selectCharUpStats = getUpRateStats("自選人形");
+  const selectWeaponUpStats = getUpRateStats("自選武器");
 
   const targetAdvanced = getAdvancedStats("定向採購");
   const weaponAdvanced = getAdvancedStats("軍備提升");
   const standardAdvanced = getAdvancedStats("常規採購");
+  const selectCharAdvanced = getAdvancedStats("自選人形");
+  const selectWeaponAdvanced = getAdvancedStats("自選武器");
 
   const targetWorstWithOffRate = getWorstWithOffRate("定向採購");
   const weaponWorstWithOffRate = getWorstWithOffRate("軍備提升");
+  const selectCharWorstWithOffRate = getWorstWithOffRate("自選人形");
+  const selectWeaponWorstWithOffRate = getWorstWithOffRate("自選武器");
+
 
   const standardEliteTypeStats = getStandardEliteTypeStats();
 
@@ -669,6 +727,34 @@ function renderStats() {
     formatPullWithName(standardAdvanced.best, standardAdvanced.bestName);
   document.getElementById("standardWorst").textContent =
     formatPullWithName(standardAdvanced.worst, standardAdvanced.worstName);
+
+  document.getElementById("selectCharTotal").textContent = `${selectChar.total} 抽`;
+  document.getElementById("selectCharOrange").textContent = getEliteRateText(selectChar);
+  document.getElementById("selectCharAverage").textContent = `${selectCharAdvanced.average} 抽`;
+  document.getElementById("selectCharUpSummary").textContent = getUpSummaryText(selectCharUpStats);
+  document.getElementById("selectCharBest").textContent =
+    formatPullWithName(selectCharAdvanced.best, selectCharAdvanced.bestName);
+  document.getElementById("selectCharWorst").textContent =
+    formatPullWithName(selectCharAdvanced.worst, selectCharAdvanced.worstName);
+  document.getElementById("selectCharWorstWithOffRate").textContent =
+    formatPullWithName(
+      selectCharWorstWithOffRate.count,
+      selectCharWorstWithOffRate.name
+    );
+
+  document.getElementById("selectWeaponTotal").textContent = `${selectWeapon.total} 抽`;
+  document.getElementById("selectWeaponOrange").textContent = getEliteRateText(selectWeapon);
+  document.getElementById("selectWeaponAverage").textContent = `${selectWeaponAdvanced.average} 抽`;
+  document.getElementById("selectWeaponUpSummary").textContent = getUpSummaryText(selectWeaponUpStats);
+  document.getElementById("selectWeaponBest").textContent =
+    formatPullWithName(selectWeaponAdvanced.best, selectWeaponAdvanced.bestName);
+  document.getElementById("selectWeaponWorst").textContent =
+    formatPullWithName(selectWeaponAdvanced.worst, selectWeaponAdvanced.worstName);
+  document.getElementById("selectWeaponWorstWithOffRate").textContent =
+    formatPullWithName(
+      selectWeaponWorstWithOffRate.count,
+      selectWeaponWorstWithOffRate.name
+    );
 }
 
 function renderOrangeHistoryBlock(elementId, poolName) {
@@ -737,6 +823,15 @@ function renderOrangeHistory() {
   renderOrangeHistoryBlock("targetOrangeHistory", "定向採購");
   renderOrangeHistoryBlock("weaponOrangeHistory", "軍備提升");
   renderOrangeHistoryBlock("standardOrangeHistory", "常規採購");
+  const selectCharBlock = document.getElementById("selectCharOrangeHistory");
+  if (selectCharBlock) {
+    renderOrangeHistoryBlock("selectCharOrangeHistory", "自選人形");
+  }
+
+  const selectWeaponBlock = document.getElementById("selectWeaponOrangeHistory");
+  if (selectWeaponBlock) {
+    renderOrangeHistoryBlock("selectWeaponOrangeHistory", "自選武器");
+  }
 }
 
 function getMaxConsecutiveUp(poolName) {
@@ -823,10 +918,14 @@ function formatEliteBatch(record) {
 function renderSpecialRecords() {
   const targetMaxUpStreak = getMaxConsecutiveUp("定向採購");
   const weaponMaxUpStreak = getMaxConsecutiveUp("軍備提升");
+  const selectCharMaxUpStreak = getMaxConsecutiveUp("自選人形");
+  const selectWeaponMaxUpStreak = getMaxConsecutiveUp("自選武器");
 
   const targetMaxEliteBatch = getMaxEliteInBatch("定向採購");
   const weaponMaxEliteBatch = getMaxEliteInBatch("軍備提升");
   const standardMaxEliteBatch = getMaxEliteInBatch("常規採購");
+  const selectCharMaxEliteBatch = getMaxEliteInBatch("自選人形");
+  const selectWeaponMaxEliteBatch = getMaxEliteInBatch("自選武器");
 
   document.getElementById("targetMaxUpStreak").textContent =
     targetMaxUpStreak > 0 ? `${targetMaxUpStreak} 次` : "-";
@@ -842,8 +941,19 @@ function renderSpecialRecords() {
 
   document.getElementById("standardMaxEliteBatch").innerHTML =
     formatEliteBatch(standardMaxEliteBatch);
-}
 
+  document.getElementById("selectCharMaxUpStreak").textContent =
+    selectCharMaxUpStreak > 0 ? `${selectCharMaxUpStreak} 次` : "-";
+
+  document.getElementById("selectWeaponMaxUpStreak").textContent =
+    selectWeaponMaxUpStreak > 0 ? `${selectWeaponMaxUpStreak} 次` : "-";
+
+  document.getElementById("selectCharMaxEliteBatch").innerHTML =
+    formatEliteBatch(selectCharMaxEliteBatch);
+
+  document.getElementById("selectWeaponMaxEliteBatch").innerHTML =
+    formatEliteBatch(selectWeaponMaxEliteBatch);
+}
 async function loadRecords() {
   records = await window.gf2API.loadRecords();
   normalizeRecordIds();
@@ -1135,6 +1245,35 @@ document.getElementById("recordNextBtn").addEventListener("click", () => {
   }
 });
 
+document.getElementById("recordFirstBtn").addEventListener("click",()=>{
+
+    currentRecordPage=1;
+
+    renderRecords();
+
+});
+
+document.getElementById("recordLastBtn").addEventListener("click",()=>{
+
+    let filteredRecords=records.filter(record=>!record.summaryOnly);
+
+    if(currentPoolFilter!=="全部"){
+
+        filteredRecords=filteredRecords.filter(record=>
+            record.source===currentPoolFilter
+        );
+
+    }
+
+    currentRecordPage=Math.max(
+        1,
+        Math.ceil(filteredRecords.length/recordsPerPage)
+    );
+
+    renderRecords();
+
+});
+
 document.getElementById("recordPoolFilter").addEventListener("change", event => {
   currentPoolFilter = event.target.value;
   currentRecordPage = 1;
@@ -1269,5 +1408,51 @@ function normalizeRecordIds() {
   });
 }
 
+function initCardScroll() {
+  document.querySelectorAll(".card-slider").forEach(slider => {
+    const grid = slider.querySelector(".overview-grid");
+
+    if (!grid) return;
+
+    const prevBtn = slider.querySelector(".slider-prev");
+    const nextBtn = slider.querySelector(".slider-next");
+
+    const scrollAmount = () => grid.clientWidth * 0.9;
+
+    prevBtn?.addEventListener("click", () => {
+      grid.scrollBy({
+        left: -scrollAmount(),
+        behavior: "smooth"
+      });
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      grid.scrollBy({
+        left: scrollAmount(),
+        behavior: "smooth"
+      });
+    });
+
+    function updateButtons() {
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+
+      if (prevBtn) {
+        prevBtn.disabled = grid.scrollLeft <= 5;
+      }
+
+      if (nextBtn) {
+        nextBtn.disabled = grid.scrollLeft >= maxScroll - 5;
+      }
+    }
+
+    grid.addEventListener("scroll", updateButtons);
+
+    window.addEventListener("resize", updateButtons);
+
+    updateButtons();
+  });
+}
+
+initCardScroll();
 loadRecords();
 loadConfigToUI();

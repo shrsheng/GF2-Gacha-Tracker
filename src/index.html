@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
   <title>少女前線2:追放 抽卡統計工具</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <h1>少女前線2:追放 抽卡統計工具</h1>
 
@@ -51,145 +53,248 @@
       <h2>總覽</h2>
       <span id="statsDate" class="stats-date">尚無資料</span>
     </div>
+    <div class="card-slider">
+      <button class="slider-btn slider-prev">◀</button>
 
-    <div class="overview-grid">
-      <div class="overview-card">
-        <h3>定向採購</h3>
-        <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value" id="targetTotal">0</span></div>
-        <div class="stat-row"><span class="stat-label">菁英人形數</span><span class="stat-value" id="targetOrange">0</span></div>
-        <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value" id="targetAverage">-</span></div>
-        <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value" id="targetUpSummary">-</span></div>
-        <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="targetBest">-</span></div>
-        <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="targetWorst">-</span></div>
-        <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value" id="targetWorstWithOffRate">-</span></div>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <h3>定向採購</h3>
+          <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value" id="targetTotal">0</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">菁英人形數</span><span class="stat-value" id="targetOrange">0</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value" id="targetAverage">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value"
+              id="targetUpSummary">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="targetBest">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="targetWorst">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value"
+              id="targetWorstWithOffRate">-</span></div>
+        </div>
+
+        <div class="overview-card">
+          <h3>軍備提升</h3>
+          <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value" id="weaponTotal">0</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">菁英武器數</span><span class="stat-value" id="weaponOrange">0</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value" id="weaponAverage">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value"
+              id="weaponUpSummary">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="weaponBest">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="weaponWorst">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value"
+              id="weaponWorstWithOffRate">-</span></div>
+        </div>
+
+
+        <div class="overview-card">
+          <h3>常規採購</h3>
+
+          <div class="stat-row">
+            <span class="stat-label">總抽數</span>
+            <span class="stat-value" id="standardTotal">0</span>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">菁英數</span>
+            <span class="stat-value" id="standardOrange">0</span>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">菁英人形數</span>
+            <span class="stat-value" id="standardEliteCharacter">0</span>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">菁英武器數</span>
+            <span class="stat-value" id="standardEliteWeapon">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">平均抽數</span>
+            <span class="stat-value" id="standardAverage">-</span>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">最歐</span>
+            <span class="stat-value" id="standardBest">-</span>
+          </div>
+
+          <div class="stat-row">
+            <span class="stat-label">最非</span>
+            <span class="stat-value" id="standardWorst">-</span>
+          </div>
+        </div>
+
+        <div class="overview-card">
+          <h3>自選人形</h3>
+
+          <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value"
+              id="selectCharTotal">0</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">菁英人形數</span><span class="stat-value"
+              id="selectCharOrange">0</span></div>
+          <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value"
+              id="selectCharAverage">-</span></div>
+          <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value"
+              id="selectCharUpSummary">-</span></div>
+          <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="selectCharBest">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="selectCharWorst">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value"
+              id="selectCharWorstWithOffRate">-</span></div>
+        </div>
+
+        <div class="overview-card">
+          <h3>自選武器</h3>
+
+          <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value"
+              id="selectWeaponTotal">0</span></div>
+          <div class="stat-row"><span class="stat-label">菁英武器數</span><span class="stat-value"
+              id="selectWeaponOrange">0</span></div>
+          <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value"
+              id="selectWeaponAverage">-</span></div>
+          <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value"
+              id="selectWeaponUpSummary">-</span></div>
+          <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value"
+              id="selectWeaponBest">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value"
+              id="selectWeaponWorst">-</span>
+          </div>
+          <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value"
+              id="selectWeaponWorstWithOffRate">-</span></div>
+        </div>
+
       </div>
-
-      <div class="overview-card">
-        <h3>軍備提升</h3>
-        <div class="stat-row"><span class="stat-label">總抽數</span><span class="stat-value" id="weaponTotal">0</span></div>
-        <div class="stat-row"><span class="stat-label">菁英武器數</span><span class="stat-value" id="weaponOrange">0</span></div>
-        <div class="stat-row"><span class="stat-label">平均抽數</span><span class="stat-value" id="weaponAverage">-</span></div>
-        <div class="stat-row"><span class="stat-label">UP/歪</span><span class="stat-value" id="weaponUpSummary">-</span></div>
-        <div class="stat-row"><span class="stat-label">最歐</span><span class="stat-value" id="weaponBest">-</span></div>
-        <div class="stat-row"><span class="stat-label">最非</span><span class="stat-value" id="weaponWorst">-</span></div>
-        <div class="stat-row"><span class="stat-label">最非含歪</span><span class="stat-value" id="weaponWorstWithOffRate">-</span></div>
-      </div>
-    
-
-      <div class="overview-card">
-        <h3>常規採購</h3>
-
-        <div class="stat-row">
-          <span class="stat-label">總抽數</span>
-          <span class="stat-value" id="standardTotal">0</span>
-        </div>
-
-        <div class="stat-row">
-          <span class="stat-label">菁英數</span>
-          <span class="stat-value" id="standardOrange">0</span>
-        </div>
-
-        <div class="stat-row">
-          <span class="stat-label">菁英人形數</span>
-          <span class="stat-value" id="standardEliteCharacter">0</span>
-        </div>
-
-        <div class="stat-row">
-          <span class="stat-label">菁英武器數</span>
-          <span class="stat-value" id="standardEliteWeapon">0</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">平均抽數</span>
-          <span class="stat-value" id="standardAverage">-</span>
-        </div>
-
-        <div class="stat-row">
-          <span class="stat-label">最歐</span>
-          <span class="stat-value" id="standardBest">-</span>
-        </div>
-
-        <div class="stat-row">
-          <span class="stat-label">最非</span>
-          <span class="stat-value" id="standardWorst">-</span>
-        </div>
-      </div> 
-    </div> 
+      <button class="slider-btn slider-next">▶</button>
+    </div>
 
   </section>
 
   <section class="card">
     <h2>特殊紀錄</h2>
+    <div class="card-slider">
+      <button class="slider-btn slider-prev">◀</button>
 
-    <div class="overview-grid">
-      <div class="overview-card">
-        <h3>定向採購</h3>
-        <div class="stat-row">
-          <span class="stat-label">最大連續不歪</span>
-          <span class="stat-value" id="targetMaxUpStreak">-</span>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <h3>定向採購</h3>
+          <div class="stat-row">
+            <span class="stat-label">最大連續不歪</span>
+            <span class="stat-value" id="targetMaxUpStreak">-</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">最歐10連</span>
+            <span class="stat-value" id="targetMaxEliteBatch">-</span>
+          </div>
         </div>
-        <div class="stat-row">
-          <span class="stat-label">最歐10連</span>
-          <span class="stat-value" id="targetMaxEliteBatch">-</span>
+
+        <div class="overview-card">
+          <h3>軍備提升</h3>
+          <div class="stat-row">
+            <span class="stat-label">最大連續不歪</span>
+            <span class="stat-value" id="weaponMaxUpStreak">-</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">最歐10連</span>
+            <span class="stat-value" id="weaponMaxEliteBatch">-</span>
+          </div>
+        </div>
+
+        <div class="overview-card">
+          <h3>常規採購</h3>
+          <div class="stat-row">
+            <span class="stat-label">最歐10連</span>
+            <span class="stat-value" id="standardMaxEliteBatch">-</span>
+          </div>
+        </div>
+
+        <div class="overview-card">
+          <h3>自選人形</h3>
+          <div class="stat-row">
+            <span class="stat-label">最大連續不歪</span>
+            <span class="stat-value" id="selectCharMaxUpStreak">-</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">最歐10連</span>
+            <span class="stat-value" id="selectCharMaxEliteBatch">-</span>
+          </div>
+        </div>
+
+        <div class="overview-card">
+          <h3>自選武器</h3>
+          <div class="stat-row">
+            <span class="stat-label">最大連續不歪</span>
+            <span class="stat-value" id="selectWeaponMaxUpStreak">-</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">最歐10連</span>
+            <span class="stat-value" id="selectWeaponMaxEliteBatch">-</span>
+          </div>
         </div>
       </div>
-
-      <div class="overview-card">
-        <h3>軍備提升</h3>
-        <div class="stat-row">
-          <span class="stat-label">最大連續不歪</span>
-          <span class="stat-value" id="weaponMaxUpStreak">-</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">最歐10連</span>
-          <span class="stat-value" id="weaponMaxEliteBatch">-</span>
-        </div>
-      </div>
-
-      <div class="overview-card">
-        <h3>常規採購</h3>
-        <div class="stat-row">
-          <span class="stat-label">最歐10連</span>
-          <span class="stat-value" id="standardMaxEliteBatch">-</span>
-        </div>
-      </div>
+      <button class="slider-btn slider-next">▶</button>
     </div>
   </section>
 
   <section class="card">
     <h2>招募歷史分析</h2>
+    <div class="card-slider">
+      <button class="slider-btn slider-prev">◀</button>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <h3>定向採購</h3>
+          <div id="targetOrangeHistory"></div>
+        </div>
 
-    <div class="overview-grid">
-      <div class="overview-card">
-        <h3>定向採購</h3>
-        <div id="targetOrangeHistory"></div>
-      </div>
+        <div class="overview-card">
+          <h3>軍備提升</h3>
+          <div id="weaponOrangeHistory"></div>
+        </div>
 
-      <div class="overview-card">
-        <h3>軍備提升</h3>
-        <div id="weaponOrangeHistory"></div>
-      </div>
+        <div class="overview-card">
+          <h3>常規採購</h3>
+          <div id="standardOrangeHistory"></div>
+        </div>
 
-      <div class="overview-card">
-        <h3>常規採購</h3>
-        <div id="standardOrangeHistory"></div>
+        <div class="overview-card">
+          <h3>自選人形</h3>
+          <div id="selectCharOrangeHistory"></div>
+        </div>
+
+        <div class="overview-card">
+          <h3>自選武器</h3>
+          <div id="selectWeaponOrangeHistory"></div>
+        </div>
       </div>
+      <button class="slider-btn slider-next">▶</button>
     </div>
   </section>
 
-<section class="card">
-  <div class="section-header">
-    <h2>抽卡紀錄</h2>
+  <section class="card">
+    <div class="section-header">
+      <h2>抽卡紀錄</h2>
 
-    <select id="recordPoolFilter">
-      <option value="全部">全部卡池</option>
-      <option value="定向採購">定向採購</option>
-      <option value="軍備提升">軍備提升</option>
-      <option value="常規採購">常規採購</option>
-      <option value="新手採購">新手採購</option>
-      <option value="自選人形">自選人形</option>
-      <option value="自選武器">自選武器</option>
-    </select>
-  </div>
+      <select id="recordPoolFilter">
+        <option value="全部">全部卡池</option>
+        <option value="定向採購">定向採購</option>
+        <option value="軍備提升">軍備提升</option>
+        <option value="常規採購">常規採購</option>
+        <option value="新手採購">新手採購</option>
+        <option value="自選人形">自選人形</option>
+        <option value="自選武器">自選武器</option>
+      </select>
+    </div>
 
     <table>
       <thead>
@@ -204,12 +309,21 @@
     </table>
 
     <div class="pagination">
-      <button id="recordPrevBtn">上一頁</button>
-      <span id="recordPageInfo">第 1 / 1 頁</span>
-      <button id="recordNextBtn">下一頁</button>
+
+      <button id="recordFirstBtn">«</button>
+
+      <button id="recordPrevBtn">‹</button>
+
+      <div id="recordPageNumbers" class="page-numbers"></div>
+
+      <button id="recordNextBtn">›</button>
+
+      <button id="recordLastBtn">»</button>
+
     </div>
   </section>
 
   <script src="renderer.js"></script>
 </body>
+
 </html>
