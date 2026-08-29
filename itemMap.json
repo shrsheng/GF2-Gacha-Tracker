@@ -323,6 +323,12 @@
     "rarity": "藍色",
     "icon": "Item_Icon_AsyncPVPCoin"
   },
+  "109": {
+    "name": "迭代迴廊次數補充",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_EndlessTower_add_num"
+  },
   "200": {
     "name": "閱歷",
     "type": "未知",
@@ -491,6 +497,18 @@
     "rarity": "紫色",
     "icon": "Item_Icon_Clothes_gacha_exchange_Leva"
   },
+  "275": {
+    "name": "追昔代幣",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_icon_clothes_gacha_exchange_general"
+  },
+  "276": {
+    "name": "濯浪代幣",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Clothes_gacha_exchange_Koleda"
+  },
   "300": {
     "name": "搜索權限",
     "type": "未知",
@@ -641,6 +659,12 @@
     "rarity": "未知",
     "icon": "Unknow"
   },
+  "410": {
+    "name": "巡航折扣",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_BattlePass_Saleoff"
+  },
   "501": {
     "name": "戰勳徽記",
     "type": "未知",
@@ -688,6 +712,12 @@
     "type": "未知",
     "rarity": "未知",
     "icon": "Item_Icon_Battlepass_Exp"
+  },
+  "701": {
+    "name": "淨化指令",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_DarkzoneEthnic_Sweep"
   },
   "1001": {
     "name": "克羅麗科",
@@ -959,6 +989,12 @@
     "rarity": "橙色",
     "icon": "Item_Icon_Gun_LewisSSR"
   },
+  "1063": {
+    "name": "維爾德",
+    "type": "人形",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Gun_WelrodSSR"
+  },
   "1064": {
     "name": "芙洛倫",
     "type": "人形",
@@ -1030,6 +1066,30 @@
     "type": "人形",
     "rarity": "橙色",
     "icon": "Item_Icon_Gun_NemesisGnosisSSR"
+  },
+  "1076": {
+    "name": "索普",
+    "type": "人形",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Gun_SoppoSSR"
+  },
+  "1077": {
+    "name": "米蒂爾",
+    "type": "人形",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Gun_MitylSSR"
+  },
+  "1078": {
+    "name": "芙鈴",
+    "type": "人形",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Gun_FaelynnSSR"
+  },
+  "1079": {
+    "name": "克萊妲",
+    "type": "人形",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Gun_KoledaSSR"
   },
   "4001": {
     "name": "克羅麗科心智存檔",
@@ -1301,6 +1361,12 @@
     "rarity": "橙色",
     "icon": "Item_Icon_Core_LewisSSR"
   },
+  "4063": {
+    "name": "維爾德心智存檔",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Core_WelrodSSR"
+  },
   "4064": {
     "name": "芙洛倫心智存檔",
     "type": "未知",
@@ -1372,6 +1438,30 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Core_Transform_NemesisGnosisSSR"
+  },
+  "4076": {
+    "name": "索普心智存檔",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Core_SoppoSSR"
+  },
+  "4077": {
+    "name": "米蒂爾心智存檔",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Core_MitylSSR"
+  },
+  "4078": {
+    "name": "芙鈴心智存檔",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Core_FaelynnSSR"
+  },
+  "4079": {
+    "name": "呵，既然指揮官都這麼說了，那我就勉為其難地幫你們鑑定一下——",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Core_KoledaSSR"
   },
   "5001": {
     "name": "誘導兵械一型",
@@ -2170,6 +2260,30 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_Icon_ArchivesCenter_FZ026"
+  },
+  "8141": {
+    "name": "帶血龍鱗",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_ArchivesCenter_CZ003"
+  },
+  "8142": {
+    "name": "星月族徽",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_ArchivesCenter_CZ005"
+  },
+  "8143": {
+    "name": "對講機",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_ArchivesCenter_SZ006"
+  },
+  "8144": {
+    "name": "家庭合影",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_ArchivesCenter_SZ007"
   },
   "8200": {
     "name": "防衛存量條T1",
@@ -3263,6 +3377,24 @@
     "rarity": "橙色",
     "icon": "Weapon_Lewisgun_5"
   },
+  "10631": {
+    "name": "舊式馬克二型栓動手槍",
+    "type": "武器",
+    "rarity": "藍色",
+    "icon": "Weapon_Welrodmk2_3"
+  },
+  "10632": {
+    "name": "馬克二型栓動手槍",
+    "type": "武器",
+    "rarity": "紫色",
+    "icon": "Weapon_Welrodmk2_4"
+  },
+  "10633": {
+    "name": "緘默制裁",
+    "type": "武器",
+    "rarity": "橙色",
+    "icon": "Weapon_Welrodmk2_5"
+  },
   "10641": {
     "name": "舊式15型自動手槍",
     "type": "武器",
@@ -3466,6 +3598,78 @@
     "type": "武器",
     "rarity": "橙色",
     "icon": "Weapon_NemesisGnosis_5"
+  },
+  "10761": {
+    "name": "舊式特殊模組戰術步槍",
+    "type": "武器",
+    "rarity": "藍色",
+    "icon": "Weapon_Soppo_3"
+  },
+  "10762": {
+    "name": "特殊模組戰術步槍",
+    "type": "武器",
+    "rarity": "紫色",
+    "icon": "Weapon_Soppo_4"
+  },
+  "10763": {
+    "name": "碎穹嚎歌",
+    "type": "武器",
+    "rarity": "橙色",
+    "icon": "Weapon_Soppo_5"
+  },
+  "10771": {
+    "name": "舊式90型單兵自衛武器",
+    "type": "武器",
+    "rarity": "藍色",
+    "icon": "Weapon_Mityl_3"
+  },
+  "10772": {
+    "name": "90型單兵自衛武器",
+    "type": "武器",
+    "rarity": "紫色",
+    "icon": "Weapon_Mityl_4"
+  },
+  "10773": {
+    "name": "絨鼠新星",
+    "type": "武器",
+    "rarity": "橙色",
+    "icon": "Weapon_Mityl_5"
+  },
+  "10781": {
+    "name": "舊式格威爾41",
+    "type": "武器",
+    "rarity": "藍色",
+    "icon": "Weapon_Faelynn_3"
+  },
+  "10782": {
+    "name": "格威爾41",
+    "type": "武器",
+    "rarity": "紫色",
+    "icon": "Weapon_Faelynn_4"
+  },
+  "10783": {
+    "name": "森牙戾獸",
+    "type": "武器",
+    "rarity": "橙色",
+    "icon": "Weapon_Faelynn_5"
+  },
+  "10791": {
+    "name": "舊式12型突擊步槍",
+    "type": "武器",
+    "rarity": "藍色",
+    "icon": "Weapon_Koleda_3"
+  },
+  "10792": {
+    "name": "12型突擊步槍",
+    "type": "武器",
+    "rarity": "紫色",
+    "icon": "Weapon_Koleda_4"
+  },
+  "10793": {
+    "name": "切爾諾伯格",
+    "type": "武器",
+    "rarity": "橙色",
+    "icon": "Weapon_Koleda_5"
   },
   "11007": {
     "name": "野兔",
@@ -4523,6 +4727,24 @@
     "rarity": "橙色",
     "icon": "Weapon_Lewisgun_Core_5"
   },
+  "15631": {
+    "name": "武器藍圖·舊式馬克二型栓動手槍",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Welrodmk2_Core_3"
+  },
+  "15632": {
+    "name": "武器藍圖·馬克二型栓動手槍",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Welrodmk2_Core_4"
+  },
+  "15633": {
+    "name": "武器藍圖·緘默制裁",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Welrodmk2_Core_5"
+  },
   "15641": {
     "name": "武器藍圖·舊式15型自動手槍",
     "type": "未知",
@@ -4726,6 +4948,24 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Weapon_NemesisGnosis_Core_5"
+  },
+  "15761": {
+    "name": "武器藍圖·舊式特殊模組戰術步槍",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Soppo_Core_3"
+  },
+  "15762": {
+    "name": "武器藍圖·特殊模組戰術步槍",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Soppo_Core_4"
+  },
+  "15763": {
+    "name": "武器藍圖·碎穹嚎歌",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Soppo_Core_5"
   },
   "21000": {
     "name": "繪像·白刃疾光",
@@ -5218,6 +5458,12 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Avatar_Head_LewisSSR"
+  },
+  "21097": {
+    "name": "繪像·刻薄的溫柔",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_WelrodSSR"
   },
   "21098": {
     "name": "繪像·魅惑白羽",
@@ -5712,7 +5958,7 @@
     "icon": "Avatar_Head_FayeSSR01"
   },
   "21181": {
-    "name": "繪像·秘影特工",
+    "name": "繪像·秘影特務",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Avatar_Head_ActivityNikketa1"
@@ -6011,6 +6257,12 @@
     "rarity": "紫色",
     "icon": "Avatar_Head_PhaetusaSSR01"
   },
+  "21231": {
+    "name": "繪像·霧都特勤",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_WelrodSSR01"
+  },
   "21232": {
     "name": "繪像·熱力運動",
     "type": "未知",
@@ -6167,11 +6419,125 @@
     "rarity": "橙色",
     "icon": "Avatar_Head_Dynamic_6P62"
   },
+  "21258": {
+    "name": "繪像·紺星綺願",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ClukaySSR04"
+  },
+  "21259": {
+    "name": "繪像·緋紅極限",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_SoppoSSR01"
+  },
+  "21260": {
+    "name": "繪像·彼境交疊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivitySoppo"
+  },
+  "21261": {
+    "name": "繪像·紫藤花信",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_AlvaSSR02"
+  },
+  "21262": {
+    "name": "繪像·心跳季節",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_MitylSSR01"
+  },
+  "21263": {
+    "name": "繪像·頭號崇拜",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityMityl1"
+  },
+  "21264": {
+    "name": "繪像·本色出演",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityMityl2"
+  },
+  "21265": {
+    "name": "繪像·嫉惡如仇",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityWelrod1"
+  },
+  "21266": {
+    "name": "繪像·心證正義",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityWelrod2"
+  },
   "21267": {
     "name": "繪像·B機器人治安官",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Avatar_Head_VoymastinaSSR02"
+  },
+  "21268": {
+    "name": "繪像·忻躍陽炎",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_FaelynnSSR01"
+  },
+  "21269": {
+    "name": "繪像·小小忠犬",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityFaelynn1"
+  },
+  "21270": {
+    "name": "繪像·摯誠約定",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityFaelynn2"
+  },
+  "21271": {
+    "name": "繪像·秋林烈兔",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_QiuhuaSSR03"
+  },
+  "21272": {
+    "name": "繪像·濯浪焦點",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_KoledaSSR01"
+  },
+  "21273": {
+    "name": "繪像·惑心夜魅",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_HelenSSR02"
+  },
+  "21274": {
+    "name": "繪像·無垢契約",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_NikketaSSR03"
+  },
+  "21275": {
+    "name": "繪像·代理店長",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_SharkrySR02"
+  },
+  "21276": {
+    "name": "繪像·凍土與風信子",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityKoleda"
+  },
+  "21277": {
+    "name": "繪像·無瑕侍禮",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ClukaySSR05"
   },
   "21501": {
     "name": "繪像·迷途的貓",
@@ -6203,6 +6569,30 @@
     "rarity": "橙色",
     "icon": "Avatar_Head_NemesisGnosisSSR"
   },
+  "21506": {
+    "name": "繪像·凜霜風暴",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_SoppoSSR"
+  },
+  "21507": {
+    "name": "繪像·模仿達人",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_MitylSSR"
+  },
+  "21508": {
+    "name": "繪像·望歸寵兒",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_FaelynnSSR"
+  },
+  "21509": {
+    "name": "繪像·狼影",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_KoledaSSR"
+  },
   "21801": {
     "name": "繪像·守夜人的眼眸",
     "type": "未知",
@@ -6220,6 +6610,42 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Avatar_Head_PerityaLove"
+  },
+  "21804": {
+    "name": "繪像·撕裂黎明",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_SoppoLove"
+  },
+  "21805": {
+    "name": "繪像·雙星交會",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_NemesisLove"
+  },
+  "21806": {
+    "name": "繪像·真正的米蒂爾",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_MitylLove"
+  },
+  "21807": {
+    "name": "繪像·心之所鑑",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_WelrodLove"
+  },
+  "21808": {
+    "name": "繪像·此生為契",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_FaelynnLove"
+  },
+  "21809": {
+    "name": "繪像·春光",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_KoledaLove"
   },
   "21901": {
     "name": "繪像·熾熱餘暇",
@@ -6640,6 +7066,30 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Medal_HighPVP_Season26"
+  },
+  "22083": {
+    "name": "徽記·臨界戰線",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Medal_HighPVP_Season27"
+  },
+  "22084": {
+    "name": "徽記·鏡像迷局",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Medal_HighPVP_Season28"
+  },
+  "22085": {
+    "name": "徽記·逆向突破",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Medal_HighPVP_Season29"
+  },
+  "22086": {
+    "name": "徽記·動盪年代",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Medal_HighPVP_Season30"
   },
   "23001": {
     "name": "無稱號",
@@ -7607,6 +8057,30 @@
     "rarity": "橙色",
     "icon": "Img_Title_HighPVP_Season26"
   },
+  "23179": {
+    "name": "臨界戰線",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_HighPVP_Season27"
+  },
+  "23180": {
+    "name": "鏡像迷局",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_HighPVP_Season28"
+  },
+  "23181": {
+    "name": "逆向突破",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_HighPVP_Season29"
+  },
+  "23182": {
+    "name": "動盪年代",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_HighPVP_Season30"
+  },
   "23200": {
     "name": "水花之巔",
     "type": "未知",
@@ -7636,6 +8110,36 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Img_Title_KittyCafe2_Collect2"
+  },
+  "23205": {
+    "name": "攜手祈願",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Party3_1"
+  },
+  "23206": {
+    "name": "共迎豐收",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Party3_2"
+  },
+  "23207": {
+    "name": "豐盈慶賀",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Party3_3"
+  },
+  "23208": {
+    "name": "激浪滿貫",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Lobby_Buttgame_2"
+  },
+  "23209": {
+    "name": "人形TAS",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Platform_1"
   },
   "23400": {
     "name": "貝絲蒂·入隊",
@@ -7667,6 +8171,36 @@
     "rarity": "橙色",
     "icon": "Img_Title_GunGet_NemesisGnosis"
   },
+  "23405": {
+    "name": "索普·入隊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_GunGet_Soppo"
+  },
+  "23406": {
+    "name": "米蒂爾·入隊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_GunGet_Mityl"
+  },
+  "23407": {
+    "name": "維爾德·入隊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_GunGet_Welrod"
+  },
+  "23408": {
+    "name": "芙鈴·入隊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_GunGet_Faelynn"
+  },
+  "23409": {
+    "name": "克萊妲·入隊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_GunGet_Koleda"
+  },
   "23501": {
     "name": "契約締結者",
     "type": "未知",
@@ -7684,6 +8218,42 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Img_Title_Love_Peritya"
+  },
+  "23504": {
+    "name": "摯愛同行",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Love_Soppo"
+  },
+  "23505": {
+    "name": "星途同歸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Love_Nemesis"
+  },
+  "23506": {
+    "name": "微電影搭檔",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Love_Mityl"
+  },
+  "23507": {
+    "name": "偵探劇伴侶",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Love_Welrod"
+  },
+  "23508": {
+    "name": "委心相依",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Love_Faelynn"
+  },
+  "23509": {
+    "name": "狼語者",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_Love_Koleda"
   },
   "24001": {
     "name": "無繪像框",
@@ -8675,6 +9245,54 @@
     "rarity": "橙色",
     "icon": "Item_HeadFrame_Dynamic_6P62"
   },
+  "24192": {
+    "name": "繪像框·紺星綺願",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ClukaySSR04"
+  },
+  "24193": {
+    "name": "繪像框·破局之弈",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ExStage_7"
+  },
+  "24194": {
+    "name": "繪像框·逆向重構",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ActivitySoppo"
+  },
+  "24195": {
+    "name": "繪像框·荒野影跡",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ActivityMityl"
+  },
+  "24196": {
+    "name": "繪像框·真相揭露者",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ActivityWelrod"
+  },
+  "24197": {
+    "name": "繪像框·卡車之星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ActivityFaelynn"
+  },
+  "24198": {
+    "name": "繪像框·夏日墨鏡",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Dynamic_26Summer"
+  },
+  "24199": {
+    "name": "繪像框·帷幕之下",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ActivityKoleda"
+  },
   "24200": {
     "name": "繪像框·奇點制勝",
     "type": "未知",
@@ -8698,6 +9316,30 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_HeadFrame_HighPVP_Season26"
+  },
+  "24204": {
+    "name": "繪像框·臨界戰線",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_HighPVP_Season27"
+  },
+  "24205": {
+    "name": "繪像框·鏡像迷局",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_HighPVP_Season28"
+  },
+  "24206": {
+    "name": "繪像框·逆向突破",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_HighPVP_Season29"
+  },
+  "24207": {
+    "name": "繪像框·動盪年代",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_HighPVP_Season30"
   },
   "24301": {
     "name": "繪像框·銘刻流年",
@@ -8752,6 +9394,78 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_HeadFrame_Love_Peritya"
+  },
+  "24310": {
+    "name": "繪像框·撕裂黎明",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Love_Soppo"
+  },
+  "24311": {
+    "name": "繪像框·雙星交會",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Love_Nemesis"
+  },
+  "24312": {
+    "name": "繪像框·真正的米蒂爾",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Love_Mityl"
+  },
+  "24313": {
+    "name": "繪像框·心之所鑑",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Love_Welrod"
+  },
+  "24314": {
+    "name": "繪像框·此生為契",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Love_Faelynn"
+  },
+  "24315": {
+    "name": "繪像框·春光",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Love_Koleda"
+  },
+  "24400": {
+    "name": "繪像框·濯浪焦點",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_KoledaSSR01"
+  },
+  "24501": {
+    "name": "繪像框·奇妙彩蛋",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Bp3_5"
+  },
+  "24502": {
+    "name": "繪像框·杏雨梨雲",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Bp3_6"
+  },
+  "24503": {
+    "name": "繪像框·花晨月夕",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Bp3_7"
+  },
+  "24504": {
+    "name": "繪像框·荷風竹露",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Bp3_8"
+  },
+  "24505": {
+    "name": "繪像框·糖漬櫻桃",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_Bp3_9"
   },
   "25000": {
     "name": "班組稱號",
@@ -8938,6 +9652,42 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_CommanderInfo_LevaSSR02"
+  },
+  "25031": {
+    "name": "風之驕子",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_Soppo"
+  },
+  "25032": {
+    "name": "追尋的旅途",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_Mityl"
+  },
+  "25033": {
+    "name": "正義的錨點",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_Welrod"
+  },
+  "25034": {
+    "name": "清透心念",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_Faelynn"
+  },
+  "25035": {
+    "name": "與你並肩",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_Koleda"
+  },
+  "25036": {
+    "name": "濯波元氣",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_KoledaSSR01"
   },
   "31000": {
     "name": "克羅麗科初始裝扮",
@@ -9413,6 +10163,12 @@
     "rarity": "紫色",
     "icon": "Item_Icon_Skin_PhaetusaSSR01"
   },
+  "31094": {
+    "name": "衣裝·霧都特勤",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_WelrodSSR01"
+  },
   "31095": {
     "name": "衣裝·熱力運動",
     "type": "未知",
@@ -9491,11 +10247,77 @@
     "rarity": "紫色",
     "icon": "Item_Icon_Skin_DusevnyjSSR01"
   },
+  "31108": {
+    "name": "衣裝·紺星綺願",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Skin_ClukaySSR04"
+  },
+  "31109": {
+    "name": "衣裝·緋紅極限",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_SoppoSSR01"
+  },
+  "31110": {
+    "name": "衣裝·紫藤花信",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_AlvaSSR02"
+  },
+  "31111": {
+    "name": "衣裝·心跳季節",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_MitylSSR01"
+  },
   "31112": {
     "name": "衣裝·B機器人治安官",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Skin_VoymastinaSSR02"
+  },
+  "31113": {
+    "name": "衣裝·忻躍陽炎",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_FaelynnSSR01"
+  },
+  "31114": {
+    "name": "衣裝·秋林烈兔",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_QiuhuaSSR03"
+  },
+  "31115": {
+    "name": "衣裝·濯浪焦點",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Skin_KoledaSSR01"
+  },
+  "31116": {
+    "name": "衣裝·惑心夜魅",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_HelenSSR02"
+  },
+  "31117": {
+    "name": "衣裝·無垢契約",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_NikketaSSR03"
+  },
+  "31118": {
+    "name": "衣裝·代理店長",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_SharkrySR02"
+  },
+  "31119": {
+    "name": "衣裝·無瑕侍禮",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Skin_ClukaySSR05"
   },
   "50001": {
     "name": "電子刀刃",
@@ -13014,7 +13836,7 @@
     "icon": "Img_Rouge2_Precious_17"
   },
   "90018": {
-    "name": "力場發生器",
+    "name": "力場產生器",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Img_Rouge2_Precious_18"
@@ -14036,8 +14858,20 @@
   "110073": {
     "name": "異構共鍵自選禮箱",
     "type": "未知",
-    "rarity": "橙色",
+    "rarity": "紫色",
     "icon": "Item_Icon_Store_Chrtalent_New_01"
+  },
+  "110074": {
+    "name": "溯源共鍵自選禮箱",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Store_Chrtalent_Old_01"
+  },
+  "110075": {
+    "name": "尋跡共鍵自選禮箱",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Store_Chrtalent_Old_02"
   },
   "110076": {
     "name": "灰度契約",
@@ -14045,11 +14879,89 @@
     "rarity": "橙色",
     "icon": "Item_Icon_signin_bp"
   },
+  "110077": {
+    "name": "驚喜許可",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GachaTicket_26Summer"
+  },
   "110078": {
     "name": "驚喜許可",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_GachaTicket_26Summer"
+  },
+  "110079": {
+    "name": "雅趣·煥新憑證",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Skin_coupon"
+  },
+  "110080": {
+    "name": "雅趣·煥新憑證",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Skin_coupon"
+  },
+  "110081": {
+    "name": "高效秘訣",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_pay_login_key"
+  },
+  "110082": {
+    "name": "回歸火花",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_back_spark"
+  },
+  "110083": {
+    "name": "舊夢衣匣",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Store_‌‌Random_Skin"
+  },
+  "110084": {
+    "name": "重逢許可",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GachaTicket_Return‌"
+  },
+  "110085": {
+    "name": "重逢許可",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GachaTicket_Return‌"
+  },
+  "110086": {
+    "name": "舊夢之鑰",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_‌‌Random_Skin_Ticket"
+  },
+  "110087": {
+    "name": "信用禮盒",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CurrencyBox_5"
+  },
+  "110088": {
+    "name": "重逢許可（限時）",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GachaTicket_Return‌"
+  },
+  "110089": {
+    "name": "重逢許可（限時）",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GachaTicket_Return‌"
+  },
+  "110090": {
+    "name": "舊夢之鑰",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Random_Skin_Ticket"
   },
   "110101": {
     "name": "商店測試禮包1",
@@ -14536,6 +15448,24 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_WeaponPartScope_SetF_5"
+  },
+  "110400": {
+    "name": "烹飪食材原料包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_AlmightyyBox_3"
+  },
+  "110401": {
+    "name": "烹飪食材佐料包",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_AlmightyyBox_4"
+  },
+  "110402": {
+    "name": "烹飪食材整合包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_AlmightyyBox_5"
   },
   "111001": {
     "name": "班組祝福必得獎勵",
@@ -15414,28 +16344,130 @@
     "icon": "Item_Icon_WeaponPartBox_AR_OTs1404"
   },
   "121153": {
-    "name": "突擊步槍高階配件箱·OTs-14Ⅰ",
+    "name": "突擊步槍高階配件箱·索普Ⅰ",
     "type": "未知",
     "rarity": "橙色",
-    "icon": "Item_Icon_WeaponPartBox_AR_OTs-1401"
+    "icon": "Item_Icon_WeaponPartBox_AR_Soppo01"
   },
   "121154": {
-    "name": "突擊步槍高階配件箱·OTs-14Ⅱ",
+    "name": "突擊步槍高階配件箱·索普Ⅱ",
     "type": "未知",
     "rarity": "橙色",
-    "icon": "Item_Icon_WeaponPartBox_AR_OTs-1402"
+    "icon": "Item_Icon_WeaponPartBox_AR_Soppo02"
   },
   "121155": {
-    "name": "突擊步槍高階配件箱·OTs-14Ⅲ",
+    "name": "突擊步槍高階配件箱·索普Ⅲ",
     "type": "未知",
     "rarity": "橙色",
-    "icon": "Item_Icon_WeaponPartBox_AR_OTs-1403"
+    "icon": "Item_Icon_WeaponPartBox_AR_Soppo03"
   },
   "121156": {
-    "name": "突擊步槍高階配件箱·OTs-14Ⅳ",
+    "name": "突擊步槍高階配件箱·索普Ⅳ",
     "type": "未知",
     "rarity": "橙色",
-    "icon": "Item_Icon_WeaponPartBox_AR_OTs-1404"
+    "icon": "Item_Icon_WeaponPartBox_AR_Soppo04"
+  },
+  "121157": {
+    "name": "衝鋒槍高階配件箱·米蒂爾Ⅰ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_SMG_Mityl01"
+  },
+  "121158": {
+    "name": "衝鋒槍高階配件箱·米蒂爾Ⅱ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_SMG_Mityl02"
+  },
+  "121159": {
+    "name": "衝鋒槍高階配件箱·米蒂爾Ⅲ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_SMG_Mityl03"
+  },
+  "121160": {
+    "name": "衝鋒槍高階配件箱·米蒂爾Ⅳ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_SMG_Mityl04"
+  },
+  "121161": {
+    "name": "手槍高階配件箱·維爾德Ⅰ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_HR_Welrod01"
+  },
+  "121162": {
+    "name": "手槍高階配件箱·維爾德Ⅱ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_HR_Welrod02"
+  },
+  "121163": {
+    "name": "手槍高階配件箱·維爾德Ⅲ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_HR_Welrod03"
+  },
+  "121164": {
+    "name": "手槍高階配件箱·維爾德Ⅳ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_HR_Welrod04"
+  },
+  "121165": {
+    "name": "突擊步槍高階配件箱·芙鈴Ⅰ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Faelynn01"
+  },
+  "121166": {
+    "name": "突擊步槍高階配件箱·芙鈴Ⅱ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Faelynn02"
+  },
+  "121167": {
+    "name": "突擊步槍高階配件箱·芙鈴Ⅲ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Faelynn03"
+  },
+  "121168": {
+    "name": "突擊步槍高階配件箱·芙鈴Ⅳ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Faelynn04"
+  },
+  "121169": {
+    "name": "突擊步槍高階配件箱·克萊妲Ⅰ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda01"
+  },
+  "121170": {
+    "name": "突擊步槍高階配件箱·克萊妲Ⅱ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda02"
+  },
+  "121171": {
+    "name": "突擊步槍高階配件箱·克萊妲Ⅲ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda03"
+  },
+  "121172": {
+    "name": "突擊步槍高階配件箱·克萊妲Ⅳ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda04"
+  },
+  "121173": {
+    "name": "突擊步槍高階配件箱·克萊妲1Ⅰ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda101"
   },
   "121174": {
     "name": "繪像·百戲貫通",
@@ -15449,11 +16481,53 @@
     "rarity": "橙色",
     "icon": "Avatar_Head_ActivityQiuhua2"
   },
+  "121176": {
+    "name": "突擊步槍高階配件箱·克萊妲1Ⅱ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda102"
+  },
+  "121177": {
+    "name": "突擊步槍高階配件箱·克萊妲1Ⅲ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda103"
+  },
+  "121178": {
+    "name": "突擊步槍高階配件箱·克萊妲1Ⅳ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_WeaponPartBox_AR_Koleda104"
+  },
+  "121248": {
+    "name": "繪像·決意所向",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityLiushih1"
+  },
+  "121249": {
+    "name": "繪像·蒔光如昨",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_ActivityLiushih2"
+  },
+  "121902": {
+    "name": "繪像·夜火",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Head_Player02"
+  },
   "124115": {
     "name": "繪像框·辭良辰吉市",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_HeadFrame_ActivityQiuhua"
+  },
+  "124184": {
+    "name": "繪像框·八方來財",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_ActivityLiushih"
   },
   "130005": {
     "name": "誘導兵械密鑰",
@@ -17568,6 +18642,12 @@
     "icon": "Item_Icon_Lottery_Gacha_Ticket"
   },
   "178006": {
+    "name": "通用計算模組",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Support_LevelUp"
+  },
+  "178007": {
     "name": "快取幣",
     "type": "未知",
     "rarity": "紫色",
@@ -17627,6 +18707,60 @@
     "rarity": "紫色",
     "icon": "Item_Icon_OTs14_ticket"
   },
+  "178401": {
+    "name": "紀念先令",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Welrod_exchange"
+  },
+  "178402": {
+    "name": "洞見值",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Welrod_preheat"
+  },
+  "178403": {
+    "name": "挑戰信函",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Welrod_ticket"
+  },
+  "178501": {
+    "name": "理性溶劑",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Faelynn_exchange"
+  },
+  "178502": {
+    "name": "追蹤值",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Faelynn_preheat"
+  },
+  "178503": {
+    "name": "希望船票",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Faelynn_ticket"
+  },
+  "178601": {
+    "name": "金諭恩賜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Koleda_exchange"
+  },
+  "178602": {
+    "name": "先知枷鎖",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Asteria_exchange"
+  },
+  "178603": {
+    "name": "木馬協議",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Koleda_ticket"
+  },
   "179001": {
     "name": "汙穢手環",
     "type": "未知",
@@ -17644,6 +18778,18 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_Icon_Centaureissi_ticket"
+  },
+  "179101": {
+    "name": "珍藏膠片",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Mityl_exchange"
+  },
+  "179102": {
+    "name": "票房積分",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Mityl_preheat"
   },
   "180001": {
     "name": "卡牌預組",
@@ -17945,6 +19091,36 @@
     "rarity": "橙色",
     "icon": "Item_Icon_event_shop"
   },
+  "190049": {
+    "name": "喵封物資",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_event_shop"
+  },
+  "190050": {
+    "name": "寶藏線索",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Clue_1"
+  },
+  "190051": {
+    "name": "寶藏線索",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Clue_1"
+  },
+  "190052": {
+    "name": "應援拿鐵",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Free_Skin_Sharkry"
+  },
+  "190053": {
+    "name": "派遣次數",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Unknow"
+  },
   "191001": {
     "name": "複合建材",
     "type": "未知",
@@ -17973,6 +19149,12 @@
     "name": "物資助力箱",
     "type": "未知",
     "rarity": "未知",
+    "icon": "Item_Icon_MaterialBox_3"
+  },
+  "191006": {
+    "name": "栽培助力箱",
+    "type": "未知",
+    "rarity": "藍色",
     "icon": "Item_Icon_MaterialBox_3"
   },
   "200101": {
@@ -19595,6 +20777,42 @@
     "rarity": "紫色",
     "icon": "Skill_Chrtalent_Lewis06"
   },
+  "206301": {
+    "name": "固鍵·神探氣質",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Welrod01"
+  },
+  "206302": {
+    "name": "固鍵·前期取證",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Welrod02"
+  },
+  "206303": {
+    "name": "固鍵·本格邏輯",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Welrod03"
+  },
+  "206304": {
+    "name": "固鍵·魔犬狩獵",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Welrod04"
+  },
+  "206305": {
+    "name": "固鍵·最後一案",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Welrod05"
+  },
+  "206306": {
+    "name": "固鍵·兩人一體的偵探",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Welrod06"
+  },
   "206401": {
     "name": "固鍵·致命刺激",
     "type": "未知",
@@ -20026,6 +21244,150 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Skill_Chrtalent_NemesisGnosis06"
+  },
+  "207601": {
+    "name": "固鍵·這是我的地盤",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Soppo01"
+  },
+  "207602": {
+    "name": "固鍵·還想再被咬嗎",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Soppo02"
+  },
+  "207603": {
+    "name": "固鍵·極寒的地獄",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Soppo03"
+  },
+  "207604": {
+    "name": "固鍵·圈地自療",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Soppo04"
+  },
+  "207605": {
+    "name": "固鍵·縱情殺意",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Soppo05"
+  },
+  "207606": {
+    "name": "固鍵·群體協調",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Soppo06"
+  },
+  "207701": {
+    "name": "固鍵·電影級表現力",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Mityl01"
+  },
+  "207702": {
+    "name": "固鍵·喬裝扮演",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Mityl02"
+  },
+  "207703": {
+    "name": "固鍵·凌空接槍三轉半",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Mityl03"
+  },
+  "207704": {
+    "name": "固鍵·泣系演出",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Mityl04"
+  },
+  "207705": {
+    "name": "固鍵·先跟風衝一波",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Mityl05"
+  },
+  "207706": {
+    "name": "固鍵·真假難辨",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Mityl06"
+  },
+  "207801": {
+    "name": "固鍵·團子尾刀",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Faelynn01"
+  },
+  "207802": {
+    "name": "固鍵·豎毛警戒",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Faelynn02"
+  },
+  "207803": {
+    "name": "固鍵·最後一咕",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Faelynn03"
+  },
+  "207804": {
+    "name": "固鍵·獵襲步法",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Faelynn04"
+  },
+  "207805": {
+    "name": "固鍵·絨毛護甲",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Faelynn05"
+  },
+  "207806": {
+    "name": "固鍵·氣味標記",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Faelynn06"
+  },
+  "207901": {
+    "name": "固鍵·信條",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Koleda01"
+  },
+  "207902": {
+    "name": "固鍵·無暇赴死",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Koleda02"
+  },
+  "207903": {
+    "name": "固鍵·破滅之夢",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Koleda03"
+  },
+  "207904": {
+    "name": "固鍵·極端舉措",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Koleda04"
+  },
+  "207905": {
+    "name": "固鍵·應曉吾名",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Koleda05"
+  },
+  "207906": {
+    "name": "固鍵·擇死求生",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_Koleda06"
   },
   "231000": {
     "name": "專屬稱號",
@@ -23549,6 +24911,78 @@
     "rarity": "紫色",
     "icon": "Img_Title_WorldBoss2_bg4"
   },
+  "232313": {
+    "name": "頂點之星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_WorldBoss2_bg1"
+  },
+  "232314": {
+    "name": "閃耀極星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_WorldBoss2_bg2"
+  },
+  "232315": {
+    "name": "輝耀新星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_WorldBoss2_bg2"
+  },
+  "232316": {
+    "name": "星團的輝光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Img_Title_WorldBoss2_bg3"
+  },
+  "232317": {
+    "name": "星途的軌跡",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Img_Title_WorldBoss2_bg3"
+  },
+  "232318": {
+    "name": "星願參與者",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Img_Title_WorldBoss2_bg4"
+  },
+  "232319": {
+    "name": "頂點之星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_WorldBoss2_bg1"
+  },
+  "232320": {
+    "name": "閃耀極星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_WorldBoss2_bg2"
+  },
+  "232321": {
+    "name": "輝耀新星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Img_Title_WorldBoss2_bg2"
+  },
+  "232322": {
+    "name": "星團的輝光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Img_Title_WorldBoss2_bg3"
+  },
+  "232323": {
+    "name": "星途的軌跡",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Img_Title_WorldBoss2_bg3"
+  },
+  "232324": {
+    "name": "星願參與者",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Img_Title_WorldBoss2_bg4"
+  },
   "232997": {
     "name": "專屬稱號",
     "type": "未知",
@@ -24198,10 +25632,40 @@
     "icon": "Item_Icon_GiftBox_OTs14"
   },
   "300107": {
-    "name": "特別贈禮·OTs-14",
+    "name": "特別贈禮·索普",
     "type": "未知",
     "rarity": "橙色",
-    "icon": "Item_Icon_GiftBox_OTs-14"
+    "icon": "Item_Icon_GiftBox_Soppo"
+  },
+  "300108": {
+    "name": "特別贈禮·米蒂爾",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GiftBox_Mityl"
+  },
+  "300109": {
+    "name": "特別贈禮·維爾德",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GiftBox_Welrod"
+  },
+  "300110": {
+    "name": "特別贈禮·芙鈴",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GiftBox_Faelynn"
+  },
+  "300111": {
+    "name": "特別贈禮·克萊妲",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GiftBox_Koleda"
+  },
+  "300112": {
+    "name": "特別贈禮·克萊妲1",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_GiftBox_Koleda1"
   },
   "310002": {
     "name": "銘契之心",
@@ -24256,6 +25720,42 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_Icon_Guildwar_Ticket_Bossrush"
+  },
+  "800008": {
+    "name": "暗商聲望",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Guildwar_Reputation_Brokers"
+  },
+  "800009": {
+    "name": "硅砂港聲望",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Guildwar_800009"
+  },
+  "800010": {
+    "name": "哨崖鎮聲望",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Guildwar_800010"
+  },
+  "800011": {
+    "name": "暗商支持度",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Guildwar_800011"
+  },
+  "800012": {
+    "name": "硅砂港支持度",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Guildwar_800012"
+  },
+  "800013": {
+    "name": "哨崖鎮支持度",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Guildwar_800013"
   },
   "801001": {
     "name": "每日補給·一",
@@ -24636,7 +26136,7 @@
     "icon": "Skill_Chrtalent_NikketaSSR"
   },
   "901056": {
-    "name": "共鍵·王牌特工",
+    "name": "共鍵·王牌特務",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_LevaSSR"
@@ -24676,6 +26176,12 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_LewisSSR"
+  },
+  "901063": {
+    "name": "共鍵·范達因準則",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_WelrodSSR"
   },
   "901064": {
     "name": "共鍵·主人的指令",
@@ -24748,6 +26254,30 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_NemesisGnosisSSR"
+  },
+  "901076": {
+    "name": "共鍵·野性的呼喚",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_SoppoSSR"
+  },
+  "901077": {
+    "name": "共鍵·機靈鼠小蒂",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_MitylSSR"
+  },
+  "901078": {
+    "name": "共鍵·瑟瑟犬威",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_FaelynnSSR"
+  },
+  "901079": {
+    "name": "共鍵·殺戮視野",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_KoledaSSR"
   },
   "910052": {
     "name": "啟明心智自選禮箱",
@@ -25031,6 +26561,12 @@
     "rarity": "紫色",
     "icon": "Skill_Chrtalent_LewisSSR_love"
   },
+  "911063": {
+    "name": "契合鍵·循跡誓約",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_WelrodSSR_love"
+  },
   "911064": {
     "name": "契合鍵·惡作劇處方",
     "type": "未知",
@@ -25096,6 +26632,30 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Skill_Chrtalent_OTs14SSR_love"
+  },
+  "911076": {
+    "name": "契合鍵·嬉鬧和弦",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_SoppoSSR_love"
+  },
+  "911077": {
+    "name": "契合鍵·鼠鼠的歸宿",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_MitylSSR_love"
+  },
+  "911078": {
+    "name": "契合鍵·爛漫紀行",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_FaelynnSSR_love"
+  },
+  "911079": {
+    "name": "契合鍵·與狼共舞",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Skill_Chrtalent_KoledaSSR_love"
   },
   "921001": {
     "name": "躍鍵·兔襲蒼穹",
@@ -25325,11 +26885,29 @@
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_LevaSSR_expand"
   },
+  "921057": {
+    "name": "躍鍵·正義執行演算",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_RobellaSSR_expand"
+  },
   "921058": {
     "name": "躍鍵·疊加演算法演繹",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_LeneSSR_expand"
+  },
+  "921059": {
+    "name": "躍鍵·糖衣炮彈",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_LindSSR_expand"
+  },
+  "921060": {
+    "name": "躍鍵·雙魂共振奏鳴曲",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_PhaetusaSSR_expand"
   },
   "921061": {
     "name": "躍鍵·鋼鐵覺醒",
@@ -25337,11 +26915,23 @@
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_BalthildeSSR_expand"
   },
+  "921062": {
+    "name": "躍鍵·錫兵總動員",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_LewisSSR_expand"
+  },
   "921064": {
     "name": "躍鍵·刺激的探索者",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Skill_Chrtalent_FlorenceSSR_expand"
+  },
+  "921065": {
+    "name": "躍鍵·承襲頭狼之名",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Skill_Chrtalent_AlvaSSR_expand"
   },
   "922069": {
     "name": "徽記·烽火突變",
@@ -26453,6 +28043,42 @@
     "rarity": "橙色",
     "icon": "Item_Icon_Guildwar_Badge_Mokosh"
   },
+  "1310103": {
+    "name": "喂喂喂，塞布麗娜，你這傢伙又偷吃了吧？盤子都空了……就不能稍微忍耐一下嗎？嘖……指揮官也真是的，把我們放置在這裡……唉，真麻煩。",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Guildwar_Badge_1310103"
+  },
+  "1310104": {
+    "name": "……任務已完成。目標全部殲滅。",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Guildwar_Badge_1310104"
+  },
+  "1310105": {
+    "name": "感覺怎麼樣，克萊妲？還習慣艾莫號的氛圍嗎？",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Guildwar_Badge_1310105"
+  },
+  "1310106": {
+    "name": "給我狠狠地打！！",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Guildwar_Badge_1310106"
+  },
+  "1310107": {
+    "name": "列車軍可不能輸給區區一名「審計員」啊！！",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Guildwar_Badge_1310107"
+  },
+  "1310108": {
+    "name": "這生魚片的溫度把控……真有意思。與其說是保鮮，不如說是被什麼極端手段瞬間凍結了細胞活性吧？簡直像是在對食材進行什麼冷酷的「物理鎮壓」呢。",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Guildwar_Badge_1310108"
+  },
   "1311001": {
     "name": "破碎的徽章",
     "type": "未知",
@@ -26628,7 +28254,7 @@
     "icon": "Item_Icon_Handmade_ThutoadSilver"
   },
   "1325012": {
-    "name": "精雕奇憶·劍蕩泰坦",
+    "name": "精雕奇憶·劍鍔泰坦",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Handmade_MechaMelee"
@@ -26770,6 +28396,48 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Handmade_JiangyuSSR01_1"
+  },
+  "1325036": {
+    "name": "嗚……還不行，指揮官和新的同伴還沒有到哦。不過……為了保證等下的演出，夏克里稍微喝一小口果汁補充一下糖分和水分，大家是可以原諒的吧♥",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_Lumi"
+  },
+  "1325037": {
+    "name": "任務還沒完成！動起來！",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_LoreleySSR01_2"
+  },
+  "1325038": {
+    "name": "敬指揮官，也敬……這充滿驚喜的艾莫號。看來以後的日子，不會無聊了。",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_KoledaSSR01_1"
+  },
+  "1325039": {
+    "name": "想說相聲回車上去說！",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_HelenSSR02_1"
+  },
+  "1325040": {
+    "name": "精雕奇憶·埃芙·思緒",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_AlvaSSR02_1"
+  },
+  "1325041": {
+    "name": "精雕奇憶·威瑪西娜·禮服",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_VoymastinaSSR01_1"
+  },
+  "1325042": {
+    "name": "精雕奇憶·納甘·抱怨",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_NagantSSR01_1"
   },
   "1325101": {
     "name": "奇憶·超級兵蟻",
@@ -27329,6 +28997,132 @@
     "rarity": "紫色",
     "icon": "Item_Icon_Handmade_JiangyuSSR00_4"
   },
+  "1325194": {
+    "name": "奇憶·盧米",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_Lumi"
+  },
+  "1325195": {
+    "name": "奇憶·克萊妲·無奈",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_KoledaSSR00_1"
+  },
+  "1325196": {
+    "name": "奇憶·克萊妲·突破",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_KoledaSSR00_2"
+  },
+  "1325197": {
+    "name": "奇憶·克萊妲·冷酷",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_KoledaSSR00_3"
+  },
+  "1325198": {
+    "name": "奇憶·克萊妲·瀟灑",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_KoledaSSR00_4"
+  },
+  "1325199": {
+    "name": "奇憶·海倫·守護",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_HelenSSR00_1"
+  },
+  "1325200": {
+    "name": "奇憶·海倫·出擊",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_HelenSSR00_2"
+  },
+  "1325201": {
+    "name": "奇憶·海倫·放鬆",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_HelenSSR00_3"
+  },
+  "1325202": {
+    "name": "奇憶·海倫·自信",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_HelenSSR00_4"
+  },
+  "1325203": {
+    "name": "奇憶·埃芙·就位",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_AlvaSSR00_1"
+  },
+  "1325204": {
+    "name": "奇憶·埃芙·瞄準",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_AlvaSSR00_2"
+  },
+  "1325205": {
+    "name": "奇憶·埃芙·側坐",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_AlvaSSR00_3"
+  },
+  "1325206": {
+    "name": "奇憶·埃芙·凝視",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_AlvaSSR00_4"
+  },
+  "1325207": {
+    "name": "奇憶·威瑪西娜·就緒",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_VoymastinaSSR00_1"
+  },
+  "1325208": {
+    "name": "奇憶·威瑪西娜·威風",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_VoymastinaSSR00_2"
+  },
+  "1325209": {
+    "name": "奇憶·威瑪西娜·格鬥",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_VoymastinaSSR00_3"
+  },
+  "1325210": {
+    "name": "奇憶·威瑪西娜·教官",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_VoymastinaSSR00_4"
+  },
+  "1325211": {
+    "name": "奇憶·納甘·警戒",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_NagantSSR00_1"
+  },
+  "1325212": {
+    "name": "奇憶·納甘·待命",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_NagantSSR00_2"
+  },
+  "1325213": {
+    "name": "奇憶·納甘·神氣",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_NagantSSR00_3"
+  },
+  "1325214": {
+    "name": "奇憶·納甘·懈怠",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_NagantSSR00_4"
+  },
   "1326001": {
     "name": "兵蟻系列·一",
     "type": "未知",
@@ -27695,6 +29489,72 @@
     "rarity": "紫色",
     "icon": "Item_Icon_Lobby_Ornament_S_31"
   },
+  "1326062": {
+    "name": "三色堇",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_2"
+  },
+  "1326063": {
+    "name": "幽藍美人",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_2"
+  },
+  "1326064": {
+    "name": "紫陽花",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_2"
+  },
+  "1326065": {
+    "name": "夢幻三色堇",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_2"
+  },
+  "1326066": {
+    "name": "異色幽藍美人",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_2"
+  },
+  "1326067": {
+    "name": "重瓣紫陽花",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_2"
+  },
+  "1326068": {
+    "name": "狂犬萌騎",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_S_32"
+  },
+  "1326069": {
+    "name": "回聲驛站",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_L_11"
+  },
+  "1326070": {
+    "name": "燭光心意",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Ornament_M_17"
+  },
+  "1326071": {
+    "name": "無瑕心環",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Ornament_S_33"
+  },
+  "1326072": {
+    "name": "甜心小怪獸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Ornament_S_34"
+  },
   "1335001": {
     "name": "奇憶嵌色·格調",
     "type": "未知",
@@ -27758,7 +29618,7 @@
   "1340007": {
     "name": "奇憶甄選·暮冬",
     "type": "未知",
-    "rarity": "未知",
+    "rarity": "紫色",
     "icon": "Item_Icon_Handmade_Blind_Box5"
   },
   "1340008": {
@@ -27766,6 +29626,12 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_Icon_Handmade_Blind_Box6"
+  },
+  "1340009": {
+    "name": "奇憶甄選·逐浪",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_Blind_Box7"
   },
   "1500001": {
     "name": "勝利的銘刻",
@@ -28173,10 +30039,16 @@
     "name": "未知道具(1541061)",
     "type": "未知",
     "rarity": "未知",
-    "icon": ""
+    "icon": "Unknow"
   },
   "1541062": {
     "name": "綠洲早餐茶·秘方",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Coffee"
+  },
+  "1541063": {
+    "name": "偵探伯爵·秘方",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Coffee"
@@ -28247,6 +30119,36 @@
     "rarity": "橙色",
     "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Soda"
   },
+  "1541075": {
+    "name": "命運之輪·秘方",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Soda"
+  },
+  "1541076": {
+    "name": "秋林寒霜·秘方",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Coffee"
+  },
+  "1541077": {
+    "name": "氣泡輕飲·秘方",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Soda"
+  },
+  "1541078": {
+    "name": "汪崽牛奶·秘方",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Soda"
+  },
+  "1541079": {
+    "name": "黑俄羅斯·秘方",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Buff_Cafe_Recipe_Soda"
+  },
   "1550001": {
     "name": "塗鴉黑板",
     "type": "未知",
@@ -28294,6 +30196,24 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Party_2_Clue"
+  },
+  "1560006": {
+    "name": "楓葉祝語",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Party_3_WishingCard"
+  },
+  "1560007": {
+    "name": "水果番茄",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Party_3_Drink_Pre"
+  },
+  "1560008": {
+    "name": "錦繡華燈",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Party_3_Lantern"
   },
   "1570001": {
     "name": "電音狂想",
@@ -28344,7 +30264,7 @@
     "icon": "Item_Icon_Lobby_Customwall_M_4"
   },
   "1570009": {
-    "name": "二周年紀念照",
+    "name": "共此溫存",
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_Icon_Lobby_Customwall_M_5"
@@ -28391,11 +30311,53 @@
     "rarity": "紫色",
     "icon": "Item_Icon_Lobby_Customwall_M_6"
   },
+  "1570017": {
+    "name": "大智若普",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Lobby_Customwall_S_9"
+  },
+  "1570018": {
+    "name": "方糖招牌一號",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Lobby_Customwall_S_10"
+  },
+  "1570019": {
+    "name": "方糖招牌二號",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Lobby_Customwall_S_11"
+  },
+  "1570020": {
+    "name": "貪吃蟻",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Customwall_S_12"
+  },
+  "1570021": {
+    "name": "笑聲飛揚",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Customwall_M_7"
+  },
   "1570022": {
     "name": "心意風景",
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_Icon_Lobby_Customwall_520"
+  },
+  "1570023": {
+    "name": "諾爾蘭之劍",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Customwall_Guildwar_1"
+  },
+  "1570024": {
+    "name": "此夕入畫",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Customwall_Qixi"
   },
   "1581008": {
     "name": "納美西絲的原初素體",
@@ -28428,10 +30390,10 @@
     "icon": "Item_Icon_Gift_WhiteDay"
   },
   "1610002": {
-    "name": "氮磷鉀",
+    "name": "花肥",
     "type": "未知",
     "rarity": "藍色",
-    "icon": "Item_Icon_Lobby_FurnitureCoin"
+    "icon": "Item_Icon_Lobby_Planting_Fertilizer"
   },
   "1610003": {
     "name": "塑心底片",
@@ -28440,10 +30402,10 @@
     "icon": "Item_Icon_Gift_520"
   },
   "1610004": {
-    "name": "花朵2切花",
+    "name": "畫境相依",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Lobby_FurnitureCoin"
+    "rarity": "紫色",
+    "icon": "Item_Icon_Gift_Qixi"
   },
   "1610005": {
     "name": "花朵3切花",
@@ -29015,6 +30977,66 @@
     "rarity": "橙色",
     "icon": "LobbyFurniture_Pool_PoolloungeA_Wooden"
   },
+  "1610608": {
+    "name": "雨林隱蹤",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Bathroom_Core_Rain"
+  },
+  "1610609": {
+    "name": "雨林隱蹤",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Bathroom_toiletA_Rain"
+  },
+  "1610610": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Playrest_Table_Industry"
+  },
+  "1610611": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Playroom_Core_Industry"
+  },
+  "1610612": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Playrest_Sofa_Industry"
+  },
+  "1610613": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Playrest_Carpet_Industry"
+  },
+  "1610614": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Video_Sofa_Industry"
+  },
+  "1610615": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Video_Carpet_Industry"
+  },
+  "1610616": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Playroom_Lamp2_Industry"
+  },
+  "1610617": {
+    "name": "輕度工業",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "LobbyFurniture_Playrest_Teatable_Industry"
+  },
   "1620001": {
     "name": "淡雅棲居",
     "type": "未知",
@@ -29585,6 +31607,84 @@
     "rarity": "紫色",
     "icon": "LobbyFurniture_Playrest_Sofa_Childhood"
   },
+  "1620108": {
+    "name": "厚朴時光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Corridor_LightC_Wooden"
+  },
+  "1620109": {
+    "name": "厚朴時光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Corridor_chairA_Wooden"
+  },
+  "1620110": {
+    "name": "厚朴時光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Corridor_tableA_Wooden"
+  },
+  "1620111": {
+    "name": "厚朴時光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Corridor_CarpetA_Wooden"
+  },
+  "1620112": {
+    "name": "厚朴時光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Corridor_windowFrameB_Wooden"
+  },
+  "1620113": {
+    "name": "藏書角",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Corridor_Deco1_IsoStyle3"
+  },
+  "1620114": {
+    "name": "佳期如夢",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Public_Plant1_Wedding"
+  },
+  "1620115": {
+    "name": "艾莫街221B",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Kitchen_Cabinet_Gentle"
+  },
+  "1620116": {
+    "name": "艾莫街221B",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Kitchen_Table_Gentle"
+  },
+  "1620117": {
+    "name": "艾莫街221B",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Kitchen_Fridge_Gentle"
+  },
+  "1620118": {
+    "name": "艾莫街221B",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Kitchen_Ceiling_Gentle"
+  },
+  "1620119": {
+    "name": "艾莫街221B",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Kitchen_Chair_Gentle"
+  },
+  "1620120": {
+    "name": "艾莫街221B",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "LobbyFurniture_Kitchen_Carpet_Gentle"
+  },
   "1621001": {
     "name": "奇韻弄弦",
     "type": "未知",
@@ -29633,6 +31733,60 @@
     "rarity": "橙色",
     "icon": "Item_Icon_Lobby_Dual_LevaSSR02"
   },
+  "1630007": {
+    "name": "時空膠囊·隱匿星象",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Dual_NemesisGnosisSSR"
+  },
+  "1630008": {
+    "name": "時空膠囊·奇襲對弈",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Dual_KoledaSSR01"
+  },
+  "1640001": {
+    "name": "豐收支票",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Lobby_AmoTesco_HarvestCheque"
+  },
+  "1690101": {
+    "name": "三色堇",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Planting_Flower1_A"
+  },
+  "1690102": {
+    "name": "幽藍美人",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Planting_Flower2_A"
+  },
+  "1690103": {
+    "name": "紫陽花",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Planting_Flower3_A"
+  },
+  "1690201": {
+    "name": "夢幻三色堇",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Planting_Flower1_B"
+  },
+  "1690202": {
+    "name": "異色幽藍美人",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Planting_Flower2_B"
+  },
+  "1690203": {
+    "name": "重瓣紫陽花",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Planting_Flower3_B"
+  },
   "1701001": {
     "name": "曇花蹤跡·一",
     "type": "未知",
@@ -29654,128 +31808,128 @@
   "1721001": {
     "name": "辣椒",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_11"
   },
   "1721002": {
     "name": "乾蝦米",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_12"
   },
   "1721003": {
     "name": "檸檬",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_13"
   },
   "1721004": {
     "name": "蘑菇",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_14"
   },
   "1721005": {
     "name": "雞蛋",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_15"
   },
   "1721006": {
     "name": "大蒜",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_16"
   },
   "1721007": {
     "name": "豆腐",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_17"
   },
   "1721008": {
     "name": "奶酪",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_18"
   },
   "1721009": {
     "name": "咖喱",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_19"
   },
   "1721010": {
     "name": "香菜",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "橙色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_20"
   },
   "1731001": {
-    "name": "糖醋魚塊",
+    "name": "合成魚肉",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "未知",
+    "icon": "ltem_lcon_Darkzone_Ingredients_1"
   },
   "1731002": {
-    "name": "海陸烤串",
+    "name": "合成獸肉",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "藍色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_2"
   },
   "1731003": {
-    "name": "魚香肉片",
+    "name": "合成禽肉",
     "type": "未知",
     "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "icon": "ltem_lcon_Darkzone_Ingredients_3"
   },
   "1731004": {
-    "name": "糖醋里肌",
+    "name": "白米",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "未知",
+    "icon": "ltem_lcon_Darkzone_Ingredients_4"
   },
   "1731005": {
-    "name": "葷香肉串",
+    "name": "小麥",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "藍色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_5"
   },
   "1731006": {
-    "name": "糖醋雞塊",
+    "name": "紫薯",
     "type": "未知",
     "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "icon": "ltem_lcon_Darkzone_Ingredients_6"
   },
   "1731007": {
-    "name": "軟呼呼糯米糍",
+    "name": "溫室青菜",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "未知",
+    "icon": "ltem_lcon_Darkzone_Ingredients_7"
   },
   "1731008": {
-    "name": "香甜米麵包",
+    "name": "溫室黃瓜",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "藍色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_8"
   },
   "1731009": {
-    "name": "酸辣粉絲包",
+    "name": "溫室彩椒",
     "type": "未知",
     "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "icon": "ltem_lcon_Darkzone_Ingredients_9"
   },
   "1731010": {
-    "name": "暖手窩窩頭",
+    "name": "番茄",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "藍色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_10"
   },
   "1731011": {
-    "name": "紫薯大丸子",
+    "name": "洋蔥",
     "type": "未知",
-    "rarity": "紫色",
-    "icon": "Item_Icon_Party_1_Cake"
+    "rarity": "藍色",
+    "icon": "ltem_lcon_Darkzone_Ingredients_21"
   },
   "1731012": {
     "name": "原味紫薯包",
@@ -30372,64 +32526,340 @@
     "icon": "Item_Icon_Party_1_Cake"
   },
   "1741001": {
-    "name": "合成魚肉",
+    "name": "糖醋魚塊",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_21"
   },
   "1741002": {
-    "name": "合成獸肉",
+    "name": "海陸烤串",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_22"
   },
   "1741003": {
-    "name": "合成禽肉",
+    "name": "魚香肉片",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_23"
   },
   "1741004": {
-    "name": "白米",
+    "name": "糖醋里肌",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_24"
   },
   "1741005": {
-    "name": "小麥",
+    "name": "葷香肉串",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_25"
   },
   "1741006": {
-    "name": "紫薯",
+    "name": "糖醋雞塊",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_26"
   },
   "1741007": {
-    "name": "溫室青菜",
+    "name": "軟呼呼糯米糍",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_27"
   },
   "1741008": {
-    "name": "溫室黃瓜",
+    "name": "香甜米麵包",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_28"
   },
   "1741009": {
-    "name": "溫室彩椒",
+    "name": "酸辣粉絲包",
     "type": "未知",
-    "rarity": "藍色",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_29"
   },
   "1741010": {
-    "name": "番茄",
+    "name": "暖手窩窩頭",
     "type": "未知",
-    "rarity": "未知",
-    "icon": "Item_Icon_Darkzone_Attr"
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_30"
+  },
+  "1741011": {
+    "name": "紫薯大丸子",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_31"
+  },
+  "1741012": {
+    "name": "原味紫薯包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_32"
+  },
+  "1741013": {
+    "name": "蔬菜沙拉",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_33"
+  },
+  "1741014": {
+    "name": "撈汁涼菜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_34"
+  },
+  "1741015": {
+    "name": "素炒時蔬",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_35"
+  },
+  "1741016": {
+    "name": "涼拌黃瓜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_36"
+  },
+  "1741017": {
+    "name": "開胃老虎菜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_37"
+  },
+  "1741018": {
+    "name": "清炒青椒",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_38"
+  },
+  "1741019": {
+    "name": "鰻魚卷",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_39"
+  },
+  "1741020": {
+    "name": "香炙鱈魚腸",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_40"
+  },
+  "1741021": {
+    "name": "什錦小卷",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_41"
+  },
+  "1741022": {
+    "name": "和牛壽司",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_42"
+  },
+  "1741023": {
+    "name": "香烤大火腿",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_43"
+  },
+  "1741024": {
+    "name": "黑椒脆皮腸",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_44"
+  },
+  "1741025": {
+    "name": "煎鵝肝手握",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_45"
+  },
+  "1741026": {
+    "name": "低脂雞肉腸",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_46"
+  },
+  "1741027": {
+    "name": "低卡紫薯卷",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_47"
+  },
+  "1741028": {
+    "name": "青菜煨魚豆腐",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_48"
+  },
+  "1741029": {
+    "name": "鱔魚燒黃瓜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_49"
+  },
+  "1741030": {
+    "name": "七彩魚片",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_50"
+  },
+  "1741031": {
+    "name": "西藍花炒牛肉",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_51"
+  },
+  "1741032": {
+    "name": "涼拌嫩肉片",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_52"
+  },
+  "1741033": {
+    "name": "青椒肉串",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_53"
+  },
+  "1741034": {
+    "name": "小雞燉青菜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_54"
+  },
+  "1741035": {
+    "name": "涼拌肉絲",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_55"
+  },
+  "1741036": {
+    "name": "辣炒雞丁",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_56"
+  },
+  "1741037": {
+    "name": "素香青菜包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_57"
+  },
+  "1741038": {
+    "name": "黃瓜素肉包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_58"
+  },
+  "1741039": {
+    "name": "青椒香菇包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_59"
+  },
+  "1741040": {
+    "name": "雪菜粉絲包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_60"
+  },
+  "1741041": {
+    "name": "黃瓜煎餃",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_61"
+  },
+  "1741042": {
+    "name": "青椒豆腐包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_62"
+  },
+  "1741043": {
+    "name": "青青紫薯包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_63"
+  },
+  "1741044": {
+    "name": "香瓜紫薯包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_64"
+  },
+  "1741045": {
+    "name": "椒香紫薯包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_65"
+  },
+  "1741046": {
+    "name": "番茄魚湯",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_66"
+  },
+  "1741047": {
+    "name": "番茄牛腩",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_67"
+  },
+  "1741048": {
+    "name": "茄汁雞塊",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_68"
+  },
+  "1741049": {
+    "name": "番茄撈飯",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_69"
+  },
+  "1741050": {
+    "name": "番茄泡饃",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_70"
+  },
+  "1741051": {
+    "name": "蔬菜濃湯",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_71"
+  },
+  "1741052": {
+    "name": "茄汁青菜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_72"
+  },
+  "1741053": {
+    "name": "瓜果亂燉",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_73"
+  },
+  "1741054": {
+    "name": "酸甜紅綠燈",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_74"
+  },
+  "1741055": {
+    "name": "番茄沙拉",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_75"
+  },
+  "1741056": {
+    "name": "酸甜燴菜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Lobby_Buff_Cook_76"
   },
   "2000001": {
     "name": "「陶瓷」武裝許可密鑰",
@@ -30449,11 +32879,35 @@
     "rarity": "橙色",
     "icon": "Item_Icon_Support_ATG01"
   },
-  "2000201": {
-    "name": "白送小組",
+  "2000004": {
+    "name": "（生骸的數量也太多了……）",
     "type": "未知",
     "rarity": "橙色",
-    "icon": "Item_Icon_Gun_LoreleySSR"
+    "icon": "Item_Icon_Support_FAC01"
+  },
+  "2000005": {
+    "name": "（車上大多是毫無戰鬥力的普通人……就算有國安局安插的特務在，也絕對擋不住這麼多生骸。）",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Support_UAV01"
+  },
+  "2000006": {
+    "name": "呼……確實，雖然那種離譜的「火力」和「切割」技巧……真的能稱呼為廚師嗎？",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Support_ECM01"
+  },
+  "2000201": {
+    "name": "兵蟻莫莫武裝許可密鑰",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Support_MOMO"
+  },
+  "2000202": {
+    "name": "支援學者武裝許可密鑰",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Support_SupportScholar"
   },
   "2100001": {
     "name": "小型精度元件·綠",
@@ -30888,10 +33342,52 @@
     "icon": "Support_Standardpart_Response_03_4"
   },
   "2100101": {
-    "name": "屬性晶片隨機箱",
+    "name": "民用級基準元件隨機箱",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Item_Icon_Support_Standardpart_Box_4_2"
+  },
+  "2100102": {
+    "name": "工業級基準元件隨機箱",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Support_Standardpart_Box_1_2"
+  },
+  "2100103": {
+    "name": "軍用級基準元件隨機箱",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Support_Standardpart_Box_2_2"
+  },
+  "2100104": {
+    "name": "精密級基準元件隨機箱",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Item_Icon_Support_Standardpart_Box_3_2"
+  },
+  "2100113": {
+    "name": "軍用級補給原材料隨機箱",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Support_Ammo_Box_2_2"
+  },
+  "2100114": {
+    "name": "精密級補給原材料隨機箱",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Support_Ammo_Box_3_2"
+  },
+  "2100121": {
+    "name": "賦能元件隨機箱",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Item_Icon_Support_Foundationpart_Box_1_2"
+  },
+  "2100122": {
+    "name": "軍用級賦能元件訂製箱",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Support_Foundationpart_Box_2_1"
   },
   "2101001": {
     "name": "Buff元件1·綠",
@@ -31073,6 +33569,258 @@
     "rarity": "橙色",
     "icon": "Support_Standardpart_Response_03_10"
   },
+  "2101201": {
+    "name": "民用級小型精度元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Precision_01_2_1"
+  },
+  "2101202": {
+    "name": "民用級小型出力元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Output_01_2_1"
+  },
+  "2101203": {
+    "name": "民用級小型續航元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Endurance_01_2_1"
+  },
+  "2101204": {
+    "name": "民用級小型戰術元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Tactics_01_2_1"
+  },
+  "2101205": {
+    "name": "民用級小型廣度元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Range_01_2_1"
+  },
+  "2101206": {
+    "name": "民用級小型響應元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Response_01_2_1"
+  },
+  "2101301": {
+    "name": "工業級小型精度元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Precision_01_3_1"
+  },
+  "2101302": {
+    "name": "工業級小型出力元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Output_01_3_1"
+  },
+  "2101303": {
+    "name": "工業級小型續航元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Endurance_01_3_1"
+  },
+  "2101304": {
+    "name": "工業級小型戰術元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Tactics_01_3_1"
+  },
+  "2101305": {
+    "name": "工業級小型廣度元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Range_01_3_1"
+  },
+  "2101306": {
+    "name": "工業級小型響應元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Response_01_3_1"
+  },
+  "2101307": {
+    "name": "工業級小型精度元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Precision_01_3_1"
+  },
+  "2101308": {
+    "name": "工業級小型出力元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Output_01_3_1"
+  },
+  "2101309": {
+    "name": "工業級小型續航元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Endurance_01_3_1"
+  },
+  "2101310": {
+    "name": "工業級小型戰術元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Tactics_01_3_1"
+  },
+  "2101311": {
+    "name": "工業級小型廣度元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Range_01_3_1"
+  },
+  "2101312": {
+    "name": "工業級小型響應元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Response_01_3_1"
+  },
+  "2101401": {
+    "name": "軍用級小型精度元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_01_4_1"
+  },
+  "2101402": {
+    "name": "軍用級小型出力元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_01_4_1"
+  },
+  "2101403": {
+    "name": "軍用級小型續航元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_01_4_1"
+  },
+  "2101404": {
+    "name": "軍用級小型戰術元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_01_4_1"
+  },
+  "2101405": {
+    "name": "軍用級小型廣度元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_01_4_1"
+  },
+  "2101406": {
+    "name": "軍用級小型響應元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_01_4_1"
+  },
+  "2101407": {
+    "name": "軍用級小型精度元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_01_4_1"
+  },
+  "2101408": {
+    "name": "軍用級小型出力元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_01_4_1"
+  },
+  "2101409": {
+    "name": "軍用級小型續航元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_01_4_1"
+  },
+  "2101410": {
+    "name": "軍用級小型戰術元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_01_4_1"
+  },
+  "2101411": {
+    "name": "軍用級小型廣度元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_01_4_1"
+  },
+  "2101412": {
+    "name": "軍用級小型響應元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_01_4_1"
+  },
+  "2101501": {
+    "name": "精密級小型精度元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_01_5_1"
+  },
+  "2101502": {
+    "name": "精密級小型出力元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_01_5_1"
+  },
+  "2101503": {
+    "name": "精密級小型續航元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_01_5_1"
+  },
+  "2101504": {
+    "name": "精密級小型戰術元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_01_5_1"
+  },
+  "2101505": {
+    "name": "精密級小型廣度元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_01_5_1"
+  },
+  "2101506": {
+    "name": "精密級小型響應元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_01_5_1"
+  },
+  "2101507": {
+    "name": "精密級小型精度元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_01_5_1"
+  },
+  "2101508": {
+    "name": "精密級小型出力元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_01_5_1"
+  },
+  "2101509": {
+    "name": "精密級小型續航元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_01_5_1"
+  },
+  "2101510": {
+    "name": "精密級小型戰術元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_01_5_1"
+  },
+  "2101511": {
+    "name": "精密級小型廣度元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_01_5_1"
+  },
+  "2101512": {
+    "name": "精密級小型響應元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_01_5_1"
+  },
   "2102001": {
     "name": "預設迫擊炮彈藥",
     "type": "未知",
@@ -31151,6 +33899,1176 @@
     "rarity": "紫色",
     "icon": "Item_icon_talent_key_material"
   },
+  "2102201": {
+    "name": "民用級中型精度元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Precision_02_2_1"
+  },
+  "2102202": {
+    "name": "民用級中型出力元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Output_02_2_1"
+  },
+  "2102203": {
+    "name": "民用級中型續航元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Endurance_02_2_1"
+  },
+  "2102204": {
+    "name": "民用級中型戰術元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Tactics_02_2_1"
+  },
+  "2102205": {
+    "name": "民用級中型廣度元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Range_02_2_1"
+  },
+  "2102206": {
+    "name": "民用級中型響應元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Response_02_2_1"
+  },
+  "2102301": {
+    "name": "工業級中型精度元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Precision_02_3_1"
+  },
+  "2102302": {
+    "name": "工業級中型出力元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Output_02_3_1"
+  },
+  "2102303": {
+    "name": "工業級中型續航元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Endurance_02_3_1"
+  },
+  "2102304": {
+    "name": "工業級中型戰術元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Tactics_02_3_1"
+  },
+  "2102305": {
+    "name": "工業級中型廣度元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Range_02_3_1"
+  },
+  "2102306": {
+    "name": "工業級中型響應元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Response_02_3_1"
+  },
+  "2102307": {
+    "name": "工業級中型精度元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Precision_02_3_1"
+  },
+  "2102308": {
+    "name": "工業級中型出力元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Output_02_3_1"
+  },
+  "2102309": {
+    "name": "工業級中型續航元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Endurance_02_3_1"
+  },
+  "2102310": {
+    "name": "工業級中型戰術元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Tactics_02_3_1"
+  },
+  "2102311": {
+    "name": "工業級中型廣度元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Range_02_3_1"
+  },
+  "2102312": {
+    "name": "工業級中型響應元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Response_02_3_1"
+  },
+  "2102401": {
+    "name": "軍用級中型精度元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_02_4_1"
+  },
+  "2102402": {
+    "name": "軍用級中型出力元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_02_4_1"
+  },
+  "2102403": {
+    "name": "軍用級中型續航元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_02_4_1"
+  },
+  "2102404": {
+    "name": "軍用級中型戰術元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_02_4_1"
+  },
+  "2102405": {
+    "name": "軍用級中型廣度元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_02_4_1"
+  },
+  "2102406": {
+    "name": "軍用級中型響應元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_02_4_1"
+  },
+  "2102407": {
+    "name": "軍用級中型精度元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_02_4_1"
+  },
+  "2102408": {
+    "name": "軍用級中型出力元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_02_4_1"
+  },
+  "2102409": {
+    "name": "軍用級中型續航元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_02_4_1"
+  },
+  "2102410": {
+    "name": "軍用級中型戰術元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_02_4_1"
+  },
+  "2102411": {
+    "name": "軍用級中型廣度元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_02_4_1"
+  },
+  "2102412": {
+    "name": "軍用級中型響應元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_02_4_1"
+  },
+  "2102413": {
+    "name": "軍用級中型精度元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_02_4_1"
+  },
+  "2102414": {
+    "name": "軍用級中型出力元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_02_4_1"
+  },
+  "2102415": {
+    "name": "軍用級中型續航元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_02_4_1"
+  },
+  "2102416": {
+    "name": "軍用級中型戰術元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_02_4_1"
+  },
+  "2102417": {
+    "name": "軍用級中型廣度元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_02_4_1"
+  },
+  "2102418": {
+    "name": "軍用級中型響應元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_02_4_1"
+  },
+  "2102501": {
+    "name": "精密級中型精度元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_02_5_1"
+  },
+  "2102502": {
+    "name": "精密級中型出力元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_02_5_1"
+  },
+  "2102503": {
+    "name": "精密級中型續航元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_02_5_1"
+  },
+  "2102504": {
+    "name": "精密級中型戰術元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_02_5_1"
+  },
+  "2102505": {
+    "name": "精密級中型廣度元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_02_5_1"
+  },
+  "2102506": {
+    "name": "精密級中型響應元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_02_5_1"
+  },
+  "2102507": {
+    "name": "精密級中型精度元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_02_5_1"
+  },
+  "2102508": {
+    "name": "精密級中型出力元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_02_5_1"
+  },
+  "2102509": {
+    "name": "精密級中型續航元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_02_5_1"
+  },
+  "2102510": {
+    "name": "精密級中型戰術元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_02_5_1"
+  },
+  "2102511": {
+    "name": "精密級中型廣度元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_02_5_1"
+  },
+  "2102512": {
+    "name": "精密級中型響應元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_02_5_1"
+  },
+  "2102513": {
+    "name": "精密級中型精度元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_02_5_1"
+  },
+  "2102514": {
+    "name": "精密級中型出力元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_02_5_1"
+  },
+  "2102515": {
+    "name": "精密級中型續航元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_02_5_1"
+  },
+  "2102516": {
+    "name": "精密級中型戰術元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_02_5_1"
+  },
+  "2102517": {
+    "name": "精密級中型廣度元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_02_5_1"
+  },
+  "2102518": {
+    "name": "精密級中型響應元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_02_5_1"
+  },
+  "2103201": {
+    "name": "民用級大型精度元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Precision_03_2_1"
+  },
+  "2103202": {
+    "name": "民用級大型出力元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Output_03_2_1"
+  },
+  "2103203": {
+    "name": "民用級大型續航元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Endurance_03_2_1"
+  },
+  "2103204": {
+    "name": "民用級大型戰術元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Tactics_03_2_1"
+  },
+  "2103205": {
+    "name": "民用級大型廣度元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Range_03_2_1"
+  },
+  "2103206": {
+    "name": "民用級大型響應元件α",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Standardpart_Response_03_2_1"
+  },
+  "2103301": {
+    "name": "工業級大型精度元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Precision_03_3_1"
+  },
+  "2103302": {
+    "name": "工業級大型出力元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Output_03_3_1"
+  },
+  "2103303": {
+    "name": "工業級大型續航元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Endurance_03_3_1"
+  },
+  "2103304": {
+    "name": "工業級大型戰術元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Tactics_03_3_1"
+  },
+  "2103305": {
+    "name": "工業級大型廣度元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Range_03_3_1"
+  },
+  "2103306": {
+    "name": "工業級大型響應元件α",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Response_03_3_1"
+  },
+  "2103307": {
+    "name": "工業級大型精度元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Precision_03_3_1"
+  },
+  "2103308": {
+    "name": "工業級大型出力元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Output_03_3_1"
+  },
+  "2103309": {
+    "name": "工業級大型續航元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Endurance_03_3_1"
+  },
+  "2103310": {
+    "name": "工業級大型戰術元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Tactics_03_3_1"
+  },
+  "2103311": {
+    "name": "工業級大型廣度元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Range_03_3_1"
+  },
+  "2103312": {
+    "name": "工業級大型響應元件β",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Standardpart_Response_03_3_1"
+  },
+  "2103401": {
+    "name": "軍用級大型精度元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_03_4_1"
+  },
+  "2103402": {
+    "name": "軍用級大型出力元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_03_4_1"
+  },
+  "2103403": {
+    "name": "軍用級大型續航元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_03_4_1"
+  },
+  "2103404": {
+    "name": "軍用級大型戰術元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_03_4_1"
+  },
+  "2103405": {
+    "name": "軍用級大型廣度元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_03_4_1"
+  },
+  "2103406": {
+    "name": "軍用級大型響應元件α",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_03_4_1"
+  },
+  "2103407": {
+    "name": "軍用級大型精度元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_03_4_1"
+  },
+  "2103408": {
+    "name": "軍用級大型出力元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_03_4_1"
+  },
+  "2103409": {
+    "name": "軍用級大型續航元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_03_4_1"
+  },
+  "2103410": {
+    "name": "軍用級大型戰術元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_03_4_1"
+  },
+  "2103411": {
+    "name": "軍用級大型廣度元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_03_4_1"
+  },
+  "2103412": {
+    "name": "軍用級大型響應元件β",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_03_4_1"
+  },
+  "2103413": {
+    "name": "軍用級大型精度元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Precision_03_4_1"
+  },
+  "2103414": {
+    "name": "軍用級大型出力元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Output_03_4_1"
+  },
+  "2103415": {
+    "name": "軍用級大型續航元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Endurance_03_4_1"
+  },
+  "2103416": {
+    "name": "軍用級大型戰術元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Tactics_03_4_1"
+  },
+  "2103417": {
+    "name": "軍用級大型廣度元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Range_03_4_1"
+  },
+  "2103418": {
+    "name": "軍用級大型響應元件γ",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Standardpart_Response_03_4_1"
+  },
+  "2103501": {
+    "name": "精密級大型精度元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_03_5_1"
+  },
+  "2103502": {
+    "name": "精密級大型出力元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_03_5_1"
+  },
+  "2103503": {
+    "name": "精密級大型續航元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_03_5_1"
+  },
+  "2103504": {
+    "name": "精密級大型戰術元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_03_5_1"
+  },
+  "2103505": {
+    "name": "精密級大型廣度元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_03_5_1"
+  },
+  "2103506": {
+    "name": "精密級大型響應元件α",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_03_5_1"
+  },
+  "2103507": {
+    "name": "精密級大型精度元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_03_5_1"
+  },
+  "2103508": {
+    "name": "精密級大型出力元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_03_5_1"
+  },
+  "2103509": {
+    "name": "精密級大型續航元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_03_5_1"
+  },
+  "2103510": {
+    "name": "精密級大型戰術元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_03_5_1"
+  },
+  "2103511": {
+    "name": "精密級大型廣度元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_03_5_1"
+  },
+  "2103512": {
+    "name": "精密級大型響應元件β",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_03_5_1"
+  },
+  "2103513": {
+    "name": "精密級大型精度元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_03_5_1"
+  },
+  "2103514": {
+    "name": "精密級大型出力元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_03_5_1"
+  },
+  "2103515": {
+    "name": "精密級大型續航元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_03_5_1"
+  },
+  "2103516": {
+    "name": "精密級大型戰術元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_03_5_1"
+  },
+  "2103517": {
+    "name": "精密級大型廣度元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_03_5_1"
+  },
+  "2103518": {
+    "name": "精密級大型響應元件γ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_03_5_1"
+  },
+  "2103519": {
+    "name": "精密級大型精度元件Δ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_03_5_1"
+  },
+  "2103520": {
+    "name": "精密級大型出力元件Δ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_03_5_1"
+  },
+  "2103521": {
+    "name": "精密級大型續航元件Δ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_03_5_1"
+  },
+  "2103522": {
+    "name": "精密級大型戰術元件Δ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_03_5_1"
+  },
+  "2103523": {
+    "name": "精密級大型廣度元件Δ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_03_5_1"
+  },
+  "2103524": {
+    "name": "精密級大型響應元件Δ",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_03_5_1"
+  },
+  "2201201": {
+    "name": "基架·輕量化協議",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_01_2_1"
+  },
+  "2201202": {
+    "name": "基架·閃擊策略",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_02_2_1"
+  },
+  "2201203": {
+    "name": "基架·火力重構",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_03_2_1"
+  },
+  "2201204": {
+    "name": "基架·超維視界",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_04_2_1"
+  },
+  "2201205": {
+    "name": "基架·立體打擊",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_05_2_1"
+  },
+  "2201206": {
+    "name": "基架·零距離接觸",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_06_2_1"
+  },
+  "2201207": {
+    "name": "基架·合金雨幕",
+    "type": "未知",
+    "rarity": "未知",
+    "icon": "Support_Corechip_11_2_1"
+  },
+  "2201301": {
+    "name": "基架·輕量化協議",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_01_3_1"
+  },
+  "2201302": {
+    "name": "基架·閃擊策略",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_02_3_1"
+  },
+  "2201303": {
+    "name": "基架·火力重構",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_03_3_1"
+  },
+  "2201304": {
+    "name": "基架·超維視界",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_04_3_1"
+  },
+  "2201305": {
+    "name": "基架·立體打擊",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_05_3_1"
+  },
+  "2201306": {
+    "name": "基架·零距離接觸",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_06_3_1"
+  },
+  "2201307": {
+    "name": "基架·合金雨幕",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_11_3_1"
+  },
+  "2201401": {
+    "name": "解限·輕量化協議",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_01_4_1"
+  },
+  "2201402": {
+    "name": "解限·閃擊策略",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_02_4_1"
+  },
+  "2201403": {
+    "name": "解限·火力重構",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_03_4_1"
+  },
+  "2201404": {
+    "name": "解限·超維視界",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_04_4_1"
+  },
+  "2201405": {
+    "name": "解限·立體打擊",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_05_4_1"
+  },
+  "2201406": {
+    "name": "解限·零距離接觸",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_06_4_1"
+  },
+  "2201407": {
+    "name": "解限·合金雨幕",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_11_4_1"
+  },
+  "2201501": {
+    "name": "解限·輕量化協議",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_01_5_1"
+  },
+  "2201502": {
+    "name": "解限·閃擊策略",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_02_5_1"
+  },
+  "2201503": {
+    "name": "解限·火力重構",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_03_5_1"
+  },
+  "2201504": {
+    "name": "解限·超維視界",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_04_5_1"
+  },
+  "2201505": {
+    "name": "解限·立體打擊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_05_5_1"
+  },
+  "2201506": {
+    "name": "解限·零距離接觸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_06_5_1"
+  },
+  "2201507": {
+    "name": "解限·合金雨幕",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_11_5_1"
+  },
+  "2201601": {
+    "name": "解限·輕量化協議",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_01_6_1"
+  },
+  "2201602": {
+    "name": "解限·閃擊策略",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_02_6_1"
+  },
+  "2201603": {
+    "name": "解限·火力重構",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_03_6_1"
+  },
+  "2201604": {
+    "name": "解限·超維視界",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_04_6_1"
+  },
+  "2201605": {
+    "name": "解限·立體打擊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_05_6_1"
+  },
+  "2201606": {
+    "name": "解限·零距離接觸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_06_6_1"
+  },
+  "2201607": {
+    "name": "解限·合金雨幕",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_11_6_1"
+  },
+  "2211301": {
+    "name": "衍異·輕量化協議",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_01_3_1"
+  },
+  "2211302": {
+    "name": "衍異·閃擊策略",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_02_3_1"
+  },
+  "2211303": {
+    "name": "衍異·火力重構",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_03_3_1"
+  },
+  "2211304": {
+    "name": "衍異·超維視界",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_04_3_1"
+  },
+  "2211305": {
+    "name": "衍異·立體打擊",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_05_3_1"
+  },
+  "2211306": {
+    "name": "衍異·零距離接觸",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_06_3_1"
+  },
+  "2211307": {
+    "name": "衍異·合金雨幕",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Corechip_11_3_1"
+  },
+  "2211401": {
+    "name": "升格·輕量化協議",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_01_4_1"
+  },
+  "2211402": {
+    "name": "升格·閃擊策略",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_02_4_1"
+  },
+  "2211403": {
+    "name": "升格·火力重構",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_03_4_1"
+  },
+  "2211404": {
+    "name": "升格·超維視界",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_04_4_1"
+  },
+  "2211405": {
+    "name": "升格·立體打擊",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_05_4_1"
+  },
+  "2211406": {
+    "name": "升格·零距離接觸",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_06_4_1"
+  },
+  "2211407": {
+    "name": "升格·合金雨幕",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Corechip_11_4_1"
+  },
+  "2211501": {
+    "name": "升格·輕量化協議",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_01_5_1"
+  },
+  "2211502": {
+    "name": "升格·閃擊策略",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_02_5_1"
+  },
+  "2211503": {
+    "name": "升格·火力重構",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_03_5_1"
+  },
+  "2211504": {
+    "name": "升格·超維視界",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_04_5_1"
+  },
+  "2211505": {
+    "name": "升格·立體打擊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_05_5_1"
+  },
+  "2211506": {
+    "name": "升格·零距離接觸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_06_5_1"
+  },
+  "2211507": {
+    "name": "升格·合金雨幕",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_11_5_1"
+  },
+  "2211601": {
+    "name": "升格·輕量化協議",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_01_6_1"
+  },
+  "2211602": {
+    "name": "升格·閃擊策略",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_02_6_1"
+  },
+  "2211603": {
+    "name": "升格·火力重構",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_03_6_1"
+  },
+  "2211604": {
+    "name": "升格·超維視界",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_04_6_1"
+  },
+  "2211605": {
+    "name": "升格·立體打擊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_05_6_1"
+  },
+  "2211606": {
+    "name": "升格·零距離接觸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_06_6_1"
+  },
+  "2211607": {
+    "name": "升格·合金雨幕",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Corechip_11_6_1"
+  },
+  "2301301": {
+    "name": "基礎迫擊炮彈藥",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Ammo_MRT_01_1"
+  },
+  "2301302": {
+    "name": "基礎反坦克炮彈藥",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Ammo_LCH_01_1"
+  },
+  "2301303": {
+    "name": "基礎榴彈發射器彈藥",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Ammo_ATG_01_1"
+  },
+  "2301401": {
+    "name": "制式迫擊炮彈藥",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Ammo_MRT_01_2"
+  },
+  "2301402": {
+    "name": "制式反坦克炮彈藥",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Ammo_LCH_01_2"
+  },
+  "2301403": {
+    "name": "制式榴彈發射器彈藥",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Ammo_ATG_01_2"
+  },
+  "2301501": {
+    "name": "精銳迫擊炮彈藥",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_MRT_01_3"
+  },
+  "2301502": {
+    "name": "精銳反坦克炮彈藥",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_LCH_01_3"
+  },
+  "2301503": {
+    "name": "精銳榴彈發射器彈藥",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_ATG_01_3"
+  },
+  "2302301": {
+    "name": "基礎輕型電池包",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Support_Ammo_BTY_01_1"
+  },
+  "2302401": {
+    "name": "制式輕型電池包",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Ammo_BTY_01_2"
+  },
+  "2302501": {
+    "name": "精銳輕型電池包",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_BTY_01_3"
+  },
+  "2311400": {
+    "name": "制式火藥",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Ammo_RM_01_1_1"
+  },
+  "2311501": {
+    "name": "AX-01助燃劑",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_RM_01_2_1"
+  },
+  "2311502": {
+    "name": "CC-20合金彈芯",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_RM_01_2_3"
+  },
+  "2311503": {
+    "name": "β3系敏化劑",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_RM_01_2_2"
+  },
+  "2312400": {
+    "name": "基礎電容",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Support_Ammo_RM_01_1_2"
+  },
+  "2312501": {
+    "name": "ESG-電解質凝膠",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Ammo_RM_01_2_4"
+  },
   "3111045": {
     "name": "塗裝·伊阿索",
     "type": "未知",
@@ -31217,17 +35135,35 @@
     "rarity": "紫色",
     "icon": "Weapon_MK23_4"
   },
+  "3111545": {
+    "name": "塗裝·緘默制裁",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Welrodmk2_5"
+  },
   "3111564": {
     "name": "塗裝·斯捷奇金",
     "type": "未知",
     "rarity": "紫色",
     "icon": "Weapon_APS_4"
   },
+  "3111583": {
+    "name": "塗裝·舊式馬克二型栓動手槍",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Welrodmk2_3"
+  },
   "3111593": {
     "name": "塗裝·舊式金牛座曲線",
     "type": "未知",
     "rarity": "藍色",
     "icon": "Weapon_TaurusCurve_3"
+  },
+  "3111614": {
+    "name": "塗裝·馬克二型栓動手槍",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Welrodmk2_4"
   },
   "3111703": {
     "name": "塗裝·舊式納甘左輪",
@@ -31373,6 +35309,18 @@
     "rarity": "橙色",
     "icon": "Weapon_SteyrTMP_5"
   },
+  "3112535": {
+    "name": "塗裝·絨鼠新星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Mityl_5"
+  },
+  "3112573": {
+    "name": "塗裝·舊式90型單兵自衛武器",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Mityl_3"
+  },
   "3112584": {
     "name": "塗裝·通用衝鋒槍9",
     "type": "未知",
@@ -31384,6 +35332,12 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Weapon_M1931_4"
+  },
+  "3112604": {
+    "name": "塗裝·90型單兵自衛武器",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Mityl_4"
   },
   "3112614": {
     "name": "塗裝·長風零六",
@@ -31817,6 +35771,12 @@
     "rarity": "橙色",
     "icon": "Weapon_BlackOTs14_5"
   },
+  "3114515": {
+    "name": "塗裝·碎穹嚎歌",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Soppo_5"
+  },
   "3114524": {
     "name": "塗裝·九五式",
     "type": "未知",
@@ -31841,17 +35801,59 @@
     "rarity": "紫色",
     "icon": "Weapon_QBZ97_4"
   },
+  "3114555": {
+    "name": "塗裝·森牙戾獸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Faelynn_5"
+  },
+  "3114563": {
+    "name": "塗裝·舊式特殊模組戰術步槍",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Soppo_3"
+  },
   "3114564": {
     "name": "塗裝·閃電-3",
     "type": "未知",
     "rarity": "紫色",
     "icon": "Weapon_BlackOTs14_4"
   },
+  "3114565": {
+    "name": "塗裝·切爾諾伯格",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_Koleda_5"
+  },
+  "3114574": {
+    "name": "塗裝·特殊模組戰術步槍",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Soppo_4"
+  },
+  "3114593": {
+    "name": "塗裝·舊式格威爾41",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Faelynn_3"
+  },
+  "3114603": {
+    "name": "塗裝·舊式12型突擊步槍",
+    "type": "未知",
+    "rarity": "藍色",
+    "icon": "Weapon_Koleda_3"
+  },
   "3114613": {
     "name": "塗裝·舊式格洛利婭",
     "type": "未知",
     "rarity": "藍色",
     "icon": "Weapon_OTS14_3"
+  },
+  "3114624": {
+    "name": "塗裝·格威爾41",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Faelynn_4"
   },
   "3114634": {
     "name": "塗裝·無殼彈步槍11",
@@ -31870,6 +35872,12 @@
     "type": "未知",
     "rarity": "藍色",
     "icon": "Weapon_ROBINSONXCR_3"
+  },
+  "3114654": {
+    "name": "塗裝·12型突擊步槍",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_Koleda_4"
   },
   "3114663": {
     "name": "塗裝·舊式卡拉什-阿爾法",
@@ -32189,6 +36197,12 @@
     "rarity": "紫色",
     "icon": "Weapon_HRClaB020_4"
   },
+  "4131764": {
+    "name": "塗裝·鳶尾獅心",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_HRClaB028_4"
+  },
   "4131784": {
     "name": "塗裝·初戀",
     "type": "未知",
@@ -32249,6 +36263,12 @@
     "rarity": "橙色",
     "icon": "Weapon_SMGClaS005_5"
   },
+  "4132195": {
+    "name": "塗裝·紫韻華光",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_SMGSet019_5"
+  },
   "4132204": {
     "name": "塗裝·極夜",
     "type": "未知",
@@ -32256,7 +36276,7 @@
     "icon": "Weapon_SMGClaC004_4"
   },
   "4132234": {
-    "name": "塗裝·特工X",
+    "name": "塗裝·特務X",
     "type": "未知",
     "rarity": "紫色",
     "icon": "Weapon_SMGClaB007_4"
@@ -32332,6 +36352,18 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Weapon_SMGClaB024_4"
+  },
+  "4132824": {
+    "name": "塗裝·凜風狂獵",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_ARClaB037_4"
+  },
+  "4132834": {
+    "name": "塗裝·曜光流火",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_SMGClaB038_4"
   },
   "4133035": {
     "name": "塗裝·交疊舞步",
@@ -32501,11 +36533,35 @@
     "rarity": "橙色",
     "icon": "Weapon_ARClaE001_5"
   },
+  "4134155": {
+    "name": "塗裝·永痕祈願",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARSet017_5"
+  },
   "4134165": {
     "name": "塗裝·華燈飛艇",
     "type": "未知",
     "rarity": "橙色",
     "icon": "Weapon_ARClaS003_5"
+  },
+  "4134175": {
+    "name": "塗裝·凜鋒榮勳",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARSet018_5"
+  },
+  "4134195": {
+    "name": "塗裝·熱夏果檸",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARSet020_5"
+  },
+  "4134205": {
+    "name": "塗裝·琥珀銀霜",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARSet021_5"
   },
   "4134214": {
     "name": "塗裝·揚沙",
@@ -32596,6 +36652,18 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Weapon_ARClaB036_4"
+  },
+  "4134854": {
+    "name": "塗裝·泠海淵波",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_ARClaB040_4"
+  },
+  "4134864": {
+    "name": "塗裝·極晝狼影",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Weapon_ARClaB041_4"
   },
   "4135044": {
     "name": "塗裝·無源飛火",
@@ -32813,6 +36881,12 @@
     "rarity": "橙色",
     "icon": "Weapon_HRClaKsenia_5"
   },
+  "4331595": {
+    "name": "塗裝·心證之瞳",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_HRClaWelrod_5"
+  },
   "4332025": {
     "name": "塗裝·默契的合奏",
     "type": "未知",
@@ -32885,6 +36959,18 @@
     "rarity": "橙色",
     "icon": "Weapon_SMGClaHarpsy_5"
   },
+  "4332565": {
+    "name": "塗裝·永痕刻印",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARClaSoppo_5"
+  },
+  "4332585": {
+    "name": "塗裝·空洞修復者",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_SMGClaMityl_5"
+  },
   "4333105": {
     "name": "塗裝·松鼠留下饋贈",
     "type": "未知",
@@ -32926,6 +37012,12 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Weapon_RFClaLiushih_5"
+  },
+  "4333575": {
+    "name": "塗裝·稜鏡真言",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_RFClaNemesis_5"
   },
   "4334005": {
     "name": "塗裝·亙古的恆星",
@@ -33022,6 +37114,18 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Weapon_ARClaOTs14_5"
+  },
+  "4334605": {
+    "name": "塗裝·乖巧幼崽",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARClaFaelynn_5"
+  },
+  "4334615": {
+    "name": "塗裝·她的微笑",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Weapon_ARClaKoleda_5"
   },
   "4335375": {
     "name": "塗裝·夢幻締造者",
@@ -33605,6 +37709,36 @@
     "rarity": "橙色",
     "icon": "WeaponPart_1_Set016_5"
   },
+  "7231615": {
+    "name": "塗裝·永痕祈願瞄準",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_Set017_5"
+  },
+  "7231655": {
+    "name": "塗裝·凜鋒榮勳瞄準",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_Set018_5"
+  },
+  "7231695": {
+    "name": "塗裝·紫韻華光瞄準",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_Set019_5"
+  },
+  "7231735": {
+    "name": "塗裝·熱夏果檸瞄準",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_Set020_5"
+  },
+  "7231775": {
+    "name": "塗裝·琥珀銀霜瞄準",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_Set021_5"
+  },
   "7331005": {
     "name": "塗裝·灰域流星",
     "type": "未知",
@@ -34043,11 +38177,29 @@
     "rarity": "橙色",
     "icon": "WeaponPart_1_ClaOTs14_3"
   },
+  "7331554": {
+    "name": "塗裝·鳶尾獅心瞄準",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_1_ClaD027_3"
+  },
   "7331555": {
     "name": "塗裝·二重獵手",
     "type": "未知",
     "rarity": "橙色",
     "icon": "WeaponPart_1_ClaPeritya_3"
+  },
+  "7331565": {
+    "name": "塗裝·破曉榮光",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_ClaSoppo_3"
+  },
+  "7331575": {
+    "name": "塗裝·星圖演繹",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_ClaNemesis_3"
   },
   "7331584": {
     "name": "塗裝·孤獨岸線瞄準",
@@ -34055,17 +38207,47 @@
     "rarity": "紫色",
     "icon": "WeaponPart_1_ClaC029_3"
   },
+  "7331585": {
+    "name": "塗裝·模仿達人",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_ClaMityl_3"
+  },
+  "7331595": {
+    "name": "塗裝·麗影謎局",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_ClaWelrod_3"
+  },
   "7331604": {
     "name": "塗裝·初戀瞄準",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_1_ClaD030_3"
   },
+  "7331605": {
+    "name": "塗裝·望歸寵兒",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_ClaFaelynn_3"
+  },
+  "7331615": {
+    "name": "塗裝·狼影",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_ClaKoleda_3"
+  },
   "7331664": {
     "name": "塗裝·鏡裂迴文瞄準",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_1_ClaC033_3"
+  },
+  "7331704": {
+    "name": "塗裝·曜光流火瞄準",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_1_ClaC035_3"
   },
   "7331744": {
     "name": "塗裝·紅鋼瞄準",
@@ -34078,6 +38260,12 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_1_ClaD003_3"
+  },
+  "7331784": {
+    "name": "塗裝·極晝狼影瞄準",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_1_ClaC037_3"
   },
   "7331864": {
     "name": "塗裝·荒漠瞄準",
@@ -34277,11 +38465,35 @@
     "rarity": "紫色",
     "icon": "WeaponPart_2_ClaD030_3"
   },
+  "7332605": {
+    "name": "塗裝·永痕祈願槍口",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_2_Set017_5"
+  },
   "7332624": {
     "name": "塗裝·騏驥踏雲槍口",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_2_ClaC031_3"
+  },
+  "7332645": {
+    "name": "塗裝·凜鋒榮勳槍口",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_2_Set018_5"
+  },
+  "7332684": {
+    "name": "塗裝·凜風狂獵槍口",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_2_ClaC034_3"
+  },
+  "7332685": {
+    "name": "塗裝·紫韻華光槍口",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_2_Set019_5"
   },
   "7332704": {
     "name": "塗裝·雪夜槍口2型",
@@ -34294,6 +38506,30 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_2_SpE002_3"
+  },
+  "7332724": {
+    "name": "塗裝·鳶尾獅心槍口",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_2_ClaC027_3"
+  },
+  "7332725": {
+    "name": "塗裝·熱夏果檸槍口",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_2_Set020_5"
+  },
+  "7332764": {
+    "name": "塗裝·泠海淵波槍口",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_2_ClaC036_3"
+  },
+  "7332765": {
+    "name": "塗裝·琥珀銀霜槍口",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_2_Set021_5"
   },
   "7332804": {
     "name": "塗裝·紅鋼槍口2型",
@@ -34451,11 +38687,53 @@
     "rarity": "紫色",
     "icon": "WeaponPart_3_ClaD029_3"
   },
+  "7333595": {
+    "name": "塗裝·永痕祈願下掛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_3_Set017_5"
+  },
+  "7333635": {
+    "name": "塗裝·凜鋒榮勳下掛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_3_Set018_5"
+  },
   "7333654": {
     "name": "塗裝·鏡裂迴文下掛",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_3_ClaD033_3"
+  },
+  "7333675": {
+    "name": "塗裝·紫韻華光下掛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_3_Set019_5"
+  },
+  "7333694": {
+    "name": "塗裝·曜光流火下掛",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_3_ClaD035_3"
+  },
+  "7333715": {
+    "name": "塗裝·熱夏果檸下掛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_3_Set020_5"
+  },
+  "7333755": {
+    "name": "塗裝·琥珀銀霜下掛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_3_Set021_5"
+  },
+  "7333774": {
+    "name": "塗裝·極晝狼影下掛",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_3_ClaD037_3"
   },
   "7333894": {
     "name": "塗裝·雲枝古韻",
@@ -34553,11 +38831,23 @@
     "rarity": "紫色",
     "icon": "WeaponPart_12_ClaD032_3"
   },
+  "7335674": {
+    "name": "塗裝·凜風狂獵握把",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_12_ClaD034_3"
+  },
   "7335734": {
     "name": "塗裝·紅鋼垂握",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_12_ClaC002_3"
+  },
+  "7335754": {
+    "name": "塗裝·泠海淵波握把",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "WeaponPart_12_ClaD036_3"
   },
   "7335794": {
     "name": "塗裝·紅鋼握把2型",
@@ -34679,17 +38969,47 @@
     "rarity": "紫色",
     "icon": "WeaponPart_13_ClaD028_3"
   },
+  "7336585": {
+    "name": "塗裝·永痕祈願握把",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_12_Set017_5"
+  },
   "7336614": {
     "name": "塗裝·騏驥踏雲腳架",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_13_ClaD031_3"
   },
+  "7336625": {
+    "name": "塗裝·凜鋒榮勳握把",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_12_Set018_5"
+  },
+  "7336665": {
+    "name": "塗裝·紫韻華光握把",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_12_Set019_5"
+  },
+  "7336705": {
+    "name": "塗裝·熱夏果檸握把",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_12_Set020_5"
+  },
   "7336724": {
     "name": "塗裝·紅鋼腳架",
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_13_ClaD002_3"
+  },
+  "7336745": {
+    "name": "塗裝·琥珀銀霜握把",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_12_Set021_5"
   },
   "7336854": {
     "name": "塗裝·工業握把",
@@ -34768,6 +39088,12 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "WeaponPart_3_SpE001_3"
+  },
+  "9110057": {
+    "name": "越徑許可",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_paid_signin_2"
   },
   "9176020": {
     "name": "經驗補給箱",
@@ -34904,7 +39230,7 @@
   "10110073": {
     "name": "異構共鍵自選禮箱",
     "type": "未知",
-    "rarity": "橙色",
+    "rarity": "紫色",
     "icon": "Item_Icon_Store_Chrtalent_New_01"
   },
   "10111121": {
@@ -38771,6 +43097,96 @@
     "rarity": "橙色",
     "icon": "Item_ClothesMod_ClukaySSR03_P3_Body"
   },
+  "52040101": {
+    "name": "可露凯头特效1",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "0"
+  },
+  "52040102": {
+    "name": "光效·星雪飄絮",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KlukaySSR04_P1_Effect"
+  },
+  "52040201": {
+    "name": "可露凯脚特效1",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "0"
+  },
+  "52040202": {
+    "name": "光效·星熠光華",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KlukaySSR04_P2_Effect"
+  },
+  "52040301": {
+    "name": "黑曜流星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR01_Motorcycle"
+  },
+  "52040302": {
+    "name": "純白極星",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR0105_Motorcycle"
+  },
+  "52050101": {
+    "name": "傲慢禮態",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P1_Cloth"
+  },
+  "52050102": {
+    "name": "專斷準則",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P2_Cloth"
+  },
+  "52050103": {
+    "name": "私享特權",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P3_Cloth"
+  },
+  "52050201": {
+    "name": "完美侍奉",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P1_Hip"
+  },
+  "52050202": {
+    "name": "俐落尺度",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P2_Hip"
+  },
+  "52050203": {
+    "name": "荊棘庭院",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P3_Hip"
+  },
+  "52050301": {
+    "name": "孤高步伐",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P1_Body"
+  },
+  "52050302": {
+    "name": "從容陷阱",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P2_Body"
+  },
+  "52050303": {
+    "name": "絕對支配",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_ClukaySSR05_P3_Body"
+  },
   "54010101": {
     "name": "花漾甜心",
     "type": "未知",
@@ -38878,6 +43294,60 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_ClothesMod_NikketaSSR02_P3_Body"
+  },
+  "55030101": {
+    "name": "暗域加冕",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P1_Head"
+  },
+  "55030102": {
+    "name": "聖潔審判",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P2_Head"
+  },
+  "55030103": {
+    "name": "柔紗誓約",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P3_Head"
+  },
+  "55030201": {
+    "name": "純真陷阱",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P1_Cloth"
+  },
+  "55030202": {
+    "name": "禁忌誘捕",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P2_Cloth"
+  },
+  "55030203": {
+    "name": "迷情裁決",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P3_Cloth"
+  },
+  "55030301": {
+    "name": "皎淨束縛",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P1_Body"
+  },
+  "55030302": {
+    "name": "沉淪欲網",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P2_Body"
+  },
+  "55030303": {
+    "name": "純粹獻禮",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_NikketaSSR03_P3_Body"
   },
   "56020101": {
     "name": "活力束髮",
@@ -39257,6 +43727,60 @@
     "rarity": "橙色",
     "icon": "Item_ClothesMod_HelenSSR01_P3_Body"
   },
+  "67020101": {
+    "name": "溺心幽墜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P1_Cloth"
+  },
+  "67020102": {
+    "name": "蝶影金羈",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P2_Cloth"
+  },
+  "67020103": {
+    "name": "禁忌幽羅",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P3_Cloth"
+  },
+  "67020201": {
+    "name": "纏骨金縛",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P1_Hip"
+  },
+  "67020202": {
+    "name": "古典欲枷",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P2_Hip"
+  },
+  "67020203": {
+    "name": "隱秘夜幕",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P3_Hip"
+  },
+  "67020301": {
+    "name": "純粹暗夜",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P1_Body"
+  },
+  "67020302": {
+    "name": "欲心迷網",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P2_Body"
+  },
+  "67020303": {
+    "name": "無隙之柔",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_HelenSSR02_P3_Body"
+  },
   "68010101": {
     "name": "祈願飛絮",
     "type": "未知",
@@ -39592,6 +44116,234 @@
     "type": "未知",
     "rarity": "紫色",
     "icon": "Item_ClothesMod_SextansSSR01_P3_Body"
+  },
+  "76010101": {
+    "name": "驕陽掠影",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P1_Head"
+  },
+  "76010102": {
+    "name": "喧囂禁區",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P2_Head"
+  },
+  "76010103": {
+    "name": "疾風掠翼",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P3_Head"
+  },
+  "76010201": {
+    "name": "臨界束縛",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P1_Cloth"
+  },
+  "76010202": {
+    "name": "中軸燃點",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P2_Cloth"
+  },
+  "76010203": {
+    "name": "危險防線",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P3_Cloth"
+  },
+  "76010301": {
+    "name": "終點狂歡",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P1_Body"
+  },
+  "76010302": {
+    "name": "流光極速",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P2_Body"
+  },
+  "76010303": {
+    "name": "漂移象限",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_SoppoSSR01_P3_Body"
+  },
+  "77010101": {
+    "name": "課後秋意",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P1_Coat"
+  },
+  "77010102": {
+    "name": "青蔥歲月",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P2_Coat"
+  },
+  "77010103": {
+    "name": "摩登叛逆",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P3_Coat"
+  },
+  "77010201": {
+    "name": "隨搭心情",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P1_Cloth"
+  },
+  "77010202": {
+    "name": "校規留白",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P2_Cloth"
+  },
+  "77010203": {
+    "name": "端正姿態",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P3_Cloth"
+  },
+  "77010301": {
+    "name": "漫長階梯",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P1_Body"
+  },
+  "77010302": {
+    "name": "跳動泡泡",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P2_Body"
+  },
+  "77010303": {
+    "name": "反叛足跡",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_MitylSSR01_P3_Body"
+  },
+  "78010101": {
+    "name": "競技王牌",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P1_Cloth"
+  },
+  "78010102": {
+    "name": "泳池波光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P2_Cloth"
+  },
+  "78010103": {
+    "name": "校園清風",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P3_Cloth"
+  },
+  "78010201": {
+    "name": "槓上朝陽",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P1_Hip"
+  },
+  "78010202": {
+    "name": "晨曦時光",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P2_Hip"
+  },
+  "78010203": {
+    "name": "一擲晴空",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P3_Hip"
+  },
+  "78010301": {
+    "name": "清心花季",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P1_Body"
+  },
+  "78010302": {
+    "name": "仿生動力",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P2_Body"
+  },
+  "78010303": {
+    "name": "流轉光陰",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_FaelynnSSR01_P3_Body"
+  },
+  "79010101": {
+    "name": "好了，今天的菜可是兩位廚師長的驕傲之作，讓我們敬她們一杯，也敬克萊妲。歡迎你正式加入艾莫號！",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P1_Coat"
+  },
+  "79010102": {
+    "name": "靜謐淺海",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P2_Coat"
+  },
+  "79010103": {
+    "name": "詭浪迷霧",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P3_Coat"
+  },
+  "79010201": {
+    "name": "淵海掠影",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P1_Cloth"
+  },
+  "79010202": {
+    "name": "皎白流光",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P2_Cloth"
+  },
+  "79010203": {
+    "name": "慵懶浮波",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P3_Cloth"
+  },
+  "79010301": {
+    "name": "凌銳水線",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P1_Body"
+  },
+  "79010302": {
+    "name": "逾距漩渦",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P2_Body"
+  },
+  "79010303": {
+    "name": "戲謔潮幕",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P3_Body"
+  },
+  "79010401": {
+    "name": "隱罪者",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P1_Item_Sundries"
+  },
+  "79010402": {
+    "name": "隱罪者·淵匿",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_KoledaSSR01_P2_Item_Sundries"
   },
   "80111121": {
     "name": "【刀】聚合平衡物",
@@ -41026,5 +45778,41 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "WeaponPart_13_common6_3"
+  },
+  "210150101": {
+    "name": "精密級小型精度元件",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Precision_01_5_1"
+  },
+  "210150201": {
+    "name": "精密級小型出力元件",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Output_01_5_1"
+  },
+  "210150301": {
+    "name": "精密級小型續航元件",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Endurance_01_5_1"
+  },
+  "210150401": {
+    "name": "精密級小型戰術元件",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Tactics_01_5_1"
+  },
+  "210150501": {
+    "name": "精密級小型廣度元件",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Range_01_5_1"
+  },
+  "210150601": {
+    "name": "精密級小型響應元件",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Support_Standardpart_Response_01_5_1"
   }
 }
