@@ -6,6 +6,9 @@ let dataDir;
 let dataFile;
 let configFile;
 const bundledItemMapFile = path.join(__dirname, "itemMap.json");
+const bundledSignatureMapFile = path.join(__dirname, "signatureMap.json");
+const bundledCharacterArtMapFile = path.join(__dirname, "characterArtMap.json");
+const bundledWeaponArtMapFile = path.join(__dirname, "weaponArtMap.json");
 let userItemMapFile;
 
 function initDataPaths() {
@@ -176,6 +179,21 @@ ipcMain.handle("load-records", () => {
 
   const raw = fs.readFileSync(dataFile, "utf-8");
   return JSON.parse(raw).records;
+});
+
+ipcMain.handle("load-signature-map", () => {
+  if (!fs.existsSync(bundledSignatureMapFile)) return {};
+  return JSON.parse(fs.readFileSync(bundledSignatureMapFile, "utf-8"));
+});
+
+ipcMain.handle("load-character-art-map", () => {
+  if (!fs.existsSync(bundledCharacterArtMapFile)) return { roles: {}, wallpapers: {} };
+  return JSON.parse(fs.readFileSync(bundledCharacterArtMapFile, "utf-8"));
+});
+
+ipcMain.handle("load-weapon-art-map", () => {
+  if (!fs.existsSync(bundledWeaponArtMapFile)) return { weapons: {} };
+  return JSON.parse(fs.readFileSync(bundledWeaponArtMapFile, "utf-8"));
 });
 
 ipcMain.handle("save-records", (event, records) => {
@@ -390,16 +408,17 @@ ipcMain.handle("export-manual-template", async () => {
       time: "2025-01-01 12:00:00",
       source: "定向採購",
       type: "人形",
-      name: "角色名稱",
-      rarity: "橙色"
+      name: "維普蕾",
+      rarity: "橙色",
+      pullCount: 65
     },
     {
-      time: "2025-01-01 12:00:00",
+      time: "2025-01-02 12:00:00",
       source: "定向採購",
       type: "人形",
-      name: "角色名稱",
+      name: "M200",
       rarity: "橙色",
-      pullCount: 80
+      pullCount: 70
     }
   ];
 

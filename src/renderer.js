@@ -1,4 +1,7 @@
 let records = [];
+let signatureMap = {};
+let characterArtMap = { roles: {}, wallpapers: {} };
+let weaponArtMap = { weapons: {} };
 let currentRecordPage = 1;
 let currentPoolFilter = "全部";
 const recordsPerPage = 6;
@@ -67,11 +70,11 @@ function sortRecordsByTime() {
 function isOffRateRecord(record) {
   if (record.rarity !== "橙色") return false;
 
-  if (record.source === "定向採購") {
+  if (record.source === "定向採購" || record.source === "自選人形") {
     return permanentTargetCharacters.includes(record.name);
   }
 
-  if (record.source === "軍備提升") {
+  if (record.source === "軍備提升" || record.source === "自選武器") {
     return permanentWeaponNames.includes(record.name);
   }
 
@@ -240,6 +243,7 @@ function normalizeManualRecords(manualRecords) {
         });
         return;
       }
+
     }
 
     validRecords.push({
@@ -300,6 +304,7 @@ async function addRecords(newRecords) {
   renderStats();
   renderSpecialRecords();
   renderOrangeHistory();
+  renderTargetCharacterStats();
   updateStatsDate();
 
   return { addedCount, skippedCount };
@@ -486,6 +491,437 @@ function getEliteRateText(poolStats) {
 
   const rate = ((poolStats.elite / poolStats.total) * 100).toFixed(1);
   return `${poolStats.elite} (${rate}%)`;
+}
+
+function getRecordPullCount(record) {
+  if (record.summaryOnly && Number.isInteger(record.pullCount)) {
+    return record.pullCount;
+  }
+
+  return 1;
+}
+
+function createCharacterStat(name) {
+  return {
+    name,
+    poolIds: new Set(),
+    acquisitionPulls: 0,
+    upCount: 0,
+    offRateCount: 0,
+    offRateDetails: [],
+    upPullDetails: [],
+    firstTime: null,
+    lastTime: null
+  };
+}
+
+function updateCharacterStatDate(stat, time) {
+  if (!time) return;
+
+  if (!stat.firstTime || new Date(time) < new Date(stat.firstTime)) {
+    stat.firstTime = time;
+  }
+
+  if (!stat.lastTime || new Date(time) > new Date(stat.lastTime)) {
+    stat.lastTime = time;
+  }
+}
+
+function getLimitedPoolStats(source) {
+  const targetRecords = getGameRecords(source, "oldToNew");
+  const stats = new Map();
+  let pullsSinceLastUp = 0;
+  let pullsSinceLastOrange = 0;
+  let pendingOffRates = [];
+
+  function getStat(name) {
+    if (!stats.has(name)) {
+      stats.set(name, createCharacterStat(name));
+    }
+
+    return stats.get(name);
+  }
+
+  targetRecords.forEach(record => {
+    const weight = getRecordPullCount(record);
+    pullsSinceLastUp += weight;
+    pullsSinceLastOrange += weight;
+
+    if (record.rarity !== "橙色") {
+      return;
+    }
+
+    const orangePullCount = pullsSinceLastOrange;
+    pullsSinceLastOrange = 0;
+
+    if (isOffRateRecord(record)) {
+      pendingOffRates.push({
+        name: record.name,
+        count: orangePullCount,
+        time: record.time
+      });
+      return;
+    }
+
+    // Every non-permanent orange result is treated as the UP character. All
+    // pulls and off-rate results since the previous UP are assigned here.
+    const stat = getStat(record.name);
+    stat.upCount++;
+    stat.acquisitionPulls += pullsSinceLastUp;
+    stat.upPullDetails.push({
+      count: pullsSinceLastUp,
+      poolId: record.poolId ? String(record.poolId) : "manual",
+      time: record.time
+    });
+    stat.offRateCount += pendingOffRates.length;
+    stat.offRateDetails.push(...pendingOffRates);
+    if (record.poolId) {
+      stat.poolIds.add(String(record.poolId));
+    }
+    updateCharacterStatDate(stat, pendingOffRates[0]?.time || record.time);
+    updateCharacterStatDate(stat, record.time);
+
+    pullsSinceLastUp = 0;
+    pendingOffRates = [];
+  });
+
+  return [...stats.values()].sort((a, b) => {
+    return new Date(b.lastTime || 0) - new Date(a.lastTime || 0);
+  });
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function formatCharacterCopies(upCount) {
+  if (upCount === 0) return "未取得";
+  if (upCount === 1) return "本體（0 椎）";
+  return `本體 + ${upCount - 1} 椎`;
+}
+
+function formatWeaponTuning(upCount) {
+  if (upCount === 0) return "專武未取得";
+
+  const level = Math.min(upCount, 6);
+  const overflow = Math.max(upCount - 6, 0);
+
+  return overflow > 0
+    ? `調校 ${level} 等（溢出 ${overflow} 把）`
+    : `調校 ${level} 等`;
+}
+
+function getSelectedPoolStats(source) {
+  const sourceRecords = getGameRecords(source, "oldToNew");
+  const recordsByPool = new Map();
+
+  sourceRecords.forEach(record => {
+    const poolId = String(record.poolId || "manual");
+    if (!recordsByPool.has(poolId)) recordsByPool.set(poolId, []);
+    recordsByPool.get(poolId).push(record);
+  });
+
+  const stats = new Map();
+
+  function getStat(name) {
+    if (!stats.has(name)) stats.set(name, createCharacterStat(name));
+    return stats.get(name);
+  }
+
+  for (const [poolId, poolRecords] of recordsByPool.entries()) {
+    let pullsSinceLastUp = 0;
+    let pullsSinceLastOrange = 0;
+    let pendingOffRates = [];
+
+    poolRecords.forEach(record => {
+      const weight = getRecordPullCount(record);
+      pullsSinceLastUp += weight;
+      pullsSinceLastOrange += weight;
+
+      if (record.rarity !== "橙色") return;
+
+      const orangePullCount = pullsSinceLastOrange;
+      pullsSinceLastOrange = 0;
+
+      if (isOffRateRecord(record)) {
+        pendingOffRates.push({
+          name: record.name,
+          count: orangePullCount,
+          time: record.time
+        });
+        return;
+      }
+
+      const stat = getStat(record.name);
+      stat.poolIds.add(poolId);
+      stat.upCount++;
+      stat.acquisitionPulls += pullsSinceLastUp;
+      stat.upPullDetails.push({
+        count: pullsSinceLastUp,
+        poolId,
+        time: record.time
+      });
+      stat.offRateCount += pendingOffRates.length;
+      stat.offRateDetails.push(...pendingOffRates);
+      updateCharacterStatDate(stat, pendingOffRates[0]?.time || record.time);
+      updateCharacterStatDate(stat, record.time);
+
+      pullsSinceLastUp = 0;
+      pendingOffRates = [];
+    });
+  }
+
+  return [...stats.values()].sort((a, b) => {
+    return new Date(b.lastTime || 0) - new Date(a.lastTime || 0);
+  });
+}
+
+function renderCharacterStatCards(containerId, characterStats, emptyText, itemKind = "character") {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  if (characterStats.length === 0) {
+    container.innerHTML = `<p class="character-stats-empty">${escapeHtml(emptyText)}</p>`;
+    return;
+  }
+
+  container.innerHTML = characterStats.map(stat => {
+    const periodCount = stat.poolIds.size || 1;
+    const dateText = stat.firstTime && stat.lastTime
+      ? `${getDateOnly(stat.firstTime)}～${getDateOnly(stat.lastTime)}`
+      : "日期未知";
+    const totalSpent = stat.acquisitionPulls;
+    const progressionLabel = itemKind === "weapon" ? "武器／調校" : "人形／椎體";
+    const progressionText = itemKind === "weapon"
+      ? formatWeaponTuning(stat.upCount)
+      : formatCharacterCopies(stat.upCount);
+    const artPath = itemKind === "character"
+      ? characterArtMap.roles?.[stat.name]?.illustration
+      : weaponArtMap.weapons?.[stat.name];
+    const artClass = itemKind === "weapon" ? "weapon-card-art" : "character-card-art";
+    const cardArtClass = itemKind === "weapon" ? "has-weapon-art" : "has-character-art";
+    const artHtml = artPath
+      ? `<img class="${artClass}" src="${escapeHtml(artPath)}" alt="" loading="lazy">`
+      : "";
+    const offRateHtml = stat.offRateDetails.length > 0
+      ? stat.offRateDetails.map(item => `
+          <li>
+            <span>${escapeHtml(item.name)}</span>
+            <strong>${item.count} 抽</strong>
+          </li>
+        `).join("")
+      : `<li class="off-rate-empty">沒有歪角</li>`;
+    const efficiency = getStatEfficiency(stat);
+
+    return `
+      <article class="character-stat-card ${artPath ? cardArtClass : ""}">
+        ${artHtml}
+        <div class="character-card-content">
+          <h3>${escapeHtml(stat.name)}</h3>
+          <p class="character-stat-meta">${periodCount} 期卡池｜${dateText}</p>
+          <div class="stat-row">
+            <span class="stat-label">總抽數</span>
+            <span class="stat-value character-stat-highlight">${totalSpent} 抽</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">${progressionLabel}</span>
+            <span class="stat-value">${progressionText}</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">歪角次數</span>
+            <span class="stat-value">${stat.offRateCount} 次</span>
+          </div>
+          ${renderCardEfficiency(
+            efficiency,
+            itemKind === "weapon" ? "單武器抽卡統計" : "單角色抽卡統計"
+          )}
+          <div class="off-rate-breakdown">
+            <div class="off-rate-breakdown-title">歪角紀錄</div>
+            <ul>${offRateHtml}</ul>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderTargetCharacterStats() {
+  renderCharacterStatCards(
+    "targetCharacterStats",
+    getLimitedPoolStats("定向採購"),
+    "尚無已完成的定向採購 UP 紀錄；目前墊抽會等下一位 UP 出貨後再歸入。"
+  );
+  renderCharacterStatCards(
+    "weaponTargetStats",
+    getLimitedPoolStats("軍備提升"),
+    "尚無已完成的軍備提升 UP 紀錄；目前墊抽會等下一把 UP 武器出貨後再歸入。",
+    "weapon"
+  );
+  renderCharacterStatCards(
+    "selectCharacterStats",
+    getSelectedPoolStats("自選人形"),
+    "尚未取得自選人形橙色；目前抽數會先保留為墊抽。"
+  );
+  renderCharacterStatCards(
+    "selectWeaponCharacterStats",
+    getSelectedPoolStats("自選武器"),
+    "尚未取得自選武器橙色；目前抽數會先保留為墊抽。",
+    "weapon"
+  );
+
+  renderCombinedLoadoutStats();
+}
+
+function mergeProgressStats(...statGroups) {
+  const merged = new Map();
+
+  statGroups.flat().forEach(stat => {
+    if (!merged.has(stat.name)) merged.set(stat.name, createCharacterStat(stat.name));
+    const target = merged.get(stat.name);
+
+    stat.poolIds.forEach(poolId => target.poolIds.add(poolId));
+    target.acquisitionPulls += stat.acquisitionPulls;
+    target.upCount += stat.upCount;
+    target.offRateCount += stat.offRateCount;
+    target.offRateDetails.push(...stat.offRateDetails);
+    target.upPullDetails.push(...stat.upPullDetails);
+    updateCharacterStatDate(target, stat.firstTime);
+    updateCharacterStatDate(target, stat.lastTime);
+  });
+
+  return [...merged.values()];
+}
+
+function getCombinedLoadoutStats() {
+  const characterStats = mergeProgressStats(
+    getLimitedPoolStats("定向採購"),
+    getSelectedPoolStats("自選人形")
+  );
+  const weaponStats = mergeProgressStats(
+    getLimitedPoolStats("軍備提升"),
+    getSelectedPoolStats("自選武器")
+  );
+  const weaponByName = new Map(weaponStats.map(stat => [stat.name, stat]));
+
+  return characterStats.map(character => {
+    const signatureName = signatureMap[character.name];
+    if (!signatureName) return null;
+
+    const signature = weaponByName.get(signatureName) || null;
+    const characterPulls = [...character.upPullDetails]
+      .sort((a, b) => new Date(a.time) - new Date(b.time));
+    const signaturePulls = [...(signature?.upPullDetails || [])]
+      .sort((a, b) => new Date(a.time) - new Date(b.time));
+    const completed = characterPulls.length >= 7 && signaturePulls.length >= 1;
+    const sixPlusSixCompleted = characterPulls.length >= 7 && signaturePulls.length >= 6;
+    const characterSixPulls = characterPulls.slice(0, 7)
+      .reduce((sum, detail) => sum + detail.count, 0);
+    const sixPlusOnePulls = characterSixPulls + (signaturePulls[0]?.count || 0);
+    const sixPlusSixPulls = characterSixPulls + signaturePulls.slice(0, 6)
+      .reduce((sum, detail) => sum + detail.count, 0);
+
+    return {
+      character,
+      signature,
+      signatureName,
+      completed,
+      sixPlusOnePulls,
+      sixPlusSixCompleted,
+      sixPlusSixPulls,
+      currentTotalPulls: character.acquisitionPulls + (signature?.acquisitionPulls || 0)
+    };
+  }).filter(Boolean)
+    .sort((a, b) => new Date(b.character.lastTime || 0) - new Date(a.character.lastTime || 0));
+}
+
+function renderCombinedLoadoutStats() {
+  const container = document.getElementById("combinedLoadoutStats");
+  if (!container) return;
+
+  const combinedStats = getCombinedLoadoutStats();
+  if (combinedStats.length === 0) {
+    container.innerHTML = `<p class="character-stats-empty">尚無可配對的人形與專武紀錄。</p>`;
+    return;
+  }
+
+  container.innerHTML = combinedStats.map(item => {
+    const character = item.character;
+    const currentConeLevel = Math.max(character.upCount - 1, 0);
+    const currentTuningLevel = Math.min(item.signature?.upCount || 0, 6);
+    const currentProgressLabel = `${currentConeLevel}＋${currentTuningLevel}`;
+    const efficiency = getStatEfficiency({
+      acquisitionPulls: item.currentTotalPulls,
+      upCount: character.upCount + (item.signature?.upCount || 0),
+      offRateCount: character.offRateCount + (item.signature?.offRateCount || 0)
+    });
+    const artPath = characterArtMap.roles?.[character.name]?.display;
+    const artHtml = artPath
+      ? `<img class="loadout-character-art" src="${escapeHtml(artPath)}" alt="" loading="lazy">`
+      : "";
+    const weaponArtPath = weaponArtMap.weapons?.[item.signatureName];
+    const weaponArtHtml = weaponArtPath
+      ? `<img class="signature-weapon-art" src="${escapeHtml(weaponArtPath)}" alt="" loading="lazy">`
+      : "";
+
+    return `
+      <article class="character-stat-card combined-stat-card ${item.completed ? "is-complete" : "is-pending"}">
+        <div class="loadout-card-header">
+          ${artHtml}
+          <div class="loadout-identity">
+            <span class="loadout-code">ELMO // LOADOUT</span>
+            <h3>${escapeHtml(character.name)}</h3>
+            <p class="character-stat-meta">專武：${escapeHtml(item.signatureName)}</p>
+          </div>
+          <span class="loadout-status">${item.completed ? "6＋1 COMPLETE" : "IN PROGRESS"}</span>
+        </div>
+        <div class="combined-columns">
+          <div class="combined-column combined-goal-column">
+            <span class="combined-column-title">${currentProgressLabel} 總抽數</span>
+            <strong class="combined-primary-value character-stat-highlight">${item.currentTotalPulls} 抽</strong>
+          </div>
+          <div class="combined-column combined-progress-column ${weaponArtPath ? "has-signature-art" : ""}">
+            ${weaponArtHtml}
+            <span class="combined-column-title">目前總進度</span>
+            <strong>${formatCharacterCopies(character.upCount)}</strong>
+            <span>${formatWeaponTuning(item.signature?.upCount || 0)}</span>
+          </div>
+        </div>
+        ${renderCardEfficiency(efficiency, "人形＋專武抽卡統計")}
+      </article>
+    `;
+  }).join("");
+}
+
+function getStatEfficiency(stat) {
+  const pulls = stat?.acquisitionPulls || 0;
+  const up = stat?.upCount || 0;
+  const off = stat?.offRateCount || 0;
+  const orange = up + off;
+
+  return {
+    rate: pulls > 0 && orange > 0 ? `${((orange / pulls) * 100).toFixed(1)}%` : "-",
+    average: orange > 0 ? `${(pulls / orange).toFixed(1)} 抽` : "-",
+    upRate: orange > 0 ? `${((up / orange) * 100).toFixed(1)}%` : "-",
+    detail: orange > 0 ? `${orange} 橙｜${up} UP／${off} 歪` : "尚無完整出貨紀錄"
+  };
+}
+
+function renderCardEfficiency(stat, title) {
+  return `
+    <div class="card-efficiency">
+      <div class="card-efficiency-heading"><span>${title}</span><small>${stat.detail}</small></div>
+      <div class="card-efficiency-metrics">
+        <div><span>出橙機率</span><strong>${stat.rate}</strong></div>
+        <div><span>平均抽數</span><strong>${stat.average}</strong></div>
+        <div><span>UP 率</span><strong>${stat.upRate}</strong></div>
+      </div>
+    </div>
+  `;
 }
 
 function getOrangeHistory(poolName) {
@@ -685,6 +1121,23 @@ function renderStats() {
 
 
   const standardEliteTypeStats = getStandardEliteTypeStats();
+  const overallTotal = records.reduce((sum, record) => sum + getRecordPullCount(record), 0);
+  const overallOrange = records.filter(record => record.rarity === "橙色").length;
+  const overallUp = targetUpStats.upCount + weaponUpStats.upCount + selectCharUpStats.upCount + selectWeaponUpStats.upCount;
+  const overallOff = targetUpStats.offRateCount + weaponUpStats.offRateCount + selectCharUpStats.offRateCount + selectWeaponUpStats.offRateCount;
+  const overallLimitedOrange = overallUp + overallOff;
+
+  document.getElementById("overallTotal").textContent = overallTotal.toLocaleString();
+  document.getElementById("overallOrange").textContent = overallOrange.toLocaleString();
+  document.getElementById("overallAverage").textContent = overallOrange > 0
+    ? `${(overallTotal / overallOrange).toFixed(1)} 抽`
+    : "-";
+  document.getElementById("overallUpRate").textContent = overallLimitedOrange > 0
+    ? `${((overallUp / overallLimitedOrange) * 100).toFixed(1)}%`
+    : "-";
+  document.getElementById("overallUpDetail").textContent = overallLimitedOrange > 0
+    ? `${overallUp} UP／${overallOff} 歪`
+    : "尚無資料";
 
   document.getElementById("targetTotal").textContent = `${target.total} 抽`;
   document.getElementById("targetOrange").textContent = getEliteRateText(target);
@@ -760,15 +1213,26 @@ function renderStats() {
 function renderOrangeHistoryBlock(elementId, poolName) {
   const container = document.getElementById(elementId);
   const result = getOrangeHistory(poolName);
+  const poolStats = getPoolStats(poolName);
+  const advancedStats = getAdvancedStats(poolName);
+  const upStats = getUpRateStats(poolName);
+  const isStandardPool = poolName === "常規採購";
 
   container.innerHTML = "";
 
   const summary = document.createElement("div");
-  summary.style.marginBottom = "12px";
+  summary.className = "history-summary";
   summary.innerHTML = `
-    <p>菁英數：${result.history.length}</p>
-    <p>目前墊池：${result.currentPity}</p>
-    <hr>
+    <div class="history-summary-primary">
+      <span>目前墊抽</span>
+      <strong>${result.currentPity}<small> 抽</small></strong>
+    </div>
+    <div class="history-summary-metrics">
+      <div><span>總抽數</span><strong>${poolStats.total.toLocaleString()}</strong></div>
+      <div><span>菁英機率</span><strong>${poolStats.total ? ((poolStats.elite / poolStats.total) * 100).toFixed(1) + "%" : "-"}</strong><small>${poolStats.elite} 位菁英</small></div>
+      <div><span>平均出橙</span><strong>${advancedStats.average === "-" ? "-" : advancedStats.average + " 抽"}</strong><small>不含目前墊抽</small></div>
+      <div><span>UP 率</span><strong>${isStandardPool ? "不適用" : upStats.upRate}</strong><small>${isStandardPool ? "常駐池無 UP" : `${upStats.upCount} UP／${upStats.offRateCount} 歪`}</small></div>
+    </div>
   `;
   container.appendChild(summary);
 
@@ -808,7 +1272,7 @@ function renderOrangeHistoryBlock(elementId, poolName) {
 
     div.innerHTML = `
       <span class="timeline-pulls">${item.count} 抽</span>
-      <span class="timeline-name">${item.name}</span>
+      <span class="timeline-name">${escapeHtml(item.name)}</span>
       ${offRateText}
       <span class="timeline-time">${item.time}</span>
     `;
@@ -848,6 +1312,33 @@ function getMaxConsecutiveUp(poolName) {
     } else {
       current++;
       max = Math.max(max, current);
+    }
+  });
+
+  return max;
+}
+
+function getMaxConsecutiveOffRate(poolName) {
+  const eliteRecords = getGameRecords(poolName, "oldToNew").filter(record => {
+    return record.rarity === "橙色";
+  });
+
+  let current = 0;
+  let max = 0;
+  let guaranteed = false;
+
+  eliteRecords.forEach(record => {
+    if (isOffRateRecord(record)) {
+      current++;
+      max = Math.max(max, current);
+      guaranteed = true;
+    } else if (guaranteed) {
+      // This UP is the guaranteed result after losing the previous 50/50.
+      // It does not end the consecutive small-pity loss streak.
+      guaranteed = false;
+    } else {
+      // Winning an UP on small pity ends the loss streak.
+      current = 0;
     }
   });
 
@@ -920,6 +1411,10 @@ function renderSpecialRecords() {
   const weaponMaxUpStreak = getMaxConsecutiveUp("軍備提升");
   const selectCharMaxUpStreak = getMaxConsecutiveUp("自選人形");
   const selectWeaponMaxUpStreak = getMaxConsecutiveUp("自選武器");
+  const targetMaxOffStreak = getMaxConsecutiveOffRate("定向採購");
+  const weaponMaxOffStreak = getMaxConsecutiveOffRate("軍備提升");
+  const selectCharMaxOffStreak = getMaxConsecutiveOffRate("自選人形");
+  const selectWeaponMaxOffStreak = getMaxConsecutiveOffRate("自選武器");
 
   const targetMaxEliteBatch = getMaxEliteInBatch("定向採購");
   const weaponMaxEliteBatch = getMaxEliteInBatch("軍備提升");
@@ -932,6 +1427,12 @@ function renderSpecialRecords() {
 
   document.getElementById("weaponMaxUpStreak").textContent =
     weaponMaxUpStreak > 0 ? `${weaponMaxUpStreak} 次` : "-";
+
+  document.getElementById("targetMaxOffStreak").textContent =
+    targetMaxOffStreak > 0 ? `${targetMaxOffStreak} 次` : "-";
+
+  document.getElementById("weaponMaxOffStreak").textContent =
+    weaponMaxOffStreak > 0 ? `${weaponMaxOffStreak} 次` : "-";
 
   document.getElementById("targetMaxEliteBatch").innerHTML =
     formatEliteBatch(targetMaxEliteBatch);
@@ -948,14 +1449,70 @@ function renderSpecialRecords() {
   document.getElementById("selectWeaponMaxUpStreak").textContent =
     selectWeaponMaxUpStreak > 0 ? `${selectWeaponMaxUpStreak} 次` : "-";
 
+  document.getElementById("selectCharMaxOffStreak").textContent =
+    selectCharMaxOffStreak > 0 ? `${selectCharMaxOffStreak} 次` : "-";
+
+  document.getElementById("selectWeaponMaxOffStreak").textContent =
+    selectWeaponMaxOffStreak > 0 ? `${selectWeaponMaxOffStreak} 次` : "-";
+
   document.getElementById("selectCharMaxEliteBatch").innerHTML =
     formatEliteBatch(selectCharMaxEliteBatch);
 
   document.getElementById("selectWeaponMaxEliteBatch").innerHTML =
     formatEliteBatch(selectWeaponMaxEliteBatch);
+
+  renderMilestoneRecords();
+}
+
+function formatMilestoneRecord(item, pullKey) {
+  if (!item) return "尚無完成紀錄";
+  return `${item.character.name}＋${item.signatureName}　${item[pullKey]} 抽`;
+}
+
+function renderMilestoneRecords() {
+  const combinedStats = getCombinedLoadoutStats();
+  const sixPlusOne = combinedStats
+    .filter(item => item.completed)
+    .sort((a, b) => a.sixPlusOnePulls - b.sixPlusOnePulls);
+  const sixPlusSix = combinedStats
+    .filter(item => item.sixPlusSixCompleted)
+    .sort((a, b) => a.sixPlusSixPulls - b.sixPlusSixPulls);
+
+  document.getElementById("bestSixPlusOne").textContent =
+    formatMilestoneRecord(sixPlusOne[0], "sixPlusOnePulls");
+  document.getElementById("worstSixPlusOne").textContent =
+    formatMilestoneRecord(sixPlusOne.at(-1), "sixPlusOnePulls");
+  document.getElementById("bestSixPlusSix").textContent =
+    formatMilestoneRecord(sixPlusSix[0], "sixPlusSixPulls");
+  document.getElementById("worstSixPlusSix").textContent =
+    formatMilestoneRecord(sixPlusSix.at(-1), "sixPlusSixPulls");
 }
 async function loadRecords() {
-  records = await window.gf2API.loadRecords();
+  const signatureMapPromise = typeof window.gf2API.loadSignatureMap === "function"
+    ? window.gf2API.loadSignatureMap().catch(error => {
+        console.error("讀取專武對照表失敗：", error);
+        return {};
+      })
+    : Promise.resolve({});
+  const characterArtMapPromise = typeof window.gf2API.loadCharacterArtMap === "function"
+    ? window.gf2API.loadCharacterArtMap().catch(error => {
+        console.error("讀取角色美術對照表失敗：", error);
+        return { roles: {}, wallpapers: {} };
+      })
+    : Promise.resolve({ roles: {}, wallpapers: {} });
+  const weaponArtMapPromise = typeof window.gf2API.loadWeaponArtMap === "function"
+    ? window.gf2API.loadWeaponArtMap().catch(error => {
+        console.error("讀取專武美術對照表失敗：", error);
+        return { weapons: {} };
+      })
+    : Promise.resolve({ weapons: {} });
+
+  [records, signatureMap, characterArtMap, weaponArtMap] = await Promise.all([
+    window.gf2API.loadRecords(),
+    signatureMapPromise,
+    characterArtMapPromise,
+    weaponArtMapPromise
+  ]);
   normalizeRecordIds();
   sortRecordsByTime();
   await window.gf2API.saveRecords(records);
@@ -964,6 +1521,7 @@ async function loadRecords() {
   renderStats();
   renderSpecialRecords();
   renderOrangeHistory();
+  renderTargetCharacterStats();
   updateStatsDate();
 }
 
@@ -1153,6 +1711,7 @@ document.getElementById("clearBtn").addEventListener("click", async () => {
   renderStats();
   renderSpecialRecords();
   renderOrangeHistory();
+  renderTargetCharacterStats();
   updateStatsDate();
 
   alert("已清除全部紀錄");
@@ -1453,6 +2012,77 @@ function initCardScroll() {
   });
 }
 
+function initAppNavigation() {
+  const pageMeta = {
+    overviewPage: ["統計總覽", "帳號整體招募狀況與各卡池表現"],
+    specialPage: ["特殊紀錄", "值得分享的卡池運氣與養成成本紀錄"],
+    historyPage: ["招募歷史", "依卡池檢視橙色出貨時間軸"],
+    progressPage: ["UP 抽卡分析", "人形、武器與專武組合的個別統計"],
+    recordsPage: ["抽卡紀錄", "瀏覽與篩選完整招募資料"]
+  };
+
+  document.querySelectorAll("[data-page-target]").forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.pageTarget;
+      document.querySelectorAll("[data-page-target]").forEach(item => {
+        item.classList.toggle("active", item === button);
+      });
+      document.querySelectorAll(".page-section").forEach(section => {
+        section.classList.toggle("active", section.id === targetId);
+      });
+
+      const [title, subtitle] = pageMeta[targetId];
+      document.getElementById("pageTitle").textContent = title;
+      document.getElementById("pageSubtitle").textContent = subtitle;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+}
+
+function initPanelTabs(buttonSelector, panelSelector, dataKey) {
+  document.querySelectorAll(buttonSelector).forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.dataset[dataKey];
+      document.querySelectorAll(buttonSelector).forEach(item => {
+        item.classList.toggle("active", item === button);
+      });
+      document.querySelectorAll(panelSelector).forEach(panel => {
+        panel.classList.toggle("active", panel.id === targetId);
+      });
+    });
+  });
+}
+
+function initLayoutControls() {
+  initAppNavigation();
+  initPanelTabs("[data-history-target]", ".history-panel", "historyTarget");
+  initPanelTabs("[data-progress-target]", ".progress-panel", "progressTarget");
+  initDropdownMenus();
+}
+
+function initDropdownMenus() {
+  const dropdowns = [...document.querySelectorAll(".dropdown")];
+
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector(".dropdown-btn");
+    trigger?.addEventListener("click", event => {
+      event.stopPropagation();
+      const willOpen = !dropdown.classList.contains("open");
+      dropdowns.forEach(item => item.classList.remove("open"));
+      dropdown.classList.toggle("open", willOpen);
+    });
+
+    dropdown.querySelectorAll(".dropdown-content button").forEach(item => {
+      item.addEventListener("click", () => dropdown.classList.remove("open"));
+    });
+  });
+
+  document.addEventListener("click", () => {
+    dropdowns.forEach(dropdown => dropdown.classList.remove("open"));
+  });
+}
+
+initLayoutControls();
 initCardScroll();
 loadRecords();
 loadConfigToUI();

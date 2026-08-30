@@ -2,6 +2,9 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("gf2API", {
   loadRecords: () => ipcRenderer.invoke("load-records"),
+  loadSignatureMap: () => ipcRenderer.invoke("load-signature-map"),
+  loadCharacterArtMap: () => ipcRenderer.invoke("load-character-art-map"),
+  loadWeaponArtMap: () => ipcRenderer.invoke("load-weapon-art-map"),
   saveRecords: (records) => ipcRenderer.invoke("save-records", records),
   exportRecords: () => ipcRenderer.invoke("export-records"),
   importRecords: () => ipcRenderer.invoke("import-records"),

@@ -1,6 +1,6 @@
 {
   "name": "gf2-gacha-tool",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "少女前線2：追放 抽卡統計工具",
   "main": "main.js",
   "author": "LiaoSAM",
@@ -26,6 +26,9 @@
       "main.js",
       "preload.js",
       "itemMap.json",
+      "signatureMap.json",
+      "characterArtMap.json",
+      "weaponArtMap.json",
       "package.json",
       "src/**/*",
       "assets/**/*"

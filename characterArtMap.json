@@ -1,0 +1,278 @@
+{
+  "source": "https://gf2.pde.tw/roleinfo/?role=55",
+  "generatedAt": "2026-08-30T12:32:22.631Z",
+  "roles": {
+    "伊格蕾塔": {
+      "illustration": "../assets/roles/illustrations/cn-1081.webp",
+      "display": "../assets/roles/displays/cn-1081.webp",
+      "officialId": 1081
+    },
+    "阿斯緹亞": {
+      "illustration": "../assets/roles/illustrations/cn-1080.webp",
+      "display": "../assets/roles/displays/cn-1080.webp",
+      "officialId": 1080
+    },
+    "克萊妲": {
+      "illustration": "../assets/roles/illustrations/cn-1079.webp",
+      "display": "../assets/roles/displays/cn-1079.webp",
+      "officialId": 1079
+    },
+    "芙鈴": {
+      "illustration": "../assets/roles/illustrations/cn-1078.webp",
+      "display": "../assets/roles/displays/cn-1078.webp",
+      "officialId": 1078
+    },
+    "維爾德": {
+      "illustration": "../assets/roles/illustrations/cn-1063.webp",
+      "display": "../assets/roles/displays/cn-1063.webp",
+      "officialId": 1063
+    },
+    "索米": {
+      "illustration": "../assets/roles/illustrations/000.webp",
+      "display": "../assets/roles/displays/000.webp"
+    },
+    "烏爾麗德": {
+      "illustration": "../assets/roles/illustrations/001.webp",
+      "display": "../assets/roles/displays/001.webp"
+    },
+    "洛塔": {
+      "illustration": "../assets/roles/illustrations/002.webp",
+      "display": "../assets/roles/displays/002.webp"
+    },
+    "閃電": {
+      "illustration": "../assets/roles/illustrations/003.webp",
+      "display": "../assets/roles/displays/003.webp"
+    },
+    "納美西絲": {
+      "illustration": "../assets/roles/illustrations/004.webp",
+      "display": "../assets/roles/displays/004.webp"
+    },
+    "克羅麗科": {
+      "illustration": "../assets/roles/illustrations/005.webp",
+      "display": "../assets/roles/displays/005.webp"
+    },
+    "寇爾芙": {
+      "illustration": "../assets/roles/illustrations/006.webp",
+      "display": "../assets/roles/displays/006.webp"
+    },
+    "佩里緹亞": {
+      "illustration": "../assets/roles/illustrations/007.webp",
+      "display": "../assets/roles/displays/007.webp"
+    },
+    "維普蕾": {
+      "illustration": "../assets/roles/illustrations/008.webp",
+      "display": "../assets/roles/displays/008.webp"
+    },
+    "托洛洛": {
+      "illustration": "../assets/roles/illustrations/009.webp",
+      "display": "../assets/roles/displays/009.webp"
+    },
+    "瓊玖": {
+      "illustration": "../assets/roles/illustrations/010.webp",
+      "display": "../assets/roles/displays/010.webp"
+    },
+    "塞布麗娜": {
+      "illustration": "../assets/roles/illustrations/011.webp",
+      "display": "../assets/roles/displays/011.webp"
+    },
+    "夏克里": {
+      "illustration": "../assets/roles/illustrations/012.webp",
+      "display": "../assets/roles/displays/012.webp"
+    },
+    "奇塔": {
+      "illustration": "../assets/roles/illustrations/013.webp",
+      "display": "../assets/roles/displays/013.webp"
+    },
+    "納甘": {
+      "illustration": "../assets/roles/illustrations/014.webp",
+      "display": "../assets/roles/displays/014.webp"
+    },
+    "莫辛納甘": {
+      "illustration": "../assets/roles/illustrations/015.webp",
+      "display": "../assets/roles/displays/015.webp"
+    },
+    "莉塔拉": {
+      "illustration": "../assets/roles/illustrations/016.webp",
+      "display": "../assets/roles/displays/016.webp"
+    },
+    "瑪綺朵": {
+      "illustration": "../assets/roles/illustrations/017.webp",
+      "display": "../assets/roles/displays/017.webp"
+    },
+    "波波沙": {
+      "illustration": "../assets/roles/illustrations/018.webp",
+      "display": "../assets/roles/displays/018.webp"
+    },
+    "黛煙": {
+      "illustration": "../assets/roles/illustrations/019.webp",
+      "display": "../assets/roles/displays/019.webp"
+    },
+    "杜莎妮": {
+      "illustration": "../assets/roles/illustrations/020.webp",
+      "display": "../assets/roles/displays/020.webp"
+    },
+    "科謝尼婭": {
+      "illustration": "../assets/roles/illustrations/021.webp",
+      "display": "../assets/roles/displays/021.webp"
+    },
+    "桑朵萊希": {
+      "illustration": "../assets/roles/illustrations/022.webp",
+      "display": "../assets/roles/displays/022.webp"
+    },
+    "可露凱": {
+      "illustration": "../assets/roles/illustrations/023.webp",
+      "display": "../assets/roles/displays/023.webp"
+    },
+    "米什緹": {
+      "illustration": "../assets/roles/illustrations/024.webp",
+      "display": "../assets/roles/displays/024.webp"
+    },
+    "維克托": {
+      "illustration": "../assets/roles/illustrations/025.webp",
+      "display": "../assets/roles/displays/025.webp"
+    },
+    "幼熙": {
+      "illustration": "../assets/roles/illustrations/026.webp",
+      "display": "../assets/roles/displays/026.webp"
+    },
+    "朝暉": {
+      "illustration": "../assets/roles/illustrations/027.webp",
+      "display": "../assets/roles/displays/027.webp"
+    },
+    "春田": {
+      "illustration": "../assets/roles/illustrations/028.webp",
+      "display": "../assets/roles/displays/028.webp"
+    },
+    "佩莉": {
+      "illustration": "../assets/roles/illustrations/029.webp",
+      "display": "../assets/roles/displays/029.webp"
+    },
+    "緋": {
+      "illustration": "../assets/roles/illustrations/030.webp",
+      "display": "../assets/roles/displays/030.webp"
+    },
+    "秋樺": {
+      "illustration": "../assets/roles/illustrations/031.webp",
+      "display": "../assets/roles/displays/031.webp"
+    },
+    "妮基塔": {
+      "illustration": "../assets/roles/illustrations/032.webp",
+      "display": "../assets/roles/displays/032.webp"
+    },
+    "安朵絲": {
+      "illustration": "../assets/roles/illustrations/033.webp",
+      "display": "../assets/roles/displays/033.webp"
+    },
+    "比悠卡": {
+      "illustration": "../assets/roles/illustrations/034.webp",
+      "display": "../assets/roles/displays/034.webp"
+    },
+    "絳雨": {
+      "illustration": "../assets/roles/illustrations/035.webp",
+      "display": "../assets/roles/displays/035.webp"
+    },
+    "芙洛倫": {
+      "illustration": "../assets/roles/illustrations/036.webp",
+      "display": "../assets/roles/displays/036.webp"
+    },
+    "琳德": {
+      "illustration": "../assets/roles/illustrations/037.webp",
+      "display": "../assets/roles/displays/037.webp"
+    },
+    "萊婭": {
+      "illustration": "../assets/roles/illustrations/038.webp",
+      "display": "../assets/roles/displays/038.webp"
+    },
+    "萊娜": {
+      "illustration": "../assets/roles/illustrations/039.webp",
+      "display": "../assets/roles/displays/039.webp"
+    },
+    "洛貝拉": {
+      "illustration": "../assets/roles/illustrations/040.webp",
+      "display": "../assets/roles/displays/040.webp"
+    },
+    "路易士": {
+      "illustration": "../assets/roles/illustrations/041.webp",
+      "display": "../assets/roles/displays/041.webp"
+    },
+    "櫻花": {
+      "illustration": "../assets/roles/illustrations/042.webp",
+      "display": "../assets/roles/displays/042.webp"
+    },
+    "埃芙": {
+      "illustration": "../assets/roles/illustrations/043.webp",
+      "display": "../assets/roles/displays/043.webp"
+    },
+    "巴希達": {
+      "illustration": "../assets/roles/illustrations/044.webp",
+      "display": "../assets/roles/displays/044.webp"
+    },
+    "威瑪西娜": {
+      "illustration": "../assets/roles/illustrations/045.webp",
+      "display": "../assets/roles/displays/045.webp"
+    },
+    "萊妮": {
+      "illustration": "../assets/roles/illustrations/046.webp",
+      "display": "../assets/roles/displays/046.webp"
+    },
+    "海倫": {
+      "illustration": "../assets/roles/illustrations/047.webp",
+      "display": "../assets/roles/displays/047.webp"
+    },
+    "翡圖薩": {
+      "illustration": "../assets/roles/illustrations/048.webp",
+      "display": "../assets/roles/displays/048.webp"
+    },
+    "貝絲蒂": {
+      "illustration": "../assets/roles/illustrations/049.webp",
+      "display": "../assets/roles/displays/049.webp"
+    },
+    "羅蕾萊": {
+      "illustration": "../assets/roles/illustrations/050.webp",
+      "display": "../assets/roles/displays/050.webp"
+    },
+    "哈卜茜": {
+      "illustration": "../assets/roles/illustrations/051.webp",
+      "display": "../assets/roles/displays/051.webp"
+    },
+    "劉蒔": {
+      "illustration": "../assets/roles/illustrations/052.webp",
+      "display": "../assets/roles/displays/052.webp"
+    },
+    "夏安": {
+      "illustration": "../assets/roles/illustrations/053.webp",
+      "display": "../assets/roles/displays/053.webp"
+    },
+    "六分儀": {
+      "illustration": "../assets/roles/illustrations/054.webp",
+      "display": "../assets/roles/displays/054.webp"
+    },
+    "OTs-14": {
+      "illustration": "../assets/roles/illustrations/055.webp",
+      "display": "../assets/roles/displays/055.webp"
+    },
+    "納美西絲·衍光": {
+      "illustration": "../assets/roles/illustrations/056.webp",
+      "display": "../assets/roles/displays/056.webp"
+    },
+    "米蒂爾": {
+      "illustration": "../assets/roles/illustrations/manual-mityl.webp",
+      "display": "../assets/roles/displays/manual-mityl.webp"
+    },
+    "索普": {
+      "illustration": "../assets/roles/illustrations/manual-soppo.webp",
+      "display": "../assets/roles/displays/manual-soppo.webp"
+    }
+  },
+  "wallpapers": {
+    "roleBackground": "../assets/roles/wallpapers/roleBackground.webp",
+    "illustrationBackground": "../assets/roles/wallpapers/illustrationBackground.webp",
+    "allRolesBackground": "../assets/roles/wallpapers/allRolesBackground.webp",
+    "allRolesPanel": "../assets/roles/wallpapers/allRolesPanel.webp",
+    "roleDescriptionBackground": "../assets/roles/wallpapers/roleDescriptionBackground.webp"
+  },
+  "sources": [
+    "https://gf2.pde.tw/roleinfo/?role=55",
+    "https://gf2.sunborngame.com/main/roleInfo?id=1081"
+  ]
+}
