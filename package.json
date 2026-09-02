@@ -29,6 +29,7 @@
       "signatureMap.json",
       "characterArtMap.json",
       "weaponArtMap.json",
+      "outfitPoolMap.json",
       "package.json",
       "src/**/*",
       "assets/**/*"
