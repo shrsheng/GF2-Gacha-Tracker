@@ -18,6 +18,7 @@
         <button class="nav-item" data-page-target="specialPage"><span>◇</span>特殊紀錄</button>
         <button class="nav-item" data-page-target="historyPage"><span>◷</span>招募歷史</button>
         <button class="nav-item" data-page-target="progressPage"><span>◎</span>UP 抽卡分析</button>
+        <button class="nav-item" data-page-target="appearancePage"><span>◈</span>特殊招募</button>
         <button class="nav-item" data-page-target="recordsPage"><span>☷</span>抽卡紀錄</button>
       </nav>
       <div class="sidebar-footer"><span class="status-dot"></span><span id="configStatus">尚未設定同步資訊</span></div>
@@ -30,7 +31,7 @@
           <button id="realSyncBtn" class="primary-btn">更新資料</button>
           <button id="syncSettingBtn" class="secondary-btn">同步設定</button>
           <div class="dropdown">
-            <button class="secondary-btn dropdown-btn">匯入／匯出 v</button>
+            <button class="secondary-btn dropdown-btn">匯入／匯出⌄</button>
             <div class="dropdown-content">
               <button id="importBtn">匯入 JSON</button>
               <button id="importManualBtn">匯入手動紀錄</button>
@@ -117,10 +118,25 @@
           <div id="weaponProgressPanel" class="progress-panel"><div class="subsection-heading"><h3>軍備提升</h3></div><div id="weaponTargetStats" class="character-stats-grid"></div><div class="subsection-heading"><h3>自選武器</h3></div><div id="selectWeaponCharacterStats" class="character-stats-grid"></div></div>
         </section>
 
+        <section id="appearancePage" class="page-section">
+          <div class="section-title-row"><div><h2>特殊招募分析</h2><p>新裝採購與神秘箱的限定、稀有獎品統計</p></div></div>
+          <div class="tab-bar appearance-tabs" role="tablist" aria-label="特殊招募類型">
+            <button class="active" data-appearance-target="outfitAnalysisPanel">新裝採購</button>
+            <button data-appearance-target="mysteryAnalysisPanel">神秘箱</button>
+          </div>
+          <div id="outfitAnalysisPanel" class="appearance-panel active">
+            <div id="outfitPoolStats" class="outfit-pool-grid"></div>
+          </div>
+          <div id="mysteryAnalysisPanel" class="appearance-panel">
+            <div id="mysterySummary" class="appearance-kpi-grid"></div>
+            <div class="content-panel mystery-panel"><div class="panel-heading"><div><h2>神秘箱獎勵紀錄</h2><p>限定獎品 0.28%／稀有獎品 3.92%，僅統計這兩個等級</p></div></div><div id="mysteryBreakdown" class="mystery-breakdown"></div></div>
+          </div>
+        </section>
+
         <section id="recordsPage" class="page-section">
           <div class="content-panel records-panel">
-            <div class="section-header"><div><h2>抽卡紀錄</h2><p>依時間查看所有同步與手動補登紀錄</p></div><select id="recordPoolFilter"><option value="全部">全部卡池</option><option value="定向採購">定向採購</option><option value="軍備提升">軍備提升</option><option value="常規採購">常規採購</option><option value="新手採購">新手採購</option><option value="自選人形">自選人形</option><option value="自選武器">自選武器</option></select></div>
-            <div class="table-wrap"><table><thead><tr><th>時間</th><th>採購來源</th><th>類型</th><th>名稱</th></tr></thead><tbody id="recordTable"></tbody></table></div>
+            <div class="section-header"><div><h2>抽卡紀錄</h2><p>依時間查看所有同步與手動補登紀錄</p></div><select id="recordPoolFilter"><option value="全部">全部卡池</option><option value="定向採購">定向採購</option><option value="軍備提升">軍備提升</option><option value="常規採購">常規採購</option><option value="新手採購">新手採購</option><option value="自選人形">自選人形</option><option value="自選武器">自選武器</option><option value="神秘箱">神秘箱</option><option value="新裝採購">新裝採購</option></select></div>
+            <div class="table-wrap"><table><thead><tr><th>時間</th><th>採購來源</th><th>類型</th><th>名稱</th><th>數量</th><th>池 ID</th></tr></thead><tbody id="recordTable"></tbody></table></div>
             <div class="pagination"><button id="recordFirstBtn">«</button><button id="recordPrevBtn">‹</button><div id="recordPageNumbers" class="page-numbers"></div><button id="recordNextBtn">›</button><button id="recordLastBtn">»</button></div>
           </div>
         </section>

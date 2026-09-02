@@ -1,7 +1,9 @@
 let records = [];
+let itemMap = {};
 let signatureMap = {};
 let characterArtMap = { roles: {}, wallpapers: {} };
 let weaponArtMap = { weapons: {} };
+let outfitPoolMap = { pools: {} };
 let currentRecordPage = 1;
 let currentPoolFilter = "全部";
 const recordsPerPage = 6;
@@ -94,6 +96,17 @@ function createRecordId(record) {
     record.name,
     record.drawIndex ?? 0
   ].join("_");
+}
+
+function normalizeSpecialRecruitRecord(record) {
+  const poolId = String(record.poolId ?? "");
+  if (record.source === "服裝池" || record.source === "外觀補給") {
+    record.source = poolId === "99001" ? "神秘箱" : "新裝採購";
+  }
+  if (Number(record.poolType) === 8) record.source = "神秘箱";
+  if (Number(record.poolType) === 9) record.source = "新裝採購";
+  if (record.itemNum === undefined || record.itemNum === null) record.itemNum = 1;
+  return record;
 }
 
 function getDateOnly(timeText) {
@@ -274,6 +287,7 @@ function normalizeManualRecords(manualRecords) {
 }
 
 async function addRecords(newRecords) {
+  newRecords.forEach(normalizeSpecialRecruitRecord);
   const existingIds = new Set(
     records.map(record => record.id || createRecordId(record))
   );
@@ -305,6 +319,7 @@ async function addRecords(newRecords) {
   renderSpecialRecords();
   renderOrangeHistory();
   renderTargetCharacterStats();
+  renderAppearanceAnalysis();
   updateStatsDate();
 
   return { addedCount, skippedCount };
@@ -315,7 +330,7 @@ function setSyncStatus(message) {
 }
 
 async function syncAllPoolsReal(gachaUrl, accessToken) {
-  const poolTypes = [1, 2, 3, 4, 5, 6, 7];
+  const poolTypes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const poolNameMap = {
     1: "常規採購",
@@ -324,7 +339,9 @@ async function syncAllPoolsReal(gachaUrl, accessToken) {
     4: "軍備提升",
     5: "新手採購",
     6: "自選人形",
-    7: "自選武器"
+    7: "自選武器",
+    8: "神秘箱",
+    9: "新裝採購"
   };
 
   let allSyncedRecords = [];
@@ -357,6 +374,117 @@ function getRarityClass(rarity) {
   if (rarity === "橙色") return "rarity-elite";
   if (rarity === "紫色") return "rarity-standard";
   return "";
+}
+
+function formatRate(count, total) {
+  return total > 0 ? `${(count / total * 100).toFixed(2)}%` : "-";
+}
+
+function makeAppearanceKpi(label, value, detail) {
+  return `<article class="appearance-kpi"><span>${label}</span><strong>${value}</strong><small>${detail}</small></article>`;
+}
+
+function renderAppearanceAnalysis() {
+  const outfitRecords = getGameRecords("新裝採購", "oldToNew").filter(record => !record.summaryOnly);
+  const mysteryRecords = getGameRecords("神秘箱", "oldToNew").filter(record => !record.summaryOnly);
+  const getOutfitDefinition = record => outfitPoolMap.pools?.[String(record.poolId)] || {};
+  const isLimitedOutfitReward = record => {
+    const featuredName = getOutfitDefinition(record).featuredOutfit;
+    return Boolean(featuredName && record.name === featuredName);
+  };
+  const isRareOutfitReward = record => {
+    if (isLimitedOutfitReward(record)) return false;
+    const name = String(record.name || "");
+    const definition = getOutfitDefinition(record);
+    return name.startsWith("衣裝·") ||
+      name.startsWith("塗裝·") ||
+      name.startsWith("精雕奇憶·") ||
+      name === "位鍵演化禮盒" ||
+      name === "火控演化禮盒" ||
+      (definition.rareItems || []).includes(name);
+  };
+  const groups = new Map();
+  outfitRecords.forEach(record => {
+    const key = String(record.poolId ?? "unknown");
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(record);
+  });
+
+  const poolCards = [...groups.entries()].map(([poolId, poolRecords]) => {
+    const definition = outfitPoolMap.pools?.[poolId] || {};
+    const poolLimited = poolRecords.filter(isLimitedOutfitReward);
+    const poolRare = poolRecords.filter(isRareOutfitReward);
+    const featuredName = definition.featuredOutfit || "";
+    const dateStart = poolRecords[0]?.time?.split(" ")[0] || "-";
+    const dateEnd = poolRecords.at(-1)?.time?.split(" ")[0] || "-";
+    const outfitDraws = poolRecords
+      .map((record, index) => ({ record, drawNumber: index + 1 }))
+      .filter(({ record }) => String(record.name).startsWith("衣裝·"));
+    const outfitDrawList = outfitDraws.map(({ record, drawNumber }) => {
+      const category = featuredName && record.name === featuredName ? "限定衣裝" : "稀有衣裝";
+      const categoryClass = category === "限定衣裝" ? "featured" : "outfit";
+      return `<li><span class="reward-badge ${categoryClass}">${category}</span><span>${escapeHtml(record.name)}</span><strong>第 ${drawNumber} 抽</strong></li>`;
+    }).join("") || `<li class="empty-result">尚未取得限定衣裝或稀有衣裝</li>`;
+
+    const categorizedRare = poolRare.filter(record => !String(record.name).startsWith("衣裝·"));
+    const categories = [
+      ["衣裝部件", record => !String(record.name).startsWith("塗裝·") && !String(record.name).startsWith("精雕奇憶·") && !["位鍵演化禮盒", "火控演化禮盒"].includes(record.name)],
+      ["武器塗裝與部件", record => String(record.name).startsWith("塗裝·")],
+      ["精雕奇憶造物", record => String(record.name).startsWith("精雕奇憶·")],
+      ["位鍵演化禮盒", record => record.name === "位鍵演化禮盒"],
+      ["火控演化禮盒", record => record.name === "火控演化禮盒"]
+    ];
+    const categoryHtml = categories.map(([label, predicate]) => {
+      const categoryRecords = categorizedRare.filter(predicate);
+      const nameCounts = new Map();
+      categoryRecords.forEach(record => nameCounts.set(record.name, (nameCounts.get(record.name) || 0) + 1));
+      const detail = [...nameCounts.entries()].map(([name, count]) => `${escapeHtml(name)}${count > 1 ? ` ×${count}` : ""}`).join("、");
+      return `<div class="reward-category"><div><span>${label}</span><small>${detail || "尚未取得"}</small></div><strong>${categoryRecords.length}</strong></div>`;
+    }).join("");
+    const poolArt = definition.image
+      ? `<img class="outfit-hero-art" src="${escapeHtml(definition.image)}" alt="${escapeHtml(definition.name || "新裝採購")}" loading="lazy">`
+      : "";
+
+    return `<article class="outfit-pool-card">
+      <header class="outfit-hero"><div class="outfit-hero-copy"><span class="outfit-code">POOL // ${poolId}</span><h3>${definition.name || `新裝採購 ${poolId}`}</h3><small>${dateStart} ～ ${dateEnd}</small><div class="outfit-total"><strong>${poolRecords.length}</strong><span>總抽數</span></div><div class="outfit-core-stats"><div><span>限定</span><strong>${poolLimited.length}</strong><small>${formatRate(poolLimited.length, poolRecords.length)}／官方 1.18%</small></div><div><span>稀有</span><strong>${poolRare.length}</strong><small>${formatRate(poolRare.length, poolRecords.length)}／官方 16.02%</small></div></div></div>${poolArt}</header>
+      <div class="outfit-result-grid">
+        <section class="visual-reward-list"><div><span>衣裝出貨</span>${featuredName ? `<small>本期：${escapeHtml(featuredName.replace(/^衣裝·/, ""))}</small>` : ""}</div><ul>${outfitDrawList}</ul></section>
+        <section class="rare-reward-summary"><h4>稀有獎品分類</h4><div class="reward-category-grid">${categoryHtml}</div></section>
+      </div>
+    </article>`;
+  }).reverse().join("");
+
+  document.getElementById("outfitPoolStats").innerHTML = poolCards || `<div class="appearance-empty">尚無新裝採購紀錄，請先同步 type_id=9。</div>`;
+
+  const isCatalogCharacterOrWeapon = record => {
+    const catalogType = itemMap[String(record.itemId)]?.type || record.originalType || record.type || "";
+    return catalogType === "人形" || catalogType === "角色" || String(catalogType).includes("武器");
+  };
+  const mysteryLimited = mysteryRecords.filter(record => record.rarity === "橙色" && isCatalogCharacterOrWeapon(record));
+  const mysteryRare = mysteryRecords.filter(record => record.rarity === "紫色" && isCatalogCharacterOrWeapon(record));
+  const limitedFragments = mysteryLimited.length * 90;
+  const rareFragments = mysteryRare.length * 18;
+  const totalFragments = limitedFragments + rareFragments;
+  const convertedPulls = Math.floor(totalFragments / 30);
+  const remainingFragments = totalFragments % 30;
+  document.getElementById("mysterySummary").innerHTML = [
+    makeAppearanceKpi("神秘箱總抽數", `${mysteryRecords.length} 抽`, "每筆紀錄視為一次收取"),
+    makeAppearanceKpi("限定獎品", `${mysteryLimited.length} 個`, `實際機率 ${formatRate(mysteryLimited.length, mysteryRecords.length)}／官方 0.28%`),
+    makeAppearanceKpi("稀有獎品", `${mysteryRare.length} 個`, `實際機率 ${formatRate(mysteryRare.length, mysteryRecords.length)}／官方 3.92%`),
+    `<article class="mystery-pull-hero"><span>碎片可換算</span><strong>${convertedPulls}<small>抽</small></strong><p>${totalFragments} 碎片｜兌換後剩餘 ${remainingFragments} 碎片</p></article>`
+  ].join("");
+  const renderMysteryGroup = (title, groupRecords, officialRate) => {
+    const counts = new Map();
+    groupRecords.forEach(record => counts.set(record.name, (counts.get(record.name) || 0) + 1));
+    const rows = [...counts.entries()].sort((a, b) => b[1] - a[1])
+      .map(([name, count]) => `<li><span>${escapeHtml(name)}</span><strong>×${count}</strong></li>`).join("");
+    return `<section><header><div><span>${title}</span><small>官方機率 ${officialRate}</small></div><strong>${groupRecords.length} 次</strong></header><ul>${rows || `<li class="empty-result">尚無紀錄</li>`}</ul></section>`;
+  };
+  document.getElementById("mysteryBreakdown").innerHTML = [
+    renderMysteryGroup("限定獎品", mysteryLimited, "0.28%"),
+    renderMysteryGroup("稀有獎品", mysteryRare, "3.92%"),
+    `<section class="fragment-conversion"><header><div><span>換算明細</span><small>每 30 碎片折算 1 抽</small></div><strong>${totalFragments} 碎片</strong></header><div class="fragment-equation"><div><span>限定人形</span><strong>${mysteryLimited.length} × 90</strong><small>${limitedFragments} 碎片</small></div><div><span>稀有武器</span><strong>${mysteryRare.length} × 18</strong><small>${rareFragments} 碎片</small></div></div></section>`
+  ].join("");
 }
 
 function renderPagination(totalPages) {
@@ -434,6 +562,8 @@ function renderRecords() {
       <td>${record.source}</td>
       <td>${record.type}</td>
       <td class="${nameClass}">${record.name}</td>
+      <td>${record.itemNum ?? 1}</td>
+      <td>${record.poolId ?? "-"}</td>
     `;
 
     table.appendChild(tr);
@@ -606,7 +736,7 @@ function formatCharacterCopies(upCount) {
 }
 
 function formatWeaponTuning(upCount) {
-  if (upCount === 0) return "專武未取得";
+  if (upCount === 0) return "未取得";
 
   const level = Math.min(upCount, 6);
   const overflow = Math.max(upCount - 6, 0);
@@ -733,7 +863,7 @@ function renderCharacterStatCards(containerId, characterStats, emptyText, itemKi
             <span class="stat-value">${progressionText}</span>
           </div>
           <div class="stat-row">
-            <span class="stat-label">歪角次數</span>
+            <span class="stat-label">抽歪次數</span>
             <span class="stat-value">${stat.offRateCount} 次</span>
           </div>
           ${renderCardEfficiency(
@@ -741,7 +871,7 @@ function renderCharacterStatCards(containerId, characterStats, emptyText, itemKi
             itemKind === "weapon" ? "單武器抽卡統計" : "單角色抽卡統計"
           )}
           <div class="off-rate-breakdown">
-            <div class="off-rate-breakdown-title">歪角紀錄</div>
+            <div class="off-rate-breakdown-title">抽歪紀錄</div>
             <ul>${offRateHtml}</ul>
           </div>
         </div>
@@ -1121,8 +1251,12 @@ function renderStats() {
 
 
   const standardEliteTypeStats = getStandardEliteTypeStats();
-  const overallTotal = records.reduce((sum, record) => sum + getRecordPullCount(record), 0);
-  const overallOrange = records.filter(record => record.rarity === "橙色").length;
+  const recruitmentSources = new Set([
+    "定向採購", "軍備提升", "常規採購", "新手採購", "自選人形", "自選武器"
+  ]);
+  const recruitmentRecords = records.filter(record => recruitmentSources.has(record.source));
+  const overallTotal = recruitmentRecords.reduce((sum, record) => sum + getRecordPullCount(record), 0);
+  const overallOrange = recruitmentRecords.filter(record => record.rarity === "橙色").length;
   const overallUp = targetUpStats.upCount + weaponUpStats.upCount + selectCharUpStats.upCount + selectWeaponUpStats.upCount;
   const overallOff = targetUpStats.offRateCount + weaponUpStats.offRateCount + selectCharUpStats.offRateCount + selectWeaponUpStats.offRateCount;
   const overallLimitedOrange = overallUp + overallOff;
@@ -1488,6 +1622,12 @@ function renderMilestoneRecords() {
     formatMilestoneRecord(sixPlusSix.at(-1), "sixPlusSixPulls");
 }
 async function loadRecords() {
+  const itemMapPromise = typeof window.gf2API.loadItemMap === "function"
+    ? window.gf2API.loadItemMap().catch(error => {
+        console.error("讀取道具資料表失敗：", error);
+        return {};
+      })
+    : Promise.resolve({});
   const signatureMapPromise = typeof window.gf2API.loadSignatureMap === "function"
     ? window.gf2API.loadSignatureMap().catch(error => {
         console.error("讀取專武對照表失敗：", error);
@@ -1506,13 +1646,22 @@ async function loadRecords() {
         return { weapons: {} };
       })
     : Promise.resolve({ weapons: {} });
+  const outfitPoolMapPromise = typeof window.gf2API.loadOutfitPoolMap === "function"
+    ? window.gf2API.loadOutfitPoolMap().catch(error => {
+        console.error("讀取服裝池對照表失敗：", error);
+        return { pools: {} };
+      })
+    : Promise.resolve({ pools: {} });
 
-  [records, signatureMap, characterArtMap, weaponArtMap] = await Promise.all([
+  [records, itemMap, signatureMap, characterArtMap, weaponArtMap, outfitPoolMap] = await Promise.all([
     window.gf2API.loadRecords(),
+    itemMapPromise,
     signatureMapPromise,
     characterArtMapPromise,
-    weaponArtMapPromise
+    weaponArtMapPromise,
+    outfitPoolMapPromise
   ]);
+  records.forEach(normalizeSpecialRecruitRecord);
   normalizeRecordIds();
   sortRecordsByTime();
   await window.gf2API.saveRecords(records);
@@ -1522,6 +1671,7 @@ async function loadRecords() {
   renderSpecialRecords();
   renderOrangeHistory();
   renderTargetCharacterStats();
+  renderAppearanceAnalysis();
   updateStatsDate();
 }
 
@@ -1712,6 +1862,7 @@ document.getElementById("clearBtn").addEventListener("click", async () => {
   renderSpecialRecords();
   renderOrangeHistory();
   renderTargetCharacterStats();
+  renderAppearanceAnalysis();
   updateStatsDate();
 
   alert("已清除全部紀錄");
@@ -1919,7 +2070,11 @@ function getPoolTypeFromSource(source) {
     "軍備提升": 4,
     "新手採購": 5,
     "自選人形": 6,
-    "自選武器": 7
+    "自選武器": 7,
+    "神秘箱": 8,
+    "服裝池": 9,
+    "新裝採購": 9,
+    "外觀補給": 9
   };
 
   return map[source] || "unknown";
@@ -2018,6 +2173,7 @@ function initAppNavigation() {
     specialPage: ["特殊紀錄", "值得分享的卡池運氣與養成成本紀錄"],
     historyPage: ["招募歷史", "依卡池檢視橙色出貨時間軸"],
     progressPage: ["UP 抽卡分析", "人形、武器與專武組合的個別統計"],
+    appearancePage: ["特殊招募", "新裝採購與神秘箱的限定、稀有獎品分析"],
     recordsPage: ["抽卡紀錄", "瀏覽與篩選完整招募資料"]
   };
 
@@ -2057,6 +2213,7 @@ function initLayoutControls() {
   initAppNavigation();
   initPanelTabs("[data-history-target]", ".history-panel", "historyTarget");
   initPanelTabs("[data-progress-target]", ".progress-panel", "progressTarget");
+  initPanelTabs("[data-appearance-target]", ".appearance-panel", "appearanceTarget");
   initDropdownMenus();
 }
 

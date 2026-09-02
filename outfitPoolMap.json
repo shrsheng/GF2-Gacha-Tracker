@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "pools": {
+    "221001": {
+      "name": "熱力運動",
+      "featuredOutfit": "衣裝·熱力運動",
+      "image": "../assets/special-recruit/pool-221001.png",
+      "rareItems": ["交叉熱浪", "密網遐思"]
+    },
+    "188001": {
+      "name": "暮色絮語",
+      "featuredOutfit": "衣裝·暮色絮語",
+      "image": "../assets/special-recruit/pool-188001.png",
+      "rareItems": ["早安惡作劇", "甜莓心事", "雪化跡"]
+    },
+    "98001": {
+      "name": "蔚藍軌跡",
+      "featuredOutfit": "衣裝·蔚藍軌跡",
+      "image": "../assets/special-recruit/pool-98001.png"
+    }
+  }
+}

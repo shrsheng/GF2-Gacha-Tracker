@@ -9,6 +9,7 @@ const bundledItemMapFile = path.join(__dirname, "itemMap.json");
 const bundledSignatureMapFile = path.join(__dirname, "signatureMap.json");
 const bundledCharacterArtMapFile = path.join(__dirname, "characterArtMap.json");
 const bundledWeaponArtMapFile = path.join(__dirname, "weaponArtMap.json");
+const bundledOutfitPoolMapFile = path.join(__dirname, "outfitPoolMap.json");
 let userItemMapFile;
 
 function initDataPaths() {
@@ -121,8 +122,19 @@ function normalizeRemoteRecord(remote, poolType) {
     4: "軍備提升",
     5: "新手採購",
     6: "自選人形",
-    7: "自選武器"
+    7: "自選武器",
+    8: "神秘箱",
+    9: "新裝採購"
   };
+
+  const itemName = itemInfo?.name || `未知道具(${itemId})`;
+  let itemType = itemInfo?.type || "未知";
+  if (poolType === 8) itemType = "神秘箱獎勵";
+  if (poolType === 9) {
+    if (itemName.startsWith("衣裝·")) itemType = "服裝";
+    else if (itemName.startsWith("塗裝·")) itemType = "塗裝";
+    else itemType = "服裝池獎勵";
+  }
 
   return {
     pageOrder: remote.pageOrder,
@@ -134,10 +146,12 @@ function normalizeRemoteRecord(remote, poolType) {
 
     itemId,
     poolId: remote.pool_id,
+    poolType,
+    itemNum: Number(remote.item_num ?? 1),
     time: formatTime(timestamp),
     source: sourceMap[poolType] || `卡池${poolType}`,
-    type: itemInfo?.type || "未知",
-    name: itemInfo?.name || `未知道具(${itemId})`,
+    type: itemType,
+    name: itemName,
     rarity: itemInfo?.rarity || "未知"
   };
 }
@@ -186,6 +200,8 @@ ipcMain.handle("load-signature-map", () => {
   return JSON.parse(fs.readFileSync(bundledSignatureMapFile, "utf-8"));
 });
 
+ipcMain.handle("load-item-map", () => loadItemMap());
+
 ipcMain.handle("load-character-art-map", () => {
   if (!fs.existsSync(bundledCharacterArtMapFile)) return { roles: {}, wallpapers: {} };
   return JSON.parse(fs.readFileSync(bundledCharacterArtMapFile, "utf-8"));
@@ -194,6 +210,11 @@ ipcMain.handle("load-character-art-map", () => {
 ipcMain.handle("load-weapon-art-map", () => {
   if (!fs.existsSync(bundledWeaponArtMapFile)) return { weapons: {} };
   return JSON.parse(fs.readFileSync(bundledWeaponArtMapFile, "utf-8"));
+});
+
+ipcMain.handle("load-outfit-pool-map", () => {
+  if (!fs.existsSync(bundledOutfitPoolMapFile)) return { pools: {} };
+  return JSON.parse(fs.readFileSync(bundledOutfitPoolMapFile, "utf-8"));
 });
 
 ipcMain.handle("save-records", (event, records) => {
