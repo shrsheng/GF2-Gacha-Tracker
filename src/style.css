@@ -431,11 +431,11 @@ th:nth-child(4), td:nth-child(4) { padding-left: 32px; }
 .appearance-kpi { position: relative; min-height: 92px; padding: 15px 17px; background: #f4f6f7; border: 1px solid #c5cdd2; border-left: 3px solid var(--primary); clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%); }
 .appearance-kpi span, .appearance-kpi small { display: block; color: var(--muted); font-size: 11px; }
 .appearance-kpi strong { display: block; margin: 5px 0 2px; color: #202a31; font-size: 22px; line-height: 1.1; }
-.outfit-pool-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
-.outfit-pool-card { overflow: hidden; background: #eef1f2; border: 1px solid #aeb9c0; box-shadow: 0 5px 14px rgba(31, 42, 49, .08); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
-.outfit-pool-card > .outfit-hero { display: grid; grid-template-columns: 42% 58%; height: 285px; padding: 0; color: #fff; background: #222c33; border-bottom: 3px solid var(--primary); }
-.outfit-hero-copy { position: relative; z-index: 1; padding: 24px; background: linear-gradient(135deg, #27323a, #1d252b); }
-.outfit-hero-art { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 36%; }
+.outfit-pool-grid { display: grid; grid-template-columns: minmax(0, 1360px); justify-content: center; gap: 15px; }
+.outfit-pool-card { display: block; overflow: hidden; width: 100%; min-width: 0; background: #eef1f2; border: 1px solid #aeb9c0; box-shadow: 0 5px 14px rgba(31, 42, 49, .08); clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
+.outfit-pool-card > .outfit-hero { display: flex; overflow: hidden; width: 100%; min-width: 0; height: 340px !important; padding: 0; color: #fff; background: #222c33; border-bottom: 3px solid var(--primary); }
+.outfit-hero-copy { flex: 0 0 42%; width: 42%; height: 340px; min-width: 0; padding: 24px; background: linear-gradient(135deg, #27323a, #1d252b); }
+.outfit-hero-art { position: static; display: block; flex: 0 0 58%; width: 58%; height: 340px !important; min-width: 0; min-height: 0; max-height: 340px; object-fit: cover; object-position: center 36%; }
 .outfit-pool-card h3 { margin: 5px 0; font-size: 26px; }
 .outfit-pool-card header small { color: #aebdc7; font-size: 12px; }
 .outfit-code { color: #88a3b5; font: 9px Consolas, monospace; letter-spacing: .17em; }
@@ -448,7 +448,8 @@ th:nth-child(4), td:nth-child(4) { padding-left: 32px; }
 .outfit-core-stats span { color: #9eb0bb; font-size: 12px; }
 .outfit-core-stats strong { display: block; margin: 2px 0; font-size: 25px; }
 .outfit-core-stats small { color: #c4ced4; font-size: 11px; }
-.outfit-result-grid { display: grid; grid-template-columns: minmax(270px, .85fr) minmax(0, 1.4fr); gap: 12px; padding: 14px; }
+.outfit-result-grid { position: relative; display: grid; grid-template-columns: minmax(270px, .85fr) minmax(0, 1.4fr); gap: 12px; box-sizing: border-box; width: 100%; min-width: 0; padding: 14px; background: #eef1f2; }
+.outfit-result-grid > * { min-width: 0; }
 .reward-category-grid { display: grid; gap: 6px; margin-top: 9px; }
 .reward-category { display: flex; justify-content: space-between; align-items: center; min-height: 54px; padding: 9px 12px; background: #f9fafb; border-left: 3px solid #cf672e; }
 .reward-category span, .reward-category small { display: block; }
@@ -526,5 +527,12 @@ th:nth-child(4), td:nth-child(4) { padding-left: 32px; }
   .appearance-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #mysterySummary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .outfit-pool-grid { grid-template-columns: 1fr; }
-  .outfit-pool-card > .outfit-hero { grid-template-columns: 46% 54%; }
+  .outfit-hero-copy { width: 46%; }
+  .outfit-hero-art { width: 54%; }
+}
+
+@media (max-width: 760px) {
+  .outfit-pool-card > .outfit-hero { flex-direction: column; height: auto !important; }
+  .outfit-hero-copy { width: 100%; height: auto; }
+  .outfit-hero-art { position: static; width: 100%; height: 260px !important; max-height: 260px; }
 }

@@ -3,7 +3,30 @@ let itemMap = {};
 let signatureMap = {};
 let characterArtMap = { roles: {}, wallpapers: {} };
 let weaponArtMap = { weapons: {} };
-let outfitPoolMap = { pools: {} };
+const defaultOutfitPoolMap = {
+  version: 1,
+  pools: {
+    "221001": {
+      name: "熱力運動",
+      featuredOutfit: "衣裝·熱力運動",
+      image: "../assets/special-recruit/pool-221001.png",
+      rareItems: ["交叉熱浪", "密網遐思"]
+    },
+    "188001": {
+      name: "暮色絮語",
+      featuredOutfit: "衣裝·暮色絮語",
+      image: "../assets/special-recruit/pool-188001.png",
+      rareItems: ["早安惡作劇", "甜莓心事", "雪化跡"]
+    },
+    "98001": {
+      name: "蔚藍軌跡",
+      featuredOutfit: "衣裝·蔚藍軌跡",
+      image: "../assets/special-recruit/pool-98001.png",
+      rareItems: []
+    }
+  }
+};
+let outfitPoolMap = defaultOutfitPoolMap;
 let currentRecordPage = 1;
 let currentPoolFilter = "全部";
 const recordsPerPage = 6;
@@ -442,12 +465,12 @@ function renderAppearanceAnalysis() {
       return `<div class="reward-category"><div><span>${label}</span><small>${detail || "尚未取得"}</small></div><strong>${categoryRecords.length}</strong></div>`;
     }).join("");
     const poolArt = definition.image
-      ? `<img class="outfit-hero-art" src="${escapeHtml(definition.image)}" alt="${escapeHtml(definition.name || "新裝採購")}" loading="lazy">`
+      ? `<img class="outfit-hero-art" style="display:block;flex:0 0 58%;width:58%;height:340px;min-width:0;object-fit:cover;object-position:center 36%;" src="${escapeHtml(definition.image)}" alt="${escapeHtml(definition.name || "新裝採購")}" loading="lazy">`
       : "";
 
-    return `<article class="outfit-pool-card">
-      <header class="outfit-hero"><div class="outfit-hero-copy"><span class="outfit-code">POOL // ${poolId}</span><h3>${definition.name || `新裝採購 ${poolId}`}</h3><small>${dateStart} ～ ${dateEnd}</small><div class="outfit-total"><strong>${poolRecords.length}</strong><span>總抽數</span></div><div class="outfit-core-stats"><div><span>限定</span><strong>${poolLimited.length}</strong><small>${formatRate(poolLimited.length, poolRecords.length)}／官方 1.18%</small></div><div><span>稀有</span><strong>${poolRare.length}</strong><small>${formatRate(poolRare.length, poolRecords.length)}／官方 16.02%</small></div></div></div>${poolArt}</header>
-      <div class="outfit-result-grid">
+    return `<article class="outfit-pool-card" style="display:block;overflow:hidden;width:100%;min-width:0;">
+      <div class="outfit-hero" style="display:flex;overflow:hidden;width:100%;height:340px;min-width:0;"><div class="outfit-hero-copy" style="flex:0 0 42%;width:42%;height:340px;min-width:0;"><span class="outfit-code">POOL // ${poolId}</span><h3>${definition.name || `新裝採購 ${poolId}`}</h3><small>${dateStart} ～ ${dateEnd}</small><div class="outfit-total"><strong>${poolRecords.length}</strong><span>總抽數</span></div><div class="outfit-core-stats"><div><span>限定</span><strong>${poolLimited.length}</strong><small>${formatRate(poolLimited.length, poolRecords.length)}／官方 1.18%</small></div><div><span>稀有</span><strong>${poolRare.length}</strong><small>${formatRate(poolRare.length, poolRecords.length)}／官方 16.02%</small></div></div></div>${poolArt}</div>
+      <div class="outfit-result-grid" style="position:relative;clear:both;width:100%;min-width:0;background:#eef1f2;">
         <section class="visual-reward-list"><div><span>衣裝出貨</span>${featuredName ? `<small>本期：${escapeHtml(featuredName.replace(/^衣裝·/, ""))}</small>` : ""}</div><ul>${outfitDrawList}</ul></section>
         <section class="rare-reward-summary"><h4>稀有獎品分類</h4><div class="reward-category-grid">${categoryHtml}</div></section>
       </div>
@@ -1653,7 +1676,7 @@ async function loadRecords() {
       })
     : Promise.resolve({ pools: {} });
 
-  [records, itemMap, signatureMap, characterArtMap, weaponArtMap, outfitPoolMap] = await Promise.all([
+  const loaded = await Promise.all([
     window.gf2API.loadRecords(),
     itemMapPromise,
     signatureMapPromise,
@@ -1661,6 +1684,16 @@ async function loadRecords() {
     weaponArtMapPromise,
     outfitPoolMapPromise
   ]);
+  [records, itemMap, signatureMap, characterArtMap, weaponArtMap] = loaded;
+  const loadedOutfitPoolMap = loaded[5] || { pools: {} };
+  outfitPoolMap = {
+    ...defaultOutfitPoolMap,
+    ...loadedOutfitPoolMap,
+    pools: {
+      ...defaultOutfitPoolMap.pools,
+      ...(loadedOutfitPoolMap.pools || {})
+    }
+  };
   records.forEach(normalizeSpecialRecruitRecord);
   normalizeRecordIds();
   sortRecordsByTime();
