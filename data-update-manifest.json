@@ -1,0 +1,30 @@
+{
+  "version": "2026.09.18.1",
+  "baseUrl": "https://raw.githubusercontent.com/shrsheng/GF2-Gacha-Tracker/refs/heads/main/",
+  "files": [
+    {
+      "path": "itemMap.json",
+      "sha256": "4b6dc69e8828aa9feebe1099035121d6c36ecc6943048184cddab94a20f8f333"
+    },
+    {
+      "path": "outfitPoolMap.json",
+      "sha256": "aca8651ebe92b9179e71125af0e8c72ff97007c47bc60f85b797cd87f3cb9efb"
+    },
+    {
+      "path": "characterArtMap.json",
+      "sha256": "5c085c49fb3b3d07a9ecfea86072bbf9061d67e628873ba54cf9f8ae5ea68771"
+    },
+    {
+      "path": "weaponArtMap.json",
+      "sha256": "2cf3d32c6b0d1391c32106716abf33d9957ca5f46a4fa2b8353c298660ce51ec"
+    },
+    {
+      "path": "signatureMap.json",
+      "sha256": "186b979902e6b88e35f526215fdd66b3827287500f891890f45ae5fd1c0f4735"
+    },
+    {
+      "path": "assets/special-recruit/pool-springfield-mermaid.png",
+      "sha256": "ce9d18432a68baac1e9d622292e8b6ba242a5bf164fea34f48b9ce738dc37b26"
+    }
+  ]
+}

@@ -17,6 +17,21 @@
       "name": "蔚藍軌跡",
       "featuredOutfit": "衣裝·蔚藍軌跡",
       "image": "../assets/special-recruit/pool-98001.png"
+    },
+    "287001": {
+      "name": "睡醒的人魚",
+      "featuredOutfit": "衣裝·睡醒的人魚",
+      "image": "../assets/special-recruit/pool-springfield-mermaid.png",
+      "rareItems": [
+        "衣裝·黑桃愛麗絲",
+        "晴空悠然", "暖陽濾鏡", "嬌艷花語",
+        "熾夏假日", "幽藍游夢", "幻海聆音",
+        "碧波漣漪", "蔚浪倒影", "拾趣流蘇",
+        "愛爾辛", "愛爾辛·烈日晴空",
+        "夜暮影紋", "霜跡輪廓", "暗縛之紋",
+        "暗夜籌碼", "暗夜禮結", "黑桃中縫",
+        "墨影邊際", "夜色間隙", "魅光承影"
+      ]
     }
   }
 }

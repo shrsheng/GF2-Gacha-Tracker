@@ -45814,5 +45814,371 @@
     "type": "未知",
     "rarity": "橙色",
     "icon": "Support_Standardpart_Response_01_5_1"
+  },
+  "62020201": {
+    "name": "暗夜籌碼",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P1_Cloth"
+  },
+  "62020202": {
+    "name": "暗夜禮結",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P2_Cloth"
+  },
+  "62020203": {
+    "name": "黑桃中縫",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P3_Cloth"
+  },
+  "25044": {
+    "name": "豐饒旅程",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_CommanderInfo_SpringfieldSSR03"
+  },
+  "1325215": {
+    "name": "奇憶·春田·悠閒",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_SpringfieldSSR00_5"
+  },
+  "1325216": {
+    "name": "奇憶·春田·溫和",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_SpringfieldSSR00_6"
+  },
+  "1325217": {
+    "name": "奇憶·春田·狙擊",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_SpringfieldSSR00_7"
+  },
+  "1325218": {
+    "name": "奇憶·春田·思索",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_SpringfieldSSR00_8"
+  },
+  "1325219": {
+    "name": "奇憶·路易士·童趣",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LewisSSR00_1"
+  },
+  "47030401": {
+    "name": "愛爾辛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P1_Item_Sundries"
+  },
+  "47030402": {
+    "name": "愛爾辛·烈日晴空",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P2_Item_Sundries"
+  },
+  "62020101": {
+    "name": "夜暮影紋",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P1_Hand"
+  },
+  "62020102": {
+    "name": "霜跡輪廓",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P2_Hand"
+  },
+  "62020103": {
+    "name": "暗縛之紋",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P3_Hand"
+  },
+  "24407": {
+    "name": "繪像框·睡醒的人魚",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_HeadFrame_SpringfieldSSR03"
+  },
+  "1340010": {
+    "name": "奇憶甄選·相守",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_Blind_Box8"
+  },
+  "277": {
+    "name": "人魚代幣",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Clothes_gacha_exchange_Springfield"
+  },
+  "7332885": {
+    "name": "塗裝·落海餘暉槍口",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_2_Set024_5"
+  },
+  "1570032": {
+    "name": "閃亮登場",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Customwall_Chibi_5"
+  },
+  "1325043": {
+    "name": "精雕奇憶·春田·假日",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_SpringfieldSSR03_1"
+  },
+  "1325044": {
+    "name": "精雕奇憶·路易士·發牌",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_LewisSSR02_1"
+  },
+  "1325045": {
+    "name": "精雕奇憶·夏安·羞怯",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_CheyanneSSR01_1"
+  },
+  "1325046": {
+    "name": "精雕奇憶·貝絲蒂·應援",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_BastiSSR01_1"
+  },
+  "1325047": {
+    "name": "精雕奇憶·洛塔·運動",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Handmade_LottaSR01_1"
+  },
+  "7337865": {
+    "name": "塗裝·落海餘暉腳架",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_13_Set024_5"
+  },
+  "47030301": {
+    "name": "碧波漣漪",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P1_Body"
+  },
+  "47030302": {
+    "name": "蔚浪倒影",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P2_Body"
+  },
+  "47030303": {
+    "name": "拾趣流蘇",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P3_Body"
+  },
+  "1630010": {
+    "name": "時空膠囊·潮汐漫遊",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Lobby_Dual_SpringfieldSSR03"
+  },
+  "21290": {
+    "name": "繪像·睡醒的人魚",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Avatar_Head_SpringfieldSSR03"
+  },
+  "21292": {
+    "name": "繪像·黑桃愛麗絲",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Avatar_Head_LewisSSR02"
+  },
+  "47030101": {
+    "name": "晴空悠然",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P1_Head"
+  },
+  "47030102": {
+    "name": "暖陽濾鏡",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P2_Head"
+  },
+  "47030103": {
+    "name": "嬌艷花語",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P3_Head"
+  },
+  "4133235": {
+    "name": "塗裝·落海餘暉",
+    "type": "武器",
+    "rarity": "橙色",
+    "icon": "Weapon_RFSet024_5"
+  },
+  "62020301": {
+    "name": "墨影邊際",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P1_Body"
+  },
+  "62020302": {
+    "name": "夜色間隙",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P2_Body"
+  },
+  "62020303": {
+    "name": "魅光承影",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_ClothesMod_LewisSSR02_P3_Body"
+  },
+  "1325220": {
+    "name": "奇憶·路易士·認真",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LewisSSR00_2"
+  },
+  "1325221": {
+    "name": "奇憶·路易士·靈感",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LewisSSR00_3"
+  },
+  "1325222": {
+    "name": "奇憶·路易士·休息",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LewisSSR00_4"
+  },
+  "1325223": {
+    "name": "奇憶·夏安·平和",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_CheyanneSSR00_1"
+  },
+  "1325224": {
+    "name": "奇憶·夏安·伏擊",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_CheyanneSSR00_2"
+  },
+  "1325225": {
+    "name": "奇憶·夏安·害羞",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_CheyanneSSR00_3"
+  },
+  "1325226": {
+    "name": "奇憶·夏安·放鬆",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_CheyanneSSR00_4"
+  },
+  "1325227": {
+    "name": "奇憶·貝絲蒂·調皮",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_BastiSSR00_1"
+  },
+  "1325228": {
+    "name": "奇憶·貝絲蒂·比心",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_BastiSSR00_2"
+  },
+  "1325229": {
+    "name": "奇憶·貝絲蒂·撒嬌",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_BastiSSR00_3"
+  },
+  "1570046": {
+    "name": "熱情海灘",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Lobby_Customwall_Chibi_19"
+  },
+  "7333875": {
+    "name": "塗裝·落海餘暉下掛",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_3_Set024_5"
+  },
+  "31126": {
+    "name": "衣裝·睡醒的人魚",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_Icon_Skin_SpringfieldSSR03"
+  },
+  "31128": {
+    "name": "衣裝·黑桃愛麗絲",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Skin_LewisSSR02"
+  },
+  "7231895": {
+    "name": "塗裝·落海餘暉瞄準",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "WeaponPart_1_Set024_5"
+  },
+  "1325230": {
+    "name": "奇憶·貝絲蒂·興奮",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_BastiSSR00_4"
+  },
+  "1325231": {
+    "name": "奇憶·洛塔·怯懦",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LottaSR00_1"
+  },
+  "1325232": {
+    "name": "奇憶·洛塔·警備",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LottaSR00_2"
+  },
+  "1325233": {
+    "name": "奇憶·洛塔·苦惱",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LottaSR00_3"
+  },
+  "1325234": {
+    "name": "奇憶·洛塔·試探",
+    "type": "未知",
+    "rarity": "紫色",
+    "icon": "Item_Icon_Handmade_LottaSR00_4"
+  },
+  "47030201": {
+    "name": "熾夏假日",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P1_Cloth"
+  },
+  "47030202": {
+    "name": "幽藍游夢",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P2_Cloth"
+  },
+  "47030203": {
+    "name": "幻海聆音",
+    "type": "未知",
+    "rarity": "橙色",
+    "icon": "Item_ClothesMod_SpringfieldSSR03_P3_Cloth"
   }
 }

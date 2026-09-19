@@ -3,32 +3,10 @@ let itemMap = {};
 let signatureMap = {};
 let characterArtMap = { roles: {}, wallpapers: {} };
 let weaponArtMap = { weapons: {} };
-const defaultOutfitPoolMap = {
-  version: 1,
-  pools: {
-    "221001": {
-      name: "熱力運動",
-      featuredOutfit: "衣裝·熱力運動",
-      image: "../assets/special-recruit/pool-221001.png",
-      rareItems: ["交叉熱浪", "密網遐思"]
-    },
-    "188001": {
-      name: "暮色絮語",
-      featuredOutfit: "衣裝·暮色絮語",
-      image: "../assets/special-recruit/pool-188001.png",
-      rareItems: ["早安惡作劇", "甜莓心事", "雪化跡"]
-    },
-    "98001": {
-      name: "蔚藍軌跡",
-      featuredOutfit: "衣裝·蔚藍軌跡",
-      image: "../assets/special-recruit/pool-98001.png",
-      rareItems: []
-    }
-  }
-};
-let outfitPoolMap = defaultOutfitPoolMap;
+let outfitPoolMap = { pools: {} };
 let currentRecordPage = 1;
 let currentPoolFilter = "全部";
+let editingAccountId = null;
 const recordsPerPage = 6;
 
 const permanentTargetCharacters = [
@@ -121,6 +99,123 @@ function createRecordId(record) {
   ].join("_");
 }
 
+const gfl2HelpPoolNames = {
+  1: "常規採購",
+  3: "定向採購",
+  4: "軍備提升",
+  5: "新手採購",
+  6: "自選人形",
+  7: "自選武器",
+  8: "神秘箱",
+  9: "新裝採購"
+};
+
+function formatImportedTimestamp(timestamp) {
+  const date = new Date(Number(timestamp) * 1000);
+  if (Number.isNaN(date.getTime())) return "";
+  const pad = value => String(value).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ` +
+    `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+}
+
+function findGfl2HelpServers(payload) {
+  const candidates = [];
+  const visited = new Set();
+
+  function walk(value, path = [], depth = 0) {
+    if (!value || typeof value !== "object" || Array.isArray(value) || depth > 3 || visited.has(value)) return;
+    visited.add(value);
+
+    const poolEntries = Object.entries(value).filter(([key, list]) => {
+      return /^\d+$/.test(key) && Array.isArray(list);
+    });
+    const recordCount = poolEntries.reduce((sum, [, list]) => sum + list.length, 0);
+
+    if (poolEntries.length > 0 && recordCount > 0) {
+      candidates.push({
+        label: path.join(" / ") || "預設資料",
+        pools: value,
+        recordCount
+      });
+      return;
+    }
+
+    Object.entries(value).forEach(([key, child]) => walk(child, [...path, key], depth + 1));
+  }
+
+  walk(payload);
+  return candidates;
+}
+
+function normalizeGfl2HelpImport(payload) {
+  const servers = findGfl2HelpServers(payload);
+  if (servers.length === 0) return null;
+
+  let selected = servers[0];
+  if (servers.length > 1) {
+    const menu = servers.map((server, index) => `${index + 1}. ${server.label}（${server.recordCount} 筆）`).join("\n");
+    const answer = prompt(`偵測到多組 gfl2help 資料，請輸入要匯入的編號：\n\n${menu}`, "1");
+    if (answer === null) return { canceled: true };
+    const selectedIndex = Number(answer) - 1;
+    if (!Number.isInteger(selectedIndex) || !servers[selectedIndex]) {
+      throw new Error("伺服器編號不正確，已取消匯入");
+    }
+    selected = servers[selectedIndex];
+  }
+
+  const duplicateCounter = new Map();
+  const normalized = [];
+  let unknownItems = 0;
+
+  Object.entries(selected.pools).forEach(([poolTypeText, list]) => {
+    if (!Array.isArray(list)) return;
+    const poolType = Number(poolTypeText);
+    const source = gfl2HelpPoolNames[poolType];
+    if (!source) return;
+
+    list.forEach((remote, pageIndex) => {
+      const itemId = String(remote.item_id ?? remote.item ?? "");
+      const timestamp = remote.gacha_timestamp ?? remote.time;
+      const poolId = remote.pool_id;
+      if (!itemId || !timestamp || poolId === undefined || poolId === null) return;
+
+      const info = itemMap[itemId];
+      if (!info) unknownItems++;
+      const baseKey = `${poolType}_${poolId}_${itemId}_${timestamp}`;
+      const drawIndex = duplicateCounter.get(baseKey) || 0;
+      duplicateCounter.set(baseKey, drawIndex + 1);
+
+      let type = info?.type || "未知";
+      if (poolType === 8) type = "神秘箱獎勵";
+      if (poolType === 9) {
+        if (info?.name?.startsWith("衣裝·")) type = "服裝";
+        else if (info?.name?.startsWith("塗裝·")) type = "塗裝";
+        else type = "服裝池獎勵";
+      }
+
+      normalized.push({
+        id: `${poolType}_${poolId}_${itemId}_${timestamp}_${drawIndex}`,
+        drawIndex,
+        pageOrder: 0,
+        pageIndex,
+        itemId,
+        poolId,
+        poolType,
+        itemNum: Number(remote.item_num ?? 1),
+        time: formatImportedTimestamp(timestamp),
+        source,
+        type,
+        name: info?.name || `未知道具(${itemId})`,
+        // gfl2help 的 type 8／9 quality 與遊戲物件表不完全一致，統一由本機表判斷。
+        rarity: info?.rarity || "未知",
+        importedFrom: "gfl2help"
+      });
+    });
+  });
+
+  return { records: normalized, server: selected.label, unknownItems };
+}
+
 function normalizeSpecialRecruitRecord(record) {
   const poolId = String(record.poolId ?? "");
   if (record.source === "服裝池" || record.source === "外觀補給") {
@@ -129,6 +224,18 @@ function normalizeSpecialRecruitRecord(record) {
   if (Number(record.poolType) === 8) record.source = "神秘箱";
   if (Number(record.poolType) === 9) record.source = "新裝採購";
   if (record.itemNum === undefined || record.itemNum === null) record.itemNum = 1;
+  return record;
+}
+
+function refreshRecordMetadata(record) {
+  const info = itemMap[String(record.itemId ?? "")];
+  if (!info || record.manual === true) return record;
+
+  record.name = info.name || record.name;
+  record.rarity = info.rarity || record.rarity;
+  if (Number(record.poolType) !== 8 && Number(record.poolType) !== 9) {
+    record.type = info.type || record.type;
+  }
   return record;
 }
 
@@ -310,7 +417,10 @@ function normalizeManualRecords(manualRecords) {
 }
 
 async function addRecords(newRecords) {
-  newRecords.forEach(normalizeSpecialRecruitRecord);
+  newRecords.forEach(record => {
+    refreshRecordMetadata(record);
+    normalizeSpecialRecruitRecord(record);
+  });
   const existingIds = new Set(
     records.map(record => record.id || createRecordId(record))
   );
@@ -410,10 +520,28 @@ function makeAppearanceKpi(label, value, detail) {
 function renderAppearanceAnalysis() {
   const outfitRecords = getGameRecords("新裝採購", "oldToNew").filter(record => !record.summaryOnly);
   const mysteryRecords = getGameRecords("神秘箱", "oldToNew").filter(record => !record.summaryOnly);
+  const inferOutfitDefinition = poolRecords => {
+    if (poolRecords.some(record => String(record.itemId) === "31126")) {
+      return {
+        name: "睡醒的人魚",
+        featuredOutfit: "衣裝·睡醒的人魚",
+        image: "../assets/special-recruit/pool-springfield-mermaid.png"
+      };
+    }
+    const featured = poolRecords.find(record => {
+      return record.rarity === "橙色" && String(record.name || "").startsWith("衣裝·");
+    });
+    return featured ? {
+      name: featured.name.replace(/^衣裝·/, ""),
+      featuredOutfit: featured.name
+    } : {};
+  };
   const getOutfitDefinition = record => outfitPoolMap.pools?.[String(record.poolId)] || {};
   const isLimitedOutfitReward = record => {
     const featuredName = getOutfitDefinition(record).featuredOutfit;
-    return Boolean(featuredName && record.name === featuredName);
+    return featuredName
+      ? record.name === featuredName
+      : record.rarity === "橙色" && String(record.name || "").startsWith("衣裝·");
   };
   const isRareOutfitReward = record => {
     if (isLimitedOutfitReward(record)) return false;
@@ -434,7 +562,7 @@ function renderAppearanceAnalysis() {
   });
 
   const poolCards = [...groups.entries()].map(([poolId, poolRecords]) => {
-    const definition = outfitPoolMap.pools?.[poolId] || {};
+    const definition = outfitPoolMap.pools?.[poolId] || inferOutfitDefinition(poolRecords);
     const poolLimited = poolRecords.filter(isLimitedOutfitReward);
     const poolRare = poolRecords.filter(isRareOutfitReward);
     const featuredName = definition.featuredOutfit || "";
@@ -465,12 +593,12 @@ function renderAppearanceAnalysis() {
       return `<div class="reward-category"><div><span>${label}</span><small>${detail || "尚未取得"}</small></div><strong>${categoryRecords.length}</strong></div>`;
     }).join("");
     const poolArt = definition.image
-      ? `<img class="outfit-hero-art" style="display:block;flex:0 0 58%;width:58%;height:340px;min-width:0;object-fit:cover;object-position:center 36%;" src="${escapeHtml(definition.image)}" alt="${escapeHtml(definition.name || "新裝採購")}" loading="lazy">`
+      ? `<img class="outfit-hero-art" src="${escapeHtml(definition.image)}" alt="${escapeHtml(definition.name || "新裝採購")}" loading="lazy">`
       : "";
 
-    return `<article class="outfit-pool-card" style="display:block;overflow:hidden;width:100%;min-width:0;">
-      <div class="outfit-hero" style="display:flex;overflow:hidden;width:100%;height:340px;min-width:0;"><div class="outfit-hero-copy" style="flex:0 0 42%;width:42%;height:340px;min-width:0;"><span class="outfit-code">POOL // ${poolId}</span><h3>${definition.name || `新裝採購 ${poolId}`}</h3><small>${dateStart} ～ ${dateEnd}</small><div class="outfit-total"><strong>${poolRecords.length}</strong><span>總抽數</span></div><div class="outfit-core-stats"><div><span>限定</span><strong>${poolLimited.length}</strong><small>${formatRate(poolLimited.length, poolRecords.length)}／官方 1.18%</small></div><div><span>稀有</span><strong>${poolRare.length}</strong><small>${formatRate(poolRare.length, poolRecords.length)}／官方 16.02%</small></div></div></div>${poolArt}</div>
-      <div class="outfit-result-grid" style="position:relative;clear:both;width:100%;min-width:0;background:#eef1f2;">
+    return `<article class="outfit-pool-card">
+      <header class="outfit-hero"><div class="outfit-hero-copy"><span class="outfit-code">POOL // ${poolId}</span><h3>${definition.name || `新裝採購 ${poolId}`}</h3><small>${dateStart} ～ ${dateEnd}</small><div class="outfit-total"><strong>${poolRecords.length}</strong><span>總抽數</span></div><div class="outfit-core-stats"><div><span>限定</span><strong>${poolLimited.length}</strong><small>${formatRate(poolLimited.length, poolRecords.length)}／官方 1.18%</small></div><div><span>稀有</span><strong>${poolRare.length}</strong><small>${formatRate(poolRare.length, poolRecords.length)}／官方 16.02%</small></div></div></div>${poolArt}</header>
+      <div class="outfit-result-grid">
         <section class="visual-reward-list"><div><span>衣裝出貨</span>${featuredName ? `<small>本期：${escapeHtml(featuredName.replace(/^衣裝·/, ""))}</small>` : ""}</div><ul>${outfitDrawList}</ul></section>
         <section class="rare-reward-summary"><h4>稀有獎品分類</h4><div class="reward-category-grid">${categoryHtml}</div></section>
       </div>
@@ -1030,7 +1158,7 @@ function renderCombinedLoadoutStats() {
             <h3>${escapeHtml(character.name)}</h3>
             <p class="character-stat-meta">專武：${escapeHtml(item.signatureName)}</p>
           </div>
-          <span class="loadout-status">${item.completed ? "6＋1 COMPLETE" : "IN PROGRESS"}</span>
+          <span class="loadout-status ${item.sixPlusSixCompleted ? "is-legend" : ""}">${item.sixPlusSixCompleted ? "6＋6 LEGEND" : item.completed ? "6＋1 COMPLETE" : "IN PROGRESS"}</span>
         </div>
         <div class="combined-columns">
           <div class="combined-column combined-goal-column">
@@ -1618,7 +1746,142 @@ function renderSpecialRecords() {
   document.getElementById("selectWeaponMaxEliteBatch").innerHTML =
     formatEliteBatch(selectWeaponMaxEliteBatch);
 
+  renderSpecialHighlights();
   renderMilestoneRecords();
+  renderSpecialRankings();
+}
+
+function renderSpecialHighlights() {
+  const container = document.getElementById("specialHighlights");
+  if (!container) return;
+
+  const poolNames = ["定向採購", "軍備提升", "常規採購", "自選人形", "自選武器"];
+  const eliteResults = poolNames.flatMap(poolName =>
+    getOrangeHistory(poolName).history.map(item => ({ ...item, poolName }))
+  );
+  const instantCount = eliteResults.filter(item => item.count === 1).length;
+  const miracleCount = eliteResults.filter(item => item.count <= 10).length;
+  const clutchCount = eliteResults.filter(item => item.count >= 60).length;
+  const visitorCounts = new Map();
+  eliteResults.forEach(item => visitorCounts.set(item.name, (visitorCounts.get(item.name) || 0) + 1));
+  const favoriteVisitor = [...visitorCounts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh-Hant"))[0];
+
+  const cards = [
+    ["一發入魂", `${instantCount} 次`, "第 1 抽直接出現", "01"],
+    ["十抽奇蹟", `${miracleCount} 次`, "10 抽內迎來菁英", "10"],
+    ["驚險壓線", `${clutchCount} 次`, "第 60 抽後才報到", "60+"],
+    ["最常來訪", favoriteVisitor ? favoriteVisitor[0] : "尚無紀錄", favoriteVisitor ? `共相遇 ${favoriteVisitor[1]} 次` : "等待第一次相遇", "VIP"]
+  ];
+
+  container.innerHTML = cards.map(([title, value, note, code]) => `
+    <article class="highlight-card">
+      <span class="highlight-code">${code}</span>
+      <small>${title}</small>
+      <strong>${escapeHtml(value)}</strong>
+      <p>${note}</p>
+    </article>
+  `).join("");
+}
+
+function renderRankingCard(title, subtitle, rows, valueFormatter) {
+  const body = rows.length > 0
+    ? rows.map((row, index) => `
+      <li>
+        <span class="ranking-position">${index + 1}</span>
+        <div><strong>${escapeHtml(row.name)}</strong><small>${escapeHtml(row.detail || "")}</small></div>
+        <b>${escapeHtml(valueFormatter(row))}</b>
+      </li>`).join("")
+    : `<li class="ranking-empty">尚無足夠紀錄</li>`;
+
+  return `<article class="ranking-card">
+    <header><div><h3>${title}</h3><small>${subtitle}</small></div><span>TOP 5</span></header>
+    <ol>${body}</ol>
+  </article>`;
+}
+
+function getUpJourneyHistory(poolName) {
+  const poolRecords = getGameRecords(poolName, "oldToNew");
+  const journeys = [];
+  let pullsSinceLastUp = 0;
+  let offRateCount = 0;
+
+  poolRecords.forEach(record => {
+    pullsSinceLastUp += getRecordPullCount(record);
+
+    if (record.rarity !== "橙色") return;
+    if (isOffRateRecord(record)) {
+      offRateCount++;
+      return;
+    }
+
+    journeys.push({
+      name: record.name,
+      count: pullsSinceLastUp,
+      offRateCount,
+      time: record.time,
+      detail: `${poolName}｜${offRateCount > 0 ? `含 ${offRateCount} 次抽歪` : "未抽歪"}`
+    });
+    pullsSinceLastUp = 0;
+    offRateCount = 0;
+  });
+
+  return journeys;
+}
+
+function renderSpecialRankings() {
+  const container = document.getElementById("specialRankings");
+  if (!container) return;
+
+  const poolNames = ["定向採購", "軍備提升", "常規採購", "自選人形", "自選武器"];
+  const eliteResults = poolNames.flatMap(poolName => {
+    return getOrangeHistory(poolName).history.map(item => ({
+      ...item,
+      detail: `${poolName}｜${String(item.time || "").split(" ")[0] || "-"}`
+    }));
+  });
+  const fastest = [...eliteResults].sort((a, b) => a.count - b.count || new Date(b.time) - new Date(a.time)).slice(0, 5);
+  const upJourneys = ["定向採購", "軍備提升", "自選人形", "自選武器"]
+    .flatMap(getUpJourneyHistory);
+  const slowest = [...upJourneys]
+    .sort((a, b) => b.count - a.count || b.offRateCount - a.offRateCount || new Date(b.time) - new Date(a.time))
+    .slice(0, 5);
+
+  const offRateCounts = new Map();
+  ["定向採購", "軍備提升", "自選人形", "自選武器"].forEach(poolName => {
+    getGameRecords(poolName, "oldToNew")
+      .filter(record => !record.summaryOnly && isOffRateRecord(record))
+      .forEach(record => {
+        const key = `${poolName}\u0000${record.name}`;
+        const current = offRateCounts.get(key) || { name: record.name, detail: poolName, count: 0 };
+        current.count++;
+        offRateCounts.set(key, current);
+      });
+  });
+  const offRateRanking = [...offRateCounts.values()]
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, "zh-Hant"))
+    .slice(0, 5);
+
+  const investmentRanking = getCombinedLoadoutStats()
+    .filter(item => item.currentTotalPulls > 0)
+    .map(item => {
+      const vertebra = Math.max(0, Math.min(6, item.character.upCount - 1));
+      const tuning = Math.max(0, Math.min(6, item.signature?.upCount || 0));
+      return {
+        name: item.character.name,
+        detail: `${vertebra} 椎＋專武調校 ${tuning} 等`,
+        count: item.currentTotalPulls
+      };
+    })
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+
+  container.innerHTML = [
+    renderRankingCard("閃電出貨", "最短等待便迎來菁英", fastest, row => `${row.count} 抽`),
+    renderRankingCard("壓線登場", "含抽歪在內，等到 UP 的最長旅程", slowest, row => `${row.count} 抽`),
+    renderRankingCard("常駐之緣", "含定向、軍備與自選池的常駐來訪", offRateRanking, row => `${row.count} 次`),
+    renderRankingCard("真愛投入榜", "目前人形與專武累積總抽數", investmentRanking, row => `${row.count} 抽`)
+  ].join("");
 }
 
 function formatMilestoneRecord(item, pullKey) {
@@ -1676,7 +1939,7 @@ async function loadRecords() {
       })
     : Promise.resolve({ pools: {} });
 
-  const loaded = await Promise.all([
+  [records, itemMap, signatureMap, characterArtMap, weaponArtMap, outfitPoolMap] = await Promise.all([
     window.gf2API.loadRecords(),
     itemMapPromise,
     signatureMapPromise,
@@ -1684,17 +1947,10 @@ async function loadRecords() {
     weaponArtMapPromise,
     outfitPoolMapPromise
   ]);
-  [records, itemMap, signatureMap, characterArtMap, weaponArtMap] = loaded;
-  const loadedOutfitPoolMap = loaded[5] || { pools: {} };
-  outfitPoolMap = {
-    ...defaultOutfitPoolMap,
-    ...loadedOutfitPoolMap,
-    pools: {
-      ...defaultOutfitPoolMap.pools,
-      ...(loadedOutfitPoolMap.pools || {})
-    }
-  };
-  records.forEach(normalizeSpecialRecruitRecord);
+  records.forEach(record => {
+    refreshRecordMetadata(record);
+    normalizeSpecialRecruitRecord(record);
+  });
   normalizeRecordIds();
   sortRecordsByTime();
   await window.gf2API.saveRecords(records);
@@ -1715,6 +1971,11 @@ async function loadConfigToUI() {
   const accessTokenInput = document.getElementById("accessTokenInput");
   const configStatus = document.getElementById("configStatus");
 
+  gachaUrlInput.value = "";
+  accessTokenInput.value = "";
+  accessTokenInput.type = "password";
+  accessTokenInput.placeholder = "Authorization / AccessToken";
+
   if (config.gachaUrl) {
     gachaUrlInput.value = config.gachaUrl;
   }
@@ -1733,6 +1994,180 @@ async function loadConfigToUI() {
     configStatus.textContent = "尚未設定同步資訊。";
   }
 }
+
+async function refreshAccountSwitcher() {
+  const state = await window.gf2API.listAccounts();
+  const active = state.accounts.find(account => account.id === state.activeAccountId) || state.accounts[0];
+  const label = document.getElementById("activeAccountLabel");
+  const meta = document.getElementById("activeAccountMeta");
+  if (active) {
+    label.textContent = active.name || active.uid;
+    meta.textContent = `${active.server} · ${active.uid}`;
+  }
+
+  const list = document.getElementById("accountList");
+  list.innerHTML = "";
+  state.accounts.forEach(account => {
+    const item = document.createElement("article");
+    item.className = `account-list-item${account.id === state.activeAccountId ? " active" : ""}`;
+    item.innerHTML = `<button class="account-select-action"><span><strong>${escapeHtml(account.name || account.uid)}</strong><small>${escapeHtml(account.server)} · UID ${escapeHtml(account.uid)} · ${account.recordCount.toLocaleString()} 筆</small></span><b>${account.id === state.activeAccountId ? "使用中" : "切換 ›"}</b></button><div class="account-item-actions"><button class="account-edit-btn">編輯</button><button class="account-delete-btn">移除</button></div>`;
+    item.querySelector(".account-select-action").addEventListener("click", async () => {
+      if (account.id === state.activeAccountId) return;
+      await window.gf2API.switchAccount(account.id);
+      currentRecordPage = 1;
+      currentPoolFilter = "全部";
+      document.getElementById("recordPoolFilter").value = "全部";
+      await loadRecords();
+      await loadConfigToUI();
+      await refreshAccountSwitcher();
+      closeAccountModal();
+    });
+    item.querySelector(".account-edit-btn").addEventListener("click", event => {
+      event.preventDefault();
+      event.stopPropagation();
+      openAccountEditModal(account);
+    });
+    item.querySelector(".account-delete-btn").addEventListener("click", async () => {
+      const confirmed = confirm(`確定要永久移除帳號「${account.name || account.uid}」嗎？\n\n將刪除該帳號的 ${account.recordCount.toLocaleString()} 筆紀錄與同步設定，且不會自動備份。\n\n若要保留資料，請先取消、切換至此帳號，再使用「匯出 JSON」。`);
+      if (!confirmed) return;
+      try {
+        const result = await window.gf2API.deleteAccount(account.id);
+        if (result.activeChanged) {
+          currentRecordPage = 1;
+          currentPoolFilter = "全部";
+          document.getElementById("recordPoolFilter").value = "全部";
+          await loadRecords();
+          await loadConfigToUI();
+        }
+        await refreshAccountSwitcher();
+        resetAccountEditor();
+        document.getElementById("accountEditorStatus").textContent = "帳號已移除。";
+      } catch (error) {
+        alert(`移除帳號失敗：${error.message}`);
+      }
+    });
+    list.appendChild(item);
+  });
+}
+
+function openAccountModal() {
+  const modal = document.getElementById("accountModal");
+  modal.classList.remove("hidden");
+  void modal.offsetHeight;
+  resetAccountEditor(false);
+}
+
+function openAccountEditModal(account) {
+  editingAccountId = account.id;
+  const serverInput = document.getElementById("editAccountServerInput");
+  const hasServer = [...serverInput.options].some(option => option.value === account.server);
+  if (!hasServer) serverInput.add(new Option(account.server, account.server));
+  serverInput.value = account.server;
+  document.getElementById("editAccountUidInput").value = account.uid;
+  document.getElementById("editAccountNameInput").value = account.name || "";
+  const modal = document.getElementById("accountEditModal");
+  modal.classList.remove("hidden");
+  void modal.offsetHeight;
+  setTimeout(() => {
+    const input = document.getElementById("editAccountUidInput");
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+  }, 30);
+}
+
+function closeAccountEditModal() {
+  editingAccountId = null;
+  document.getElementById("accountEditModal").classList.add("hidden");
+}
+
+function resetAccountEditor(clearValues = true) {
+  ["accountServerInput", "accountUidInput", "accountNameInput"].forEach(id => {
+    const field = document.getElementById(id);
+    field.disabled = false;
+    field.readOnly = false;
+    field.tabIndex = 0;
+    field.style.pointerEvents = "auto";
+    if (clearValues && id !== "accountServerInput") field.value = "";
+  });
+  document.getElementById("createAccountBtn").disabled = false;
+  setTimeout(() => {
+    const uidInput = document.getElementById("accountUidInput");
+    uidInput.focus();
+    uidInput.click();
+  }, 30);
+}
+
+function closeAccountModal() {
+  if (document.getElementById("accountModal").contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+  document.getElementById("accountModal").classList.add("hidden");
+}
+
+document.getElementById("accountSwitcherBtn").addEventListener("click", async () => {
+  await refreshAccountSwitcher();
+  openAccountModal();
+});
+document.getElementById("closeAccountModalBtn").addEventListener("click", closeAccountModal);
+document.querySelector("[data-close-account-modal]").addEventListener("click", closeAccountModal);
+document.getElementById("closeAccountEditBtn").addEventListener("click", closeAccountEditModal);
+document.getElementById("cancelAccountEditBtn").addEventListener("click", closeAccountEditModal);
+document.querySelector("[data-close-account-edit]").addEventListener("click", closeAccountEditModal);
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && !document.getElementById("accountEditModal").classList.contains("hidden")) {
+    closeAccountEditModal();
+    return;
+  }
+  if (event.key === "Escape" && !document.getElementById("accountModal").classList.contains("hidden")) {
+    closeAccountModal();
+  }
+});
+document.getElementById("createAccountBtn").addEventListener("click", async () => {
+  const server = document.getElementById("accountServerInput").value;
+  const uid = document.getElementById("accountUidInput").value.trim();
+  const name = document.getElementById("accountNameInput").value.trim();
+  if (!uid) {
+    alert("請輸入 UID");
+    return;
+  }
+  try {
+    await window.gf2API.createAccount({ server, uid, name });
+    document.getElementById("accountUidInput").value = "";
+    document.getElementById("accountNameInput").value = "";
+    currentRecordPage = 1;
+    currentPoolFilter = "全部";
+    document.getElementById("recordPoolFilter").value = "全部";
+    await loadRecords();
+    await loadConfigToUI();
+    await refreshAccountSwitcher();
+    resetAccountEditor();
+    document.getElementById("accountEditorStatus").textContent = "帳號已建立並切換，可繼續輸入下一組帳號。";
+  } catch (error) {
+    alert(`建立帳號失敗：${error.message}`);
+  }
+});
+document.getElementById("saveAccountEditBtn").addEventListener("click", async () => {
+  const server = document.getElementById("editAccountServerInput").value;
+  const uid = document.getElementById("editAccountUidInput").value.trim();
+  const name = document.getElementById("editAccountNameInput").value.trim();
+  if (!editingAccountId) {
+    alert("請先在帳號列表按「編輯」");
+    return;
+  }
+  if (!uid) {
+    alert("請輸入 UID");
+    return;
+  }
+  if (!confirm("確定要儲存這個帳號的伺服器、UID 與名稱嗎？\n抽卡紀錄與同步設定會完整保留。")) return;
+  try {
+    await window.gf2API.updateAccount(editingAccountId, { server, uid, name });
+    closeAccountEditModal();
+    await refreshAccountSwitcher();
+    document.getElementById("accountEditorStatus").textContent = "帳號資料已更新。";
+  } catch (error) {
+    alert(`更新帳號失敗：${error.message}`);
+  }
+});
 
 document.getElementById("saveSyncConfigBtn").addEventListener("click", async () => {
   const oldConfig = await window.gf2API.loadConfig();
@@ -1778,13 +2213,38 @@ document.getElementById("importBtn").addEventListener("click", async () => {
     }
 
     let importedRecords = [];
+    let importDescription = "本程式備份";
+    const gfl2HelpImport = normalizeGfl2HelpImport(parsedData);
 
-    if (Array.isArray(parsedData)) {
+    if (gfl2HelpImport?.canceled) return;
+
+    if (gfl2HelpImport) {
+      importedRecords = gfl2HelpImport.records;
+      importDescription = `gfl2help：${gfl2HelpImport.server}`;
+
+      if (importedRecords.length === 0) {
+        alert("gfl2help 檔案內沒有可匯入的支援卡池紀錄");
+        return;
+      }
+
+      const preview = [
+        `來源：${importDescription}`,
+        `可匯入：${importedRecords.length} 筆`,
+        `未知道具：${gfl2HelpImport.unknownItems} 筆`,
+        "",
+        "匯入時只會新增不存在的紀錄，不會刪除或覆蓋目前資料。"
+      ].join("\n");
+
+      if (!confirm(`${preview}\n\n是否繼續？`)) return;
+      if (typeof window.gf2API.backupRecordsBeforeImport === "function") {
+        await window.gf2API.backupRecordsBeforeImport();
+      }
+    } else if (Array.isArray(parsedData)) {
       importedRecords = parsedData;
     } else if (parsedData.records && Array.isArray(parsedData.records)) {
       importedRecords = parsedData.records;
     } else {
-      alert("格式錯誤：請選擇抽卡紀錄陣列，或包含 records 的備份 JSON");
+      alert("格式錯誤：僅支援本程式備份或 gfl2help 匯出 JSON");
       return;
     }
 
@@ -1815,11 +2275,11 @@ document.getElementById("importBtn").addEventListener("click", async () => {
     const result = await addRecords(importedRecords);
 
     alert(
-      `匯入完成\n新增 ${result.addedCount} 筆，跳過重複 ${result.skippedCount} 筆`
+      `匯入完成（${importDescription}）\n新增 ${result.addedCount} 筆，跳過重複 ${result.skippedCount} 筆`
     );
   } catch (error) {
     console.error(error);
-    alert("匯入失敗：請確認 JSON 格式正確");
+    alert(`匯入失敗：${error.message || "請確認 JSON 格式正確"}`);
   }
 });
 
@@ -1879,7 +2339,7 @@ document.getElementById("importManualBtn").addEventListener("click", async () =>
 });
 
 document.getElementById("clearBtn").addEventListener("click", async () => {
-  const confirmed = confirm("確定要清除全部抽卡紀錄嗎？這個動作無法復原。");
+  const confirmed = confirm("確定要清除目前帳號的全部抽卡紀錄嗎？\n其他帳號不受影響，這個動作無法復原。");
 
   if (!confirmed) {
     return;
@@ -1898,7 +2358,7 @@ document.getElementById("clearBtn").addEventListener("click", async () => {
   renderAppearanceAnalysis();
   updateStatsDate();
 
-  alert("已清除全部紀錄");
+  alert("已清除目前帳號的全部紀錄");
 });
 
 document.getElementById("exportBtn").addEventListener("click", async () => {
@@ -1911,7 +2371,8 @@ document.getElementById("exportBtn").addEventListener("click", async () => {
 
 document.getElementById("updateItemMapBtn").addEventListener("click", async () => {
   const confirmed = confirm(
-    "即將從 GitHub 下載最新版資料表。\n\n更新後，新角色或新武器的名稱可能會正常顯示。\n是否繼續？"
+    "即將從 GitHub 下載最新版資料表與美術資源。\n\n" +
+    "更新內容包含角色、武器、新裝採購資料及新增圖片，不會影響抽卡紀錄。\n是否繼續？"
   );
 
   if (!confirmed) {
@@ -1920,11 +2381,17 @@ document.getElementById("updateItemMapBtn").addEventListener("click", async () =
 
   try {
     const result = await window.gf2API.updateItemMap();
+    await loadRecords();
 
-    alert(`資料表更新完成，共 ${result.count} 筆資料。`);
+    alert(
+      `資料內容更新完成\n` +
+      `版本：${result.version}\n` +
+      `資料表：${result.count} 筆\n` +
+      `更新檔案：${result.fileCount} 個（圖片 ${result.imageCount} 張）`
+    );
   } catch (error) {
     console.error(error);
-    alert("資料表更新失敗，請確認網路連線或稍後再試。");
+    alert(`資料內容更新失敗：${error.message || "請確認網路連線或稍後再試"}`);
   }
 });
 
@@ -2274,5 +2741,12 @@ function initDropdownMenus() {
 
 initLayoutControls();
 initCardScroll();
-loadRecords();
-loadConfigToUI();
+async function initializeApp() {
+  await refreshAccountSwitcher();
+  await loadRecords();
+  await loadConfigToUI();
+}
+initializeApp().catch(error => {
+  console.error(error);
+  alert(`程式初始化失敗：${error.message}`);
+});

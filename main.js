@@ -1,22 +1,39 @@
 const { app, BrowserWindow, ipcMain, dialog, Menu, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
+const crypto = require("crypto");
+const { pathToFileURL } = require("url");
 
 let dataDir;
 let dataFile;
 let configFile;
+let accountsFile;
 const bundledItemMapFile = path.join(__dirname, "itemMap.json");
 const bundledSignatureMapFile = path.join(__dirname, "signatureMap.json");
 const bundledCharacterArtMapFile = path.join(__dirname, "characterArtMap.json");
 const bundledWeaponArtMapFile = path.join(__dirname, "weaponArtMap.json");
 const bundledOutfitPoolMapFile = path.join(__dirname, "outfitPoolMap.json");
 let userItemMapFile;
+let userSignatureMapFile;
+let userCharacterArtMapFile;
+let userWeaponArtMapFile;
+let userOutfitPoolMapFile;
+let dataUpdateStateFile;
+let legacyMirrorInitialized = false;
+const dataUpdateManifestUrl =
+  "https://raw.githubusercontent.com/shrsheng/GF2-Gacha-Tracker/refs/heads/main/data-update-manifest.json";
 
 function initDataPaths() {
   dataDir = path.join(app.getPath("userData"), "data");
   dataFile = path.join(dataDir, "gacha.json");
   configFile = path.join(dataDir, "config.json");
+  accountsFile = path.join(dataDir, "accounts.json");
   userItemMapFile = path.join(dataDir, "itemMap.json");
+  userSignatureMapFile = path.join(dataDir, "signatureMap.json");
+  userCharacterArtMapFile = path.join(dataDir, "characterArtMap.json");
+  userWeaponArtMapFile = path.join(dataDir, "weaponArtMap.json");
+  userOutfitPoolMapFile = path.join(dataDir, "outfitPoolMap.json");
+  dataUpdateStateFile = path.join(dataDir, "data-update-state.json");
 
 
 }
@@ -41,6 +58,73 @@ function ensureDataFile() {
       "utf-8"
     );
   }
+
+  ensureAccountStore();
+
+  // 新版以 accounts.json 保存多帳號；同時鏡像目前帳號到舊格式，
+  // 讓使用者若暫時退回舊版，仍可讀取最近使用帳號的紀錄與設定。
+  if (!legacyMirrorInitialized) {
+    const store = readJsonFile(accountsFile, { activeAccountId: "", accounts: [] });
+    const account = Array.isArray(store.accounts)
+      ? store.accounts.find(item => item.id === store.activeAccountId) || store.accounts[0]
+      : null;
+    writeLegacyCompatibilityFiles(account);
+    legacyMirrorInitialized = true;
+  }
+}
+
+function makeAccountKey(server, uid) {
+  return `${String(server || "unknown").trim()}::${String(uid || "legacy").trim()}`;
+}
+
+function ensureAccountStore() {
+  if (fs.existsSync(accountsFile)) return;
+  const legacyData = readJsonFile(dataFile, { records: [] });
+  const legacyConfig = readJsonFile(configFile, { gachaUrl: "", accessToken: "" });
+  const account = {
+    id: makeAccountKey("未設定", "legacy"),
+    server: "未設定",
+    uid: "legacy",
+    name: "原有帳號",
+    records: Array.isArray(legacyData.records) ? legacyData.records : [],
+    config: legacyConfig || { gachaUrl: "", accessToken: "" },
+    createdAt: new Date().toISOString()
+  };
+  fs.writeFileSync(accountsFile, JSON.stringify({ version: 1, activeAccountId: account.id, accounts: [account] }, null, 2), "utf-8");
+}
+
+function loadAccountStore() {
+  ensureDataFile();
+  const store = readJsonFile(accountsFile, { version: 1, activeAccountId: "", accounts: [] });
+  if (!Array.isArray(store.accounts)) store.accounts = [];
+  return store;
+}
+
+function saveAccountStore(store) {
+  fs.writeFileSync(accountsFile, JSON.stringify(store, null, 2), "utf-8");
+}
+
+function writeLegacyCompatibilityFiles(account) {
+  if (!account || !dataFile || !configFile) return;
+  fs.writeFileSync(
+    dataFile,
+    JSON.stringify({ version: 1, records: Array.isArray(account.records) ? account.records : [] }, null, 2),
+    "utf-8"
+  );
+  fs.writeFileSync(
+    configFile,
+    JSON.stringify(account.config || { gachaUrl: "", accessToken: "" }, null, 2),
+    "utf-8"
+  );
+}
+
+function saveAccountStoreAndMirror(store) {
+  saveAccountStore(store);
+  writeLegacyCompatibilityFiles(getActiveAccount(store));
+}
+
+function getActiveAccount(store = loadAccountStore()) {
+  return store.accounts.find(account => account.id === store.activeAccountId) || store.accounts[0] || null;
 }
 
 const iconPath = path.join(__dirname, "assets", "icon.ico");
@@ -60,39 +144,83 @@ function createWindow() {
 }
 
 function loadItemMap() {
-  const filePath = fs.existsSync(userItemMapFile)
-    ? userItemMapFile
-    : bundledItemMapFile;
+  const bundledMap = fs.existsSync(bundledItemMapFile)
+    ? JSON.parse(fs.readFileSync(bundledItemMapFile, "utf-8"))
+    : {};
+  const userMap = userItemMapFile && fs.existsSync(userItemMapFile)
+    ? JSON.parse(fs.readFileSync(userItemMapFile, "utf-8"))
+    : {};
 
-  if (!fs.existsSync(filePath)) {
-    return {};
-  }
+  // 使用者資料夾可能留有舊版 itemMap。保留線上更新內容，同時補入新版程式
+  // 隨附但舊表缺少的物件，避免升級後仍顯示「未知道具」。
+  const hasManagedUpdate = dataUpdateStateFile && fs.existsSync(dataUpdateStateFile);
+  return hasManagedUpdate
+    ? { ...bundledMap, ...userMap }
+    : { ...userMap, ...bundledMap };
+}
 
+function readJsonFile(filePath, fallback) {
+  if (!filePath || !fs.existsSync(filePath)) return fallback;
   return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
-function loadConfig() {
-  ensureDataFile();
+function mergeDataMap(bundledFile, userFile, nestedKeys = []) {
+  const bundled = readJsonFile(bundledFile, {});
+  const user = readJsonFile(userFile, {});
+  const merged = { ...bundled, ...user };
+  nestedKeys.forEach(key => {
+    merged[key] = { ...(bundled[key] || {}), ...(user[key] || {}) };
+  });
+  return merged;
+}
 
-  if (!fs.existsSync(configFile)) {
-    fs.writeFileSync(
-      configFile,
-      JSON.stringify({ gachaUrl: "", accessToken: "" }, null, 2),
-      "utf-8"
-    );
+function resolveDownloadedAsset(assetPath) {
+  if (typeof assetPath !== "string" || !assetPath.startsWith("../assets/")) return assetPath;
+  const relativePath = assetPath.slice("../assets/".length);
+  const downloadedPath = path.join(dataDir, "assets", relativePath);
+  return fs.existsSync(downloadedPath) ? pathToFileURL(downloadedPath).href : assetPath;
+}
+
+function resolveMapAssetPaths(value) {
+  if (Array.isArray(value)) return value.map(resolveMapAssetPaths);
+  if (!value || typeof value !== "object") return resolveDownloadedAsset(value);
+  return Object.fromEntries(
+    Object.entries(value).map(([key, child]) => [key, resolveMapAssetPaths(child)])
+  );
+}
+
+function validateUpdatePath(relativePath) {
+  const original = String(relativePath || "");
+  const normalized = path.posix.normalize(original);
+  if (!normalized || original.includes("\\") || original.includes(":") ||
+      normalized.startsWith("../") || path.isAbsolute(normalized)) {
+    throw new Error(`更新清單包含不安全路徑：${relativePath}`);
   }
+  if (!/\.(json|png|webp|jpe?g)$/i.test(normalized)) {
+    throw new Error(`不支援的更新檔案格式：${relativePath}`);
+  }
+  return normalized;
+}
 
-  return JSON.parse(fs.readFileSync(configFile, "utf-8"));
+async function downloadDataManifest() {
+  const response = await fetch(dataUpdateManifestUrl, { cache: "no-store" });
+  if (!response.ok) throw new Error(`下載更新清單失敗（HTTP ${response.status}）`);
+  const manifest = await response.json();
+  if (!manifest || !Array.isArray(manifest.files)) throw new Error("更新清單格式錯誤");
+  return manifest;
+}
+
+function loadConfig() {
+  const account = getActiveAccount();
+  return account?.config || { gachaUrl: "", accessToken: "" };
 }
 
 function saveConfig(config) {
-  ensureDataFile();
-
-  fs.writeFileSync(
-    configFile,
-    JSON.stringify(config, null, 2),
-    "utf-8"
-  );
+  const store = loadAccountStore();
+  const account = getActiveAccount(store);
+  if (!account) throw new Error("尚未建立帳號");
+  account.config = config;
+  saveAccountStoreAndMirror(store);
 }
 
 function formatTime(timestamp) {
@@ -166,65 +294,188 @@ ipcMain.handle("save-config", (event, config) => {
 });
 
 ipcMain.handle("update-item-map", async () => {
-  const url =
-    "https://raw.githubusercontent.com/shrsheng/GF2-Gacha-Tracker/refs/heads/main/itemMap.json";
+  ensureDataFile();
+  const manifest = await downloadDataManifest();
+  const baseUrl = String(manifest.baseUrl || new URL(".", dataUpdateManifestUrl).href);
+  const pendingFiles = [];
+  let totalBytes = 0;
 
-  const response = await fetch(url);
+  for (const file of manifest.files) {
+    const relativePath = validateUpdatePath(file.path);
+    const fileUrl = file.url || new URL(relativePath, baseUrl).href;
+    const response = await fetch(fileUrl, { cache: "no-store" });
+    if (!response.ok) throw new Error(`下載 ${relativePath} 失敗（HTTP ${response.status}）`);
+    const buffer = Buffer.from(await response.arrayBuffer());
+    totalBytes += buffer.length;
+    if (buffer.length > 50 * 1024 * 1024 || totalBytes > 200 * 1024 * 1024) {
+      throw new Error("資料更新檔案超過安全大小限制");
+    }
 
-  if (!response.ok) {
-    throw new Error("下載 itemMap.json 失敗");
+    if (relativePath.endsWith(".json")) JSON.parse(buffer.toString("utf-8"));
+    if (file.sha256) {
+      const digest = crypto.createHash("sha256").update(buffer).digest("hex");
+      if (digest.toLowerCase() !== String(file.sha256).toLowerCase()) {
+        throw new Error(`${relativePath} 校驗失敗`);
+      }
+    }
+    pendingFiles.push({ relativePath, buffer });
   }
 
-  const itemMap = await response.json();
+  // 全部下載與驗證成功後才寫入，避免網路中斷留下半套資料。
+  pendingFiles.forEach(({ relativePath, buffer }) => {
+    const destination = path.join(dataDir, relativePath);
+    fs.mkdirSync(path.dirname(destination), { recursive: true });
+    fs.writeFileSync(destination, buffer);
+  });
+  fs.writeFileSync(dataUpdateStateFile, JSON.stringify({
+    version: manifest.version || "unknown",
+    updatedAt: new Date().toISOString(),
+    files: pendingFiles.map(file => file.relativePath)
+  }, null, 2), "utf-8");
 
-  fs.writeFileSync(
-    userItemMapFile,
-    JSON.stringify(itemMap, null, 2),
-    "utf-8"
-  );
-
+  const itemMap = loadItemMap();
   return {
-    count: Object.keys(itemMap).length
+    version: manifest.version || "unknown",
+    count: Object.keys(itemMap).length,
+    fileCount: pendingFiles.length,
+    imageCount: pendingFiles.filter(file => /\.(png|webp|jpe?g)$/i.test(file.relativePath)).length
   };
 });
 
 ipcMain.handle("load-records", () => {
-  ensureDataFile();
+  const account = getActiveAccount();
+  return Array.isArray(account?.records) ? account.records : [];
+});
 
-  const raw = fs.readFileSync(dataFile, "utf-8");
-  return JSON.parse(raw).records;
+ipcMain.handle("list-accounts", () => {
+  const store = loadAccountStore();
+  return {
+    activeAccountId: store.activeAccountId,
+    accounts: store.accounts.map(account => ({
+      id: account.id,
+      server: account.server,
+      uid: account.uid,
+      name: account.name,
+      recordCount: Array.isArray(account.records) ? account.records.length : 0
+    }))
+  };
+});
+
+ipcMain.handle("create-account", (event, input) => {
+  const server = String(input?.server || "").trim();
+  const uid = String(input?.uid || "").trim();
+  const name = String(input?.name || "").trim() || uid;
+  if (!server || !uid) throw new Error("伺服器與 UID 為必填");
+  if (server.length > 30 || uid.length > 40 || name.length > 40) throw new Error("帳號資料過長");
+
+  const store = loadAccountStore();
+  const id = makeAccountKey(server, uid);
+  if (store.accounts.some(account => account.id === id)) throw new Error("此伺服器與 UID 已存在");
+  store.accounts.push({ id, server, uid, name, records: [], config: { gachaUrl: "", accessToken: "" }, createdAt: new Date().toISOString() });
+  store.activeAccountId = id;
+  saveAccountStoreAndMirror(store);
+  return id;
+});
+
+ipcMain.handle("update-active-account", (event, input) => {
+  const server = String(input?.server || "").trim();
+  const uid = String(input?.uid || "").trim();
+  const name = String(input?.name || "").trim() || uid;
+  if (!server || !uid) throw new Error("伺服器與 UID 為必填");
+  if (server.length > 30 || uid.length > 40 || name.length > 40) throw new Error("帳號資料過長");
+
+  const store = loadAccountStore();
+  const account = getActiveAccount(store);
+  if (!account) throw new Error("尚未建立帳號");
+  const nextId = makeAccountKey(server, uid);
+  if (store.accounts.some(item => item !== account && item.id === nextId)) throw new Error("此伺服器與 UID 已存在");
+  account.id = nextId;
+  account.server = server;
+  account.uid = uid;
+  account.name = name;
+  store.activeAccountId = nextId;
+  saveAccountStoreAndMirror(store);
+  return nextId;
+});
+
+ipcMain.handle("update-account", (event, accountId, input) => {
+  const server = String(input?.server || "").trim();
+  const uid = String(input?.uid || "").trim();
+  const name = String(input?.name || "").trim() || uid;
+  if (!server || !uid) throw new Error("伺服器與 UID 為必填");
+  if (server.length > 30 || uid.length > 40 || name.length > 40) throw new Error("帳號資料過長");
+
+  const store = loadAccountStore();
+  const account = store.accounts.find(item => item.id === accountId);
+  if (!account) throw new Error("找不到指定帳號");
+  const nextId = makeAccountKey(server, uid);
+  if (store.accounts.some(item => item !== account && item.id === nextId)) throw new Error("此伺服器與 UID 已存在");
+  const wasActive = store.activeAccountId === account.id;
+  account.id = nextId;
+  account.server = server;
+  account.uid = uid;
+  account.name = name;
+  if (wasActive) store.activeAccountId = nextId;
+  saveAccountStoreAndMirror(store);
+  return nextId;
+});
+
+ipcMain.handle("delete-account", (event, accountId) => {
+  const store = loadAccountStore();
+  if (store.accounts.length <= 1) throw new Error("至少需要保留一個帳號");
+  const index = store.accounts.findIndex(account => account.id === accountId);
+  if (index < 0) throw new Error("找不到指定帳號");
+  const wasActive = store.activeAccountId === accountId;
+  store.accounts.splice(index, 1);
+  if (wasActive) store.activeAccountId = store.accounts[0].id;
+  saveAccountStoreAndMirror(store);
+  return { activeAccountId: store.activeAccountId, activeChanged: wasActive };
+});
+
+ipcMain.handle("switch-account", (event, accountId) => {
+  const store = loadAccountStore();
+  if (!store.accounts.some(account => account.id === accountId)) throw new Error("找不到指定帳號");
+  store.activeAccountId = accountId;
+  saveAccountStoreAndMirror(store);
+  return true;
 });
 
 ipcMain.handle("load-signature-map", () => {
-  if (!fs.existsSync(bundledSignatureMapFile)) return {};
-  return JSON.parse(fs.readFileSync(bundledSignatureMapFile, "utf-8"));
+  return mergeDataMap(bundledSignatureMapFile, userSignatureMapFile);
 });
 
 ipcMain.handle("load-item-map", () => loadItemMap());
 
 ipcMain.handle("load-character-art-map", () => {
-  if (!fs.existsSync(bundledCharacterArtMapFile)) return { roles: {}, wallpapers: {} };
-  return JSON.parse(fs.readFileSync(bundledCharacterArtMapFile, "utf-8"));
+  return resolveMapAssetPaths(mergeDataMap(
+    bundledCharacterArtMapFile,
+    userCharacterArtMapFile,
+    ["roles", "wallpapers"]
+  ));
 });
 
 ipcMain.handle("load-weapon-art-map", () => {
-  if (!fs.existsSync(bundledWeaponArtMapFile)) return { weapons: {} };
-  return JSON.parse(fs.readFileSync(bundledWeaponArtMapFile, "utf-8"));
+  return resolveMapAssetPaths(mergeDataMap(
+    bundledWeaponArtMapFile,
+    userWeaponArtMapFile,
+    ["weapons"]
+  ));
 });
 
 ipcMain.handle("load-outfit-pool-map", () => {
-  if (!fs.existsSync(bundledOutfitPoolMapFile)) return { pools: {} };
-  return JSON.parse(fs.readFileSync(bundledOutfitPoolMapFile, "utf-8"));
+  return resolveMapAssetPaths(mergeDataMap(
+    bundledOutfitPoolMapFile,
+    userOutfitPoolMapFile,
+    ["pools"]
+  ));
 });
 
 ipcMain.handle("save-records", (event, records) => {
-  ensureDataFile();
-
-  fs.writeFileSync(
-    dataFile,
-    JSON.stringify({ version: 1, records }, null, 2),
-    "utf-8"
-  );
+  const store = loadAccountStore();
+  const account = getActiveAccount(store);
+  if (!account) throw new Error("尚未建立帳號");
+  account.records = Array.isArray(records) ? records : [];
+  saveAccountStoreAndMirror(store);
 
   return true;
 });
@@ -244,8 +495,8 @@ ipcMain.handle("export-records", async () => {
     return false;
   }
 
-  const raw = fs.readFileSync(dataFile, "utf-8");
-  fs.writeFileSync(result.filePath, raw, "utf-8");
+  const account = getActiveAccount();
+  fs.writeFileSync(result.filePath, JSON.stringify({ version: 2, account: { server: account.server, uid: account.uid, name: account.name }, records: account.records || [] }, null, 2), "utf-8");
 
   return true;
 });
@@ -411,6 +662,19 @@ ipcMain.handle("import-records", async () => {
   const raw = fs.readFileSync(filePath, "utf-8");
 
   return JSON.parse(raw);
+});
+
+ipcMain.handle("backup-records-before-import", () => {
+  ensureDataFile();
+
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const backupPath = path.join(
+    app.getPath("userData"),
+    `records-before-import-${stamp}.json`
+  );
+
+  fs.copyFileSync(accountsFile, backupPath);
+  return backupPath;
 });
 
 ipcMain.handle("export-manual-template", async () => {

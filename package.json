@@ -30,6 +30,7 @@
       "characterArtMap.json",
       "weaponArtMap.json",
       "outfitPoolMap.json",
+      "data-update-manifest.json",
       "package.json",
       "src/**/*",
       "assets/**/*"

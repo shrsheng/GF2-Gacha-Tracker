@@ -13,6 +13,7 @@
         <img class="official-brand-logo" src="../assets/gf2-official-logo.png" alt="Girls' Frontline 2: Exilium">
         <small>GACHA TRACKER</small>
       </div>
+      <button id="accountSwitcherBtn" class="account-switcher-btn"><span>ACCOUNT</span><strong id="activeAccountLabel">原有帳號</strong><small id="activeAccountMeta">未設定 · legacy</small></button>
       <nav class="app-nav" aria-label="主要功能">
         <button class="nav-item active" data-page-target="overviewPage"><span>▦</span>總覽</button>
         <button class="nav-item" data-page-target="specialPage"><span>◇</span>特殊紀錄</button>
@@ -33,7 +34,7 @@
           <div class="dropdown">
             <button class="secondary-btn dropdown-btn">匯入／匯出⌄</button>
             <div class="dropdown-content">
-              <button id="importBtn">匯入 JSON</button>
+              <button id="importBtn">匯入備份／gfl2help</button>
               <button id="importManualBtn">匯入手動紀錄</button>
               <button id="exportBtn">匯出 JSON</button>
               <button id="exportManualTemplateBtn">下載手動模板</button>
@@ -42,13 +43,45 @@
           <div class="dropdown dropdown-right">
             <button class="icon-btn dropdown-btn" aria-label="更多功能">•••</button>
             <div class="dropdown-content">
-              <button id="updateItemMapBtn">更新資料表</button>
+              <button id="updateItemMapBtn">更新資料表與美術</button>
               <button id="checkUpdateBtn">檢查程式更新</button>
               <button id="clearBtn" class="danger-menu-item">清除全部紀錄</button>
             </div>
           </div>
         </div>
       </header>
+
+      <div id="accountModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+        <div class="account-modal-backdrop" data-close-account-modal></div>
+        <section class="account-modal-panel">
+          <header><div><span>ELMO // USER ARCHIVE</span><h2 id="accountModalTitle">選擇帳號</h2></div><button id="closeAccountModalBtn" aria-label="關閉">×</button></header>
+          <div id="accountList" class="account-list"></div>
+          <div class="account-create-panel">
+            <h3>新增帳號</h3>
+            <div class="account-form">
+              <select id="accountServerInput"><option value="台港澳服">台港澳服</option><option value="國際服">國際服</option><option value="日服">日服</option><option value="韓服">韓服</option></select>
+              <input id="accountUidInput" type="text" maxlength="40" placeholder="UID（必填）">
+              <input id="accountNameInput" type="text" maxlength="40" placeholder="顯示名稱（選填）">
+              <button id="createAccountBtn" class="primary-btn">建立並切換</button>
+            </div>
+            <p id="accountEditorStatus" class="account-editor-status" aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+
+      <div id="accountEditModal" class="account-modal hidden" role="dialog" aria-modal="true" aria-labelledby="accountEditModalTitle">
+        <div class="account-modal-backdrop" data-close-account-edit></div>
+        <section class="account-modal-panel account-edit-modal-panel">
+          <header><div><span>ELMO // ACCOUNT EDITOR</span><h2 id="accountEditModalTitle">編輯帳號資料</h2></div><button id="closeAccountEditBtn" aria-label="關閉">×</button></header>
+          <div class="account-edit-body">
+            <label>伺服器<select id="editAccountServerInput"><option value="台港澳服">台港澳服</option><option value="國際服">國際服</option><option value="日服">日服</option><option value="韓服">韓服</option></select></label>
+            <label>UID<input id="editAccountUidInput" type="text" maxlength="40" autocomplete="off"></label>
+            <label>顯示名稱<input id="editAccountNameInput" type="text" maxlength="40" autocomplete="off"></label>
+            <p>只修改帳號識別資料；抽卡紀錄與同步設定不受影響。</p>
+            <div class="account-edit-actions"><button id="cancelAccountEditBtn" class="secondary-btn">取消</button><button id="saveAccountEditBtn" class="primary-btn">儲存修改</button></div>
+          </div>
+        </section>
+      </div>
 
       <section id="syncSettingPanel" class="sync-panel hidden">
         <input id="gachaUrlInput" type="text" placeholder="gachaUrl">
@@ -84,16 +117,20 @@
           <div class="section-title-row"><div><h2>養成成本紀錄</h2><p>僅比較已完成指定養成目標的人形與專武組合</p></div></div>
           <div class="milestone-grid">
             <article class="milestone-card"><div class="milestone-title"><span>6＋1</span><small>6 椎＋第 1 把專武</small></div><div class="milestone-row"><span>最歐</span><strong id="bestSixPlusOne">尚無完成紀錄</strong></div><div class="milestone-row"><span>最非</span><strong id="worstSixPlusOne">尚無完成紀錄</strong></div></article>
-            <article class="milestone-card"><div class="milestone-title"><span>6＋6</span><small>6 椎＋專武調校 6 等</small></div><div class="milestone-row"><span>最歐</span><strong id="bestSixPlusSix">尚無完成紀錄</strong></div><div class="milestone-row"><span>最非</span><strong id="worstSixPlusSix">尚無完成紀錄</strong></div></article>
+            <article class="milestone-card milestone-card-legend"><div class="milestone-title"><span>6＋6</span><small>6 椎＋專武調校 6 等</small></div><div class="milestone-row"><span>最歐</span><strong id="bestSixPlusSix">尚無完成紀錄</strong></div><div class="milestone-row"><span>最非</span><strong id="worstSixPlusSix">尚無完成紀錄</strong></div></article>
           </div>
-          <div class="section-title-row luck-heading"><div><h2>卡池運氣紀錄</h2><p>連續 UP、連續小保歪與最歐十連</p></div></div>
+          <div class="section-title-row luck-heading"><div><h2>抽卡高光</h2><p>從歷史紀錄中挑出的幸運瞬間與難忘旅程</p></div></div>
+          <div id="specialHighlights" class="highlight-grid"></div>
+          <div class="section-title-row special-pool-heading"><div><h2>各池戰績</h2><p>連勝、連敗與十連高光一次比較</p></div></div>
           <div class="overview-grid special-grid">
-            <article class="overview-card"><h3>定向採購</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="targetMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="targetMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>最歐10連</span><div id="targetMaxEliteBatch">-</div></div></article>
-            <article class="overview-card"><h3>軍備提升</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="weaponMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="weaponMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>最歐10連</span><div id="weaponMaxEliteBatch">-</div></div></article>
-            <article class="overview-card"><h3>常規採購</h3><div class="stat-row muted-row"><span class="stat-label">UP／歪紀錄</span><span class="stat-value">不適用</span></div><div class="record-divider"></div><div class="special-record"><span>最歐10連</span><div id="standardMaxEliteBatch">-</div></div></article>
-            <article class="overview-card"><h3>自選人形</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="selectCharMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="selectCharMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>最歐10連</span><div id="selectCharMaxEliteBatch">-</div></div></article>
-            <article class="overview-card"><h3>自選武器</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="selectWeaponMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="selectWeaponMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>最歐10連</span><div id="selectWeaponMaxEliteBatch">-</div></div></article>
+            <article class="overview-card"><h3>定向採購</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="targetMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="targetMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>十連高光</span><div id="targetMaxEliteBatch">-</div></div></article>
+            <article class="overview-card"><h3>軍備提升</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="weaponMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="weaponMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>十連高光</span><div id="weaponMaxEliteBatch">-</div></div></article>
+            <article class="overview-card"><h3>常規採購</h3><div class="stat-row muted-row"><span class="stat-label">UP／歪紀錄</span><span class="stat-value">不適用</span></div><div class="record-divider"></div><div class="special-record"><span>十連高光</span><div id="standardMaxEliteBatch">-</div></div></article>
+            <article class="overview-card"><h3>自選人形</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="selectCharMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="selectCharMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>十連高光</span><div id="selectCharMaxEliteBatch">-</div></div></article>
+            <article class="overview-card"><h3>自選武器</h3><div class="stat-row"><span class="stat-label">最大連續不歪</span><span class="stat-value" id="selectWeaponMaxUpStreak">-</span></div><div class="stat-row"><span class="stat-label">最大連續抽歪</span><span class="stat-value" id="selectWeaponMaxOffStreak">-</span></div><div class="record-divider"></div><div class="special-record"><span>十連高光</span><div id="selectWeaponMaxEliteBatch">-</div></div></article>
           </div>
+          <div class="section-title-row ranking-heading"><div><h2>個人排行榜</h2><p>依每次菁英間隔、抽歪紀錄與目前養成投入排序</p></div></div>
+          <div id="specialRankings" class="ranking-grid"></div>
         </section>
 
         <section id="historyPage" class="page-section">
