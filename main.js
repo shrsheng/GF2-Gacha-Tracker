@@ -4,6 +4,7 @@ const fs = require("fs");
 const crypto = require("crypto");
 const { pathToFileURL } = require("url");
 
+
 let dataDir;
 let dataFile;
 let configFile;
@@ -13,11 +14,13 @@ const bundledSignatureMapFile = path.join(__dirname, "signatureMap.json");
 const bundledCharacterArtMapFile = path.join(__dirname, "characterArtMap.json");
 const bundledWeaponArtMapFile = path.join(__dirname, "weaponArtMap.json");
 const bundledOutfitPoolMapFile = path.join(__dirname, "outfitPoolMap.json");
+const bundledPoolMapFile = path.join(__dirname, "poolMap.generated.json");
 let userItemMapFile;
 let userSignatureMapFile;
 let userCharacterArtMapFile;
 let userWeaponArtMapFile;
 let userOutfitPoolMapFile;
+let userPoolMapFile;
 let dataUpdateStateFile;
 let legacyMirrorInitialized = false;
 const dataUpdateManifestUrl =
@@ -33,6 +36,7 @@ function initDataPaths() {
   userCharacterArtMapFile = path.join(dataDir, "characterArtMap.json");
   userWeaponArtMapFile = path.join(dataDir, "weaponArtMap.json");
   userOutfitPoolMapFile = path.join(dataDir, "outfitPoolMap.json");
+  userPoolMapFile = path.join(dataDir, "poolMap.generated.json");
   dataUpdateStateFile = path.join(dataDir, "data-update-state.json");
 
 
@@ -87,6 +91,7 @@ function ensureAccountStore() {
     uid: "legacy",
     name: "原有帳號",
     records: Array.isArray(legacyData.records) ? legacyData.records : [],
+    externalAcquisitions: [],
     config: legacyConfig || { gachaUrl: "", accessToken: "" },
     createdAt: new Date().toISOString()
   };
@@ -97,6 +102,9 @@ function loadAccountStore() {
   ensureDataFile();
   const store = readJsonFile(accountsFile, { version: 1, activeAccountId: "", accounts: [] });
   if (!Array.isArray(store.accounts)) store.accounts = [];
+  store.accounts.forEach(account => {
+    if (!Array.isArray(account.externalAcquisitions)) account.externalAcquisitions = [];
+  });
   return store;
 }
 
@@ -169,7 +177,16 @@ function mergeDataMap(bundledFile, userFile, nestedKeys = []) {
   const user = readJsonFile(userFile, {});
   const merged = { ...bundled, ...user };
   nestedKeys.forEach(key => {
-    merged[key] = { ...(bundled[key] || {}), ...(user[key] || {}) };
+    const bundledGroup = bundled[key] || {};
+    const userGroup = user[key] || {};
+    merged[key] = { ...bundledGroup, ...userGroup };
+    Object.keys(merged[key]).forEach(entryKey => {
+      const bundledEntry = bundledGroup[entryKey];
+      const userEntry = userGroup[entryKey];
+      if (bundledEntry && userEntry && typeof bundledEntry === "object" && typeof userEntry === "object" && !Array.isArray(bundledEntry) && !Array.isArray(userEntry)) {
+        merged[key][entryKey] = { ...bundledEntry, ...userEntry };
+      }
+    });
   });
   return merged;
 }
@@ -371,7 +388,7 @@ ipcMain.handle("create-account", (event, input) => {
   const store = loadAccountStore();
   const id = makeAccountKey(server, uid);
   if (store.accounts.some(account => account.id === id)) throw new Error("此伺服器與 UID 已存在");
-  store.accounts.push({ id, server, uid, name, records: [], config: { gachaUrl: "", accessToken: "" }, createdAt: new Date().toISOString() });
+  store.accounts.push({ id, server, uid, name, records: [], externalAcquisitions: [], config: { gachaUrl: "", accessToken: "" }, createdAt: new Date().toISOString() });
   store.activeAccountId = id;
   saveAccountStoreAndMirror(store);
   return id;
@@ -470,6 +487,12 @@ ipcMain.handle("load-outfit-pool-map", () => {
   ));
 });
 
+ipcMain.handle("load-pool-map", () => {
+  const bundled = readJsonFile(bundledPoolMapFile, { pools: [] });
+  const user = readJsonFile(userPoolMapFile, null);
+  return user && Array.isArray(user.pools) ? user : bundled;
+});
+
 ipcMain.handle("save-records", (event, records) => {
   const store = loadAccountStore();
   const account = getActiveAccount(store);
@@ -477,6 +500,20 @@ ipcMain.handle("save-records", (event, records) => {
   account.records = Array.isArray(records) ? records : [];
   saveAccountStoreAndMirror(store);
 
+  return true;
+});
+
+ipcMain.handle("load-external-acquisitions", () => {
+  const account = getActiveAccount();
+  return Array.isArray(account?.externalAcquisitions) ? account.externalAcquisitions : [];
+});
+
+ipcMain.handle("save-external-acquisitions", (event, entries) => {
+  const store = loadAccountStore();
+  const account = getActiveAccount(store);
+  if (!account) throw new Error("尚未建立帳號");
+  account.externalAcquisitions = Array.isArray(entries) ? entries : [];
+  saveAccountStoreAndMirror(store);
   return true;
 });
 
@@ -496,7 +533,7 @@ ipcMain.handle("export-records", async () => {
   }
 
   const account = getActiveAccount();
-  fs.writeFileSync(result.filePath, JSON.stringify({ version: 2, account: { server: account.server, uid: account.uid, name: account.name }, records: account.records || [] }, null, 2), "utf-8");
+  fs.writeFileSync(result.filePath, JSON.stringify({ version: 3, account: { server: account.server, uid: account.uid, name: account.name }, records: account.records || [], externalAcquisitions: account.externalAcquisitions || [] }, null, 2), "utf-8");
 
   return true;
 });

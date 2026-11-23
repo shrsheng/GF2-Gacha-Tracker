@@ -1,16 +1,18 @@
 {
   "name": "gf2-gacha-tool",
-  "version": "2.2.0",
+  "version": "2.3.0-beta.46",
   "description": "少女前線2：追放 抽卡統計工具",
   "main": "main.js",
   "author": "LiaoSAM",
   "license": "MIT",
   "scripts": {
     "start": "electron .",
+    "data:items": "node tools/generateItemMap.js",
+    "test:overview": "node tests/overview-stats.test.js && node tests/overview-ui-contract.test.js && node tests/recruitment-analysis-ui.test.js && node tests/progress-ui-v12.test.js && node tests/external-acquisitions.test.js && node tests/character-art-assets.test.js",
     "dist": "electron-builder"
   },
   "dependencies": {
-    "protobufjs": "^8.6.3"
+    "protobufjs": "8.6.6"
   },
   "devDependencies": {
     "electron": "^41.7.1",
@@ -30,6 +32,7 @@
       "characterArtMap.json",
       "weaponArtMap.json",
       "outfitPoolMap.json",
+      "poolMap.generated.json",
       "data-update-manifest.json",
       "package.json",
       "src/**/*",

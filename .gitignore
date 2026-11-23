@@ -3,7 +3,6 @@ dist/
 data/
 server-data/
 tool/
-tools/
 testdata/
 
 debug-*.json
